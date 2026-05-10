@@ -27,6 +27,8 @@ logs/
 *.zip
 public/images/CODEX_IMAGE_INSTRUCTIONS.md
 public/images/manifest.json
+public/images/diagrams/CODEX_DIAGRAM_UPDATE_INSTRUCTIONS.md
+public/images/diagrams/manifest.json
 
 # OS / editor
 .DS_Store

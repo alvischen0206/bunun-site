@@ -585,21 +585,24 @@ h3 {
 }
 
 .diagram-image {
-  border: 0;
-  border-radius: 0;
-  box-shadow: none;
+  margin: 16px;
+  overflow: hidden;
+  border: 1px solid rgba(148, 163, 184, 0.22);
+  border-radius: calc(var(--radius) - 4px);
   background: rgba(15, 23, 42, 0.54);
+  box-shadow: 0 16px 42px rgba(0, 0, 0, 0.22);
 }
 
 .diagram-image img {
+  display: block;
   width: 100%;
-  aspect-ratio: 16 / 11;
-  object-fit: cover;
+  aspect-ratio: 18 / 10;
+  object-fit: contain;
 }
 
 .diagram-card.large .diagram-image img {
   height: 100%;
-  min-height: 420px;
+  min-height: 360px;
 }
 
 .diagram-copy {
