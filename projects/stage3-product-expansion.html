@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Stage 3 產品擴充 | Bunun Studio</title>
+    <meta name="description" content="Stage 3 產品擴充案例介紹：多使用者、權限、郵件摘要、行事曆、請款、Admin 管理與資料分層規劃。">
+    <link rel="stylesheet" href="../styles.css">
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="../index.html">Bunun Studio</a>
+      <nav class="nav" aria-label="主要導覽">
+        <a href="../index.html#projects">作品</a>
+        <a href="../index.html#architecture">架構</a>
+        <a href="../index.html#contact">聯絡</a>
+      </nav>
+    </header>
+
+    <main class="page-main">
+      <section class="project-hero">
+        <p class="eyebrow">Product Vision</p>
+        <h1>Stage 3 產品擴充</h1>
+        <p class="hero-copy">
+          從個人 AI 助理走向團隊工具，加入多使用者、權限控管、郵件摘要、行事曆、請款與 Admin 管理。
+        </p>
+        <div class="project-summary">
+          <div class="summary-item"><span>狀態</span><strong>Planned</strong></div>
+          <div class="summary-item"><span>方向</span><strong>團隊版 AI 助理</strong></div>
+          <div class="summary-item"><span>核心議題</span><strong>權限與資料分層</strong></div>
+          <div class="summary-item"><span>目標</span><strong>產品化測試</strong></div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="content-grid">
+          <div class="detail-stack">
+            <article class="detail-panel">
+              <h2>發想</h2>
+              <p>
+                當 LINE AI 業務助理從個人使用走向團隊使用，問題就不只是「能不能回答」，
+                還包括誰可以看哪些資料、誰能建立紀錄、誰能匯出報表、系統如何留下操作紀錄。
+              </p>
+              <p>
+                Stage 3 是產品化方向的規劃，把目前已能運作的功能，往多使用者、權限、管理與更多業務流程擴充。
+              </p>
+            </article>
+
+            <article class="detail-panel">
+              <h2>設計思路</h2>
+              <ul>
+                <li>把使用者分成一般使用者、主管與 Admin，不同角色看到不同資料。</li>
+                <li>將一般聊天、標案查詢、名片掃描、個人工作助理、請款與管理功能分成不同模式。</li>
+                <li>保留活動 log 與匯出報表能力，讓系統有追蹤與管理價值。</li>
+                <li>把短期 / 中期 / 長期記憶分層，避免個人偏好與團隊資料混在一起。</li>
+              </ul>
+            </article>
+
+            <article class="detail-panel">
+              <h2>規劃模組</h2>
+              <div class="workflow-map">
+                <div class="workflow-row"><div class="workflow-label">權限</div><div class="workflow-value">使用者驗證、角色分級、資料範圍過濾。</div></div>
+                <div class="workflow-row"><div class="workflow-label">助理</div><div class="workflow-value">一般聊天、個人工作助理、提醒與待辦。</div></div>
+                <div class="workflow-row"><div class="workflow-label">業務</div><div class="workflow-value">標案查詢、聯絡人查詢、客戶互動紀錄。</div></div>
+                <div class="workflow-row"><div class="workflow-label">行政</div><div class="workflow-value">郵件摘要、行事曆、請款流程、報表匯出。</div></div>
+                <div class="workflow-row"><div class="workflow-label">管理</div><div class="workflow-value">Admin 管理、使用紀錄、功能開關與系統健康檢查。</div></div>
+              </div>
+            </article>
+          </div>
+
+          <aside class="sidebar">
+            <div class="sidebar-card">
+              <h2>技術關鍵字</h2>
+              <div class="tag-list">
+                <span class="tag">RBAC</span>
+                <span class="tag">Admin</span>
+                <span class="tag">Audit Log</span>
+                <span class="tag">CRM</span>
+                <span class="tag">Calendar</span>
+                <span class="tag">Email</span>
+              </div>
+            </div>
+            <div class="sidebar-card">
+              <h2>下一步</h2>
+              <div class="timeline">
+                <div class="timeline-step"><strong>先文件化</strong><p>把第三階段需求拆成最小可測試功能。</p></div>
+                <div class="timeline-step"><strong>先權限</strong><p>團隊版最重要的是資料隔離與角色權限。</p></div>
+                <div class="timeline-step"><strong>再產品化</strong><p>把穩定功能接到 Demo 或合作測試場景。</p></div>
+              </div>
+            </div>
+          </aside>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p><a class="text-link" href="../index.html#projects">回作品集</a></p>
+    </footer>
+  </body>
+</html>
