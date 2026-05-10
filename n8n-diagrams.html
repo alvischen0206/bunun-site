@@ -3,16 +3,22 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>n8n 流程圖展示 | Bunun Studio</title>
+    <title>n8n 流程圖作品集 | Bunun Studio</title>
     <meta
       name="description"
-      content="Bunun Studio 的 n8n 操作邏輯流程圖，包含 LINE AI 助理、Tender AI、RAG、OCR 與自動化中心。"
+      content="Bunun Studio 的 n8n workflow 作品圖集，包含 LINE AI、Tender AI、RAG API、OCR、向量資料庫與產品 roadmap。"
     >
+    <meta property="og:title" content="n8n 流程圖作品集 | Bunun Studio">
+    <meta property="og:description" content="把 workflow 變成客戶看得懂的流程圖與作品展示。">
+    <meta property="og:image" content="https://bunun-site-m2r9.vercel.app/public/images/n8n-automation-hub.png">
     <link rel="stylesheet" href="./styles.css">
   </head>
   <body>
     <header class="site-header">
-      <a class="brand" href="./index.html">Bunun Studio</a>
+      <a class="brand" href="./index.html">
+        <span class="brand-mark"></span>
+        Bunun Studio
+      </a>
       <nav class="nav" aria-label="主要導覽">
         <a href="./index.html#work">作品</a>
         <a href="./index.html#services">服務</a>
@@ -24,147 +30,152 @@
     </header>
 
     <main class="page-main">
-      <section class="diagram-hero">
-        <p class="eyebrow">Workflow diagrams</p>
-        <h1>n8n 操作邏輯流程圖</h1>
+      <section class="page-hero section-shell">
+        <p class="eyebrow">Workflow Portfolio</p>
+        <h1>n8n workflow library</h1>
         <p class="hero-copy">
-          這些圖把每個 n8n workflow 的入口、分流、主要處理、確認與輸出整理成視覺化流程。
-          它們適合放在網站上當作品佐證，也適合之後拿來對照實際 workflow JSON。
+          每張圖都對應一種不同的自動化情境。這一頁不是單純放流程圖，
+          而是把 AI 助理、文件搜尋、OCR、RAG、資料庫與產品規劃整理成可展示的作品集。
         </p>
       </section>
 
-      <section class="section diagram-section">
-        <div class="diagram-layout">
-          <aside class="diagram-sidebar">
-            <p class="eyebrow">Index</p>
-            <h2>11 個流程圖</h2>
-            <p>
-              我把技術圖集中放在這一頁，首頁只保留一張預覽，避免主頁變得太密集。
-            </p>
-          </aside>
-
-          <div class="diagram-gallery">
-            <article class="diagram-card featured" id="line-ai-business-assistant">
-              <div>
-                <span class="card-kicker">LINE / AI Agent</span>
-                <h3>LINE AI 業務助理</h3>
-                <p>示範從 LINE 訊息進入、分類、記憶、AI 回覆到回傳使用者的完整路徑。</p>
+      <section class="section section-shell diagram-section">
+        <div class="diagram-gallery">
+          <article class="diagram-card large">
+            <div class="diagram-image">
+              <img src="./public/images/line-ai-business-assistant.png" alt="LINE AI business assistant workflow">
+            </div>
+            <div class="diagram-copy">
+              <span class="card-kicker">LINE / AI Agent / n8n</span>
+              <h2>LINE AI 業務助理</h2>
+              <p>手機聊天情境連到後端節點流程，說明 LINE 訊息如何進入、分類、觸發 AI 回覆與回傳。</p>
+              <div class="tag-list">
+                <span class="tag">LINE Bot</span>
+                <span class="tag">AI Agent</span>
+                <span class="tag">Memory</span>
               </div>
-              <a href="./assets/n8n-diagrams/line_ai_business_assistant.svg" target="_blank" rel="noreferrer">
-                <img src="./assets/n8n-diagrams/line_ai_business_assistant.svg" alt="LINE AI 業務助理 n8n 操作邏輯流程圖">
-              </a>
-            </article>
+            </div>
+          </article>
 
-            <article class="diagram-card" id="line-public-info-assistant">
-              <div>
-                <span class="card-kicker">Public data</span>
-                <h3>LINE 公開資訊助理</h3>
-                <p>把天氣、AQI 或公開資料查詢包成 LINE 可操作流程。</p>
-              </div>
-              <a href="./assets/n8n-diagrams/line_public_info_assistant.svg" target="_blank" rel="noreferrer">
-                <img src="./assets/n8n-diagrams/line_public_info_assistant.svg" alt="LINE 公開資訊助理 n8n 操作邏輯流程圖">
-              </a>
-            </article>
+          <article class="diagram-card">
+            <div class="diagram-image">
+              <img src="./public/images/public-data-assistant.png" alt="LINE public data assistant API workflow">
+            </div>
+            <div class="diagram-copy">
+              <span class="card-kicker">API center</span>
+              <h2>LINE 公開資訊助理</h2>
+              <p>把天氣、AQI 或公開資料 API 包成 LINE 可問的服務。</p>
+              <div class="tag-list"><span class="tag">Open data</span><span class="tag">API</span><span class="tag">LINE</span></div>
+            </div>
+          </article>
 
-            <article class="diagram-card" id="line-business-card-assistant">
-              <div>
-                <span class="card-kicker">Vision / OCR</span>
-                <h3>LINE 名片掃描助理</h3>
-                <p>把圖片、OCR、資料確認與後續整理串成一條工作流。</p>
-              </div>
-              <a href="./assets/n8n-diagrams/line_business_card_assistant.svg" target="_blank" rel="noreferrer">
-                <img src="./assets/n8n-diagrams/line_business_card_assistant.svg" alt="LINE 名片掃描助理 n8n 操作邏輯流程圖">
-              </a>
-            </article>
+          <article class="diagram-card">
+            <div class="diagram-image">
+              <img src="./public/images/business-card-ocr-flow.png" alt="Business card OCR workflow">
+            </div>
+            <div class="diagram-copy">
+              <span class="card-kicker">OCR pipeline</span>
+              <h2>LINE 名片掃描助理</h2>
+              <p>從圖片進入 OCR，再整理聯絡資訊與確認欄位。</p>
+              <div class="tag-list"><span class="tag">Vision</span><span class="tag">OCR</span><span class="tag">Contact data</span></div>
+            </div>
+          </article>
 
-            <article class="diagram-card" id="tender-ai-search">
-              <div>
-                <span class="card-kicker">Tender AI</span>
-                <h3>Tender AI 標案查詢</h3>
-                <p>整理標案搜尋、文件查詢、RAG 回答與結果輸出的主流程。</p>
-              </div>
-              <a href="./assets/n8n-diagrams/tender_ai_search.svg" target="_blank" rel="noreferrer">
-                <img src="./assets/n8n-diagrams/tender_ai_search.svg" alt="Tender AI 標案查詢 n8n 操作邏輯流程圖">
-              </a>
-            </article>
+          <article class="diagram-card large">
+            <div class="diagram-image">
+              <img src="./public/images/tender-ai-rag-flow.png" alt="Tender AI RAG workflow">
+            </div>
+            <div class="diagram-copy">
+              <span class="card-kicker">RAG / Tender search</span>
+              <h2>Tender AI 標案查詢</h2>
+              <p>漏斗式查詢圖，呈現標案問題如何經過文件檢索、條件整理與 AI 回答。</p>
+              <div class="tag-list"><span class="tag">Tender AI</span><span class="tag">RAG</span><span class="tag">PDF</span></div>
+            </div>
+          </article>
 
-            <article class="diagram-card" id="rag-query-api">
-              <div>
-                <span class="card-kicker">RAG API</span>
-                <h3>RAG 查詢 API</h3>
-                <p>說明查詢請求如何進入 API，並與向量資料庫和 LLM 回答流程銜接。</p>
-              </div>
-              <a href="./assets/n8n-diagrams/rag_query_api.svg" target="_blank" rel="noreferrer">
-                <img src="./assets/n8n-diagrams/rag_query_api.svg" alt="RAG 查詢 API n8n 操作邏輯流程圖">
-              </a>
-            </article>
+          <article class="diagram-card">
+            <div class="diagram-image">
+              <img src="./public/images/rag-api-sequence.png" alt="RAG API sequence diagram">
+            </div>
+            <div class="diagram-copy">
+              <span class="card-kicker">Sequence diagram</span>
+              <h2>RAG 查詢 API</h2>
+              <p>用 sequence diagram 說明查詢、檢索、重組與回答的順序。</p>
+              <div class="tag-list"><span class="tag">FastAPI</span><span class="tag">Vector search</span><span class="tag">LLM</span></div>
+            </div>
+          </article>
 
-            <article class="diagram-card" id="vector-database-builder">
-              <div>
-                <span class="card-kicker">Vector database</span>
-                <h3>向量資料庫建立器</h3>
-                <p>呈現文件切分、嵌入、寫入資料庫與重建索引的流程。</p>
-              </div>
-              <a href="./assets/n8n-diagrams/vector_database_builder.svg" target="_blank" rel="noreferrer">
-                <img src="./assets/n8n-diagrams/vector_database_builder.svg" alt="向量資料庫建立器 n8n 操作邏輯流程圖">
-              </a>
-            </article>
+          <article class="diagram-card">
+            <div class="diagram-image">
+              <img src="./public/images/vector-database-builder.png" alt="Vector database builder pipeline">
+            </div>
+            <div class="diagram-copy">
+              <span class="card-kicker">Data pipeline</span>
+              <h2>向量資料庫建立器</h2>
+              <p>把文件切分、嵌入、寫入資料庫與重建索引拆成可維護流水線。</p>
+              <div class="tag-list"><span class="tag">Embedding</span><span class="tag">Vector DB</span><span class="tag">Indexing</span></div>
+            </div>
+          </article>
 
-            <article class="diagram-card" id="ocr-document-pipeline">
-              <div>
-                <span class="card-kicker">OCR pipeline</span>
-                <h3>OCR 文件處理流程</h3>
-                <p>把檔案接收、OCR、文字整理與後續查詢前處理拆開呈現。</p>
-              </div>
-              <a href="./assets/n8n-diagrams/ocr_document_pipeline.svg" target="_blank" rel="noreferrer">
-                <img src="./assets/n8n-diagrams/ocr_document_pipeline.svg" alt="OCR 文件處理流程 n8n 操作邏輯流程圖">
-              </a>
-            </article>
+          <article class="diagram-card">
+            <div class="diagram-image">
+              <img src="./public/images/ocr-document-pipeline.png" alt="OCR document processing pipeline">
+            </div>
+            <div class="diagram-copy">
+              <span class="card-kicker">Decision tree</span>
+              <h2>OCR 文件處理流程</h2>
+              <p>用文件處理決策樹呈現掃描、辨識、清理與失敗回補。</p>
+              <div class="tag-list"><span class="tag">OCR</span><span class="tag">Parser</span><span class="tag">Validation</span></div>
+            </div>
+          </article>
 
-            <article class="diagram-card" id="tender-parser">
-              <div>
-                <span class="card-kicker">Parser</span>
-                <h3>標案內容解析器</h3>
-                <p>把標案文件中的條件、日期、資格與摘要整理成可用資料。</p>
-              </div>
-              <a href="./assets/n8n-diagrams/tender_parser.svg" target="_blank" rel="noreferrer">
-                <img src="./assets/n8n-diagrams/tender_parser.svg" alt="標案內容解析器 n8n 操作邏輯流程圖">
-              </a>
-            </article>
+          <article class="diagram-card">
+            <div class="diagram-image">
+              <img src="./public/images/tender-content-parser.png" alt="Tender content parser dashboard">
+            </div>
+            <div class="diagram-copy">
+              <span class="card-kicker">Parser dashboard</span>
+              <h2>標案內容解析器</h2>
+              <p>把標案欄位、日期、資格與摘要整理成 dashboard 型態。</p>
+              <div class="tag-list"><span class="tag">Field extraction</span><span class="tag">Rules</span><span class="tag">Summary</span></div>
+            </div>
+          </article>
 
-            <article class="diagram-card" id="n8n-tender-workflow">
-              <div>
-                <span class="card-kicker">Main workflow</span>
-                <h3>標案 n8n 主流程</h3>
-                <p>集中展示 Tender AI 主要 workflow 如何串接子流程。</p>
-              </div>
-              <a href="./assets/n8n-diagrams/n8n_tender_workflow.svg" target="_blank" rel="noreferrer">
-                <img src="./assets/n8n-diagrams/n8n_tender_workflow.svg" alt="標案 n8n 主流程操作邏輯流程圖">
-              </a>
-            </article>
+          <article class="diagram-card">
+            <div class="diagram-image">
+              <img src="./public/images/tender-n8n-main-workflow.png" alt="Tender n8n main workflow map">
+            </div>
+            <div class="diagram-copy">
+              <span class="card-kicker">Metro map</span>
+              <h2>標案 n8n 主流程</h2>
+              <p>以地鐵線路圖方式呈現 Tender AI 主流程與子流程的串接。</p>
+              <div class="tag-list"><span class="tag">n8n</span><span class="tag">Sub-workflow</span><span class="tag">Routing</span></div>
+            </div>
+          </article>
 
-            <article class="diagram-card" id="n8n-automation-hub">
-              <div>
-                <span class="card-kicker">Automation hub</span>
-                <h3>n8n 自動化中心</h3>
-                <p>呈現自動化中心如何管理入口、路由、子流程與輸出規則。</p>
-              </div>
-              <a href="./assets/n8n-diagrams/n8n_automation_hub.svg" target="_blank" rel="noreferrer">
-                <img src="./assets/n8n-diagrams/n8n_automation_hub.svg" alt="n8n 自動化中心操作邏輯流程圖">
-              </a>
-            </article>
+          <article class="diagram-card large">
+            <div class="diagram-image">
+              <img src="./public/images/n8n-automation-hub.png" alt="n8n automation hub diagram">
+            </div>
+            <div class="diagram-copy">
+              <span class="card-kicker">Hub-and-spoke</span>
+              <h2>n8n 自動化中心</h2>
+              <p>Hub-and-spoke 放射圖，呈現自動化中心如何管理入口、路由、子流程與輸出規則。</p>
+              <div class="tag-list"><span class="tag">Automation hub</span><span class="tag">Workflow ops</span><span class="tag">Monitoring</span></div>
+            </div>
+          </article>
 
-            <article class="diagram-card" id="stage3-product-expansion">
-              <div>
-                <span class="card-kicker">Product roadmap</span>
-                <h3>Stage 3 產品擴展</h3>
-                <p>把未來產品化、管理介面、權限與營運功能整理成規劃流程。</p>
-              </div>
-              <a href="./assets/n8n-diagrams/stage3_product_expansion.svg" target="_blank" rel="noreferrer">
-                <img src="./assets/n8n-diagrams/stage3_product_expansion.svg" alt="Stage 3 產品擴展操作邏輯流程圖">
-              </a>
-            </article>
-          </div>
+          <article class="diagram-card large">
+            <div class="diagram-image">
+              <img src="./public/images/stage3-product-roadmap.png" alt="Stage 3 product roadmap">
+            </div>
+            <div class="diagram-copy">
+              <span class="card-kicker">Product roadmap</span>
+              <h2>Stage 3 產品擴展</h2>
+              <p>把未來產品化、管理介面、權限、營運與客戶維護功能整理成 roadmap。</p>
+              <div class="tag-list"><span class="tag">Roadmap</span><span class="tag">Admin</span><span class="tag">Productization</span></div>
+            </div>
+          </article>
         </div>
       </section>
     </main>

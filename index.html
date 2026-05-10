@@ -6,13 +6,20 @@
     <title>Bunun Studio | AI 自動化與網站工作室</title>
     <meta
       name="description"
-      content="Bunun Studio 協助小型團隊把 AI、LINE、n8n、文件處理與網站展示整理成能被理解、能被使用的自動化流程。"
+      content="Bunun Studio 專注在 LINE AI 助理、n8n 自動化、RAG 文件搜尋、OCR 文件處理與網站展示，協助小團隊把複雜流程整理成看得懂、可測試、能維護的 AI 工具。"
     >
+    <meta property="og:title" content="Bunun Studio | AI 自動化與網站工作室">
+    <meta property="og:description" content="把複雜流程整理成看得懂、用得上的 AI 工具。">
+    <meta property="og:image" content="https://bunun-site-m2r9.vercel.app/public/images/hero-ai-workflow.png">
+    <meta property="og:type" content="website">
     <link rel="stylesheet" href="./styles.css">
   </head>
   <body>
     <header class="site-header">
-      <a class="brand" href="#top" aria-label="回到首頁">Bunun Studio</a>
+      <a class="brand" href="#top" aria-label="回到首頁">
+        <span class="brand-mark"></span>
+        Bunun Studio
+      </a>
       <nav class="nav" aria-label="主要導覽">
         <a href="#work">作品</a>
         <a href="#services">服務</a>
@@ -24,10 +31,7 @@
     </header>
 
     <main id="top">
-      <section class="hero" aria-labelledby="hero-title">
-        <div class="hero-media" aria-hidden="true">
-          <img src="./assets/hero-ai-workspace.png" alt="">
-        </div>
+      <section class="hero section-shell" aria-labelledby="hero-title">
         <div class="hero-content">
           <p class="eyebrow">AI automation studio</p>
           <h1 id="hero-title">把複雜流程，整理成看得懂、用得上的 AI 工具。</h1>
@@ -35,88 +39,100 @@
             我是 Alvis。Bunun Studio 專注在 LINE AI 助理、n8n 自動化、文件搜尋與網站展示。
             先做出可示範的版本，再逐步變成穩定可用的系統。
           </p>
-          <form class="prompt-box" action="#contact">
-            <label for="prompt">今天想先改善哪一段流程？</label>
-            <div class="prompt-row">
-              <input id="prompt" name="prompt" type="text" value="把客戶訊息、文件整理和回覆流程自動化">
-              <button type="submit">開始討論</button>
-            </div>
-          </form>
-          <div class="hero-links" aria-label="快速連結">
-            <a href="#work">看作品</a>
-            <a href="#services">看服務</a>
-            <a href="mailto:panda@bunun.co">panda@bunun.co</a>
+          <div class="hero-actions">
+            <a class="button primary" href="mailto:panda@bunun.co">開始討論</a>
+            <a class="button secondary" href="#work">看作品</a>
           </div>
+          <p class="hero-email">panda@bunun.co</p>
+        </div>
+        <div class="hero-visual">
+          <img
+            src="./public/images/hero-ai-workflow.png"
+            alt="Bunun Studio AI workflow dashboard illustration"
+          >
         </div>
       </section>
 
-      <section class="news-strip" aria-label="重點摘要">
-        <a href="./projects/line-ai-assistant.html">
-          <span>Active</span>
-          LINE AI 助理：把詢問、分類與回覆串成一條流程
-        </a>
-        <a href="./projects/tender-ai.html">
-          <span>RAG</span>
-          Tender AI：用文件搜尋降低人工查找時間
-        </a>
-        <a href="./projects/n8n-automation-hub.html">
-          <span>n8n</span>
-          自動化中心：把大型 workflow 拆成可維護模組
-        </a>
+      <section class="signal-strip" aria-label="服務重點">
+        <span>LINE AI 助理</span>
+        <span>n8n 自動化</span>
+        <span>RAG 文件搜尋</span>
+        <span>OCR 文件解析</span>
+        <span>網站與展示頁</span>
       </section>
 
-      <section id="work" class="section">
+      <section id="work" class="section section-shell">
         <div class="section-heading">
-          <p class="eyebrow">Selected work</p>
-          <h2>正在整理的 AI 專案</h2>
+          <p class="eyebrow">Selected Work</p>
+          <h2>正在整理成產品感的 AI 自動化案例</h2>
           <p>
-            這裡放的不是漂亮口號，而是目前真正可以拆解、示範、持續改進的工作。
-            每個案例都會說明問題、流程與下一步。
+            這些作品不是單純的功能 demo，而是把常見的訊息、文件、查詢、流程與展示需求，
+            整理成客戶能理解、能測試、能逐步落地的系統。
           </p>
         </div>
 
-        <div class="feature-grid">
-          <article class="feature-card large">
+        <div class="work-grid">
+          <article class="work-card featured">
             <a href="./projects/line-ai-assistant.html">
               <span class="card-kicker">LINE / n8n / AI Agent</span>
               <h3>LINE AI 商務助理</h3>
               <p>讓 LINE 不只收訊息，也能分類需求、呼叫流程、整理回覆，逐步變成可追蹤的客戶工作台。</p>
+              <div class="card-meta">
+                <span>Active</span>
+                <strong>LINE Bot + n8n + AI Agent</strong>
+              </div>
             </a>
           </article>
-          <article class="feature-card">
+          <article class="work-card">
             <a href="./projects/tender-ai.html">
               <span class="card-kicker">PDF / OCR / RAG</span>
               <h3>Tender AI 標案搜尋</h3>
               <p>把散落的招標文件整理成可查詢的知識庫，減少人工翻文件的時間。</p>
+              <div class="card-meta">
+                <span>Active prototype</span>
+                <strong>RAG + OCR + PDF</strong>
+              </div>
             </a>
           </article>
-          <article class="feature-card">
+          <article class="work-card">
             <a href="./projects/n8n-automation-hub.html">
               <span class="card-kicker">Workflow system</span>
               <h3>n8n 自動化中心</h3>
-              <p>把大型流程拆成清楚模組，讓錯誤、測試與後續擴充更容易管理。</p>
+              <p>把大型 workflow 拆成清楚模組，讓錯誤、測試與後續擴充更容易管理。</p>
+              <div class="card-meta">
+                <span>In progress</span>
+                <strong>Workflow modularization</strong>
+              </div>
             </a>
           </article>
-          <article class="feature-card">
+          <article class="work-card">
             <a href="./projects/line-public-info.html">
-              <span class="card-kicker">Public data</span>
+              <span class="card-kicker">API / LINE / Open data</span>
               <h3>LINE 公共資訊查詢</h3>
               <p>把天氣、空氣品質或公開資料包成簡單可問的 LINE 查詢介面。</p>
+              <div class="card-meta">
+                <span>Prototype</span>
+                <strong>Open API + LINE</strong>
+              </div>
             </a>
           </article>
-          <article class="feature-card">
+          <article class="work-card">
             <a href="./projects/ocr-business-card.html">
               <span class="card-kicker">Vision / OCR</span>
               <h3>名片 OCR 實驗</h3>
               <p>從圖片取出聯絡資料，整理成後續可匯入、可追蹤的格式。</p>
+              <div class="card-meta">
+                <span>Experiment</span>
+                <strong>OCR + structured data</strong>
+              </div>
             </a>
           </article>
         </div>
       </section>
 
-      <section id="services" class="section contrast">
-        <div class="section-heading">
-          <p class="eyebrow">What I build</p>
+      <section id="services" class="section section-shell services-section">
+        <div class="section-heading narrow">
+          <p class="eyebrow">What I Build</p>
           <h2>適合小團隊的 AI 自動化服務</h2>
           <p>
             我會先把問題講清楚，再做最小可用版本。重點不是堆很多技術，
@@ -124,108 +140,124 @@
           </p>
         </div>
 
-        <div class="service-grid">
-          <article class="service-card">
-            <span>01</span>
-            <h3>流程盤點</h3>
-            <p>找出重複、耗時、容易出錯的工作，畫成簡單流程圖，確認哪些部分值得自動化。</p>
-          </article>
-          <article class="service-card">
-            <span>02</span>
-            <h3>AI 助理原型</h3>
-            <p>用 LINE、n8n、RAG 或 API 做出可測試版本，先驗證使用情境與回覆品質。</p>
-          </article>
-          <article class="service-card">
-            <span>03</span>
-            <h3>網站與展示頁</h3>
-            <p>把專案、服務與案例整理成清楚網站，讓客戶快速理解你能解決什麼問題。</p>
-          </article>
-          <article class="service-card">
-            <span>04</span>
-            <h3>文件化與交接</h3>
-            <p>留下操作說明、風險提醒與回復方式，避免系統只靠記憶維護。</p>
-          </article>
-        </div>
-      </section>
-
-      <section id="process" class="section">
-        <div class="split-layout">
-          <div class="section-heading sticky-heading">
-            <p class="eyebrow">How we work</p>
-            <h2>先做小，再做穩。</h2>
-            <p>
-              AI 自動化最容易失控的地方，是一開始就想做完整系統。
-              我會把它拆成能看、能測、能改的階段。
-            </p>
+        <div class="services-layout">
+          <div class="service-grid">
+            <article class="service-card">
+              <span>01</span>
+              <h3>流程盤點</h3>
+              <p>找出重複、耗時、容易出錯的工作，畫成簡單流程圖，確認哪些部分值得自動化。</p>
+            </article>
+            <article class="service-card">
+              <span>02</span>
+              <h3>AI 助理原型</h3>
+              <p>用 LINE、n8n、RAG 或 API 做出可測試版本，先驗證使用情境與回覆品質。</p>
+            </article>
+            <article class="service-card">
+              <span>03</span>
+              <h3>網站與展示頁</h3>
+              <p>把專案、服務與案例整理成清楚網站，讓客戶快速理解你能解決什麼問題。</p>
+            </article>
+            <article class="service-card">
+              <span>04</span>
+              <h3>文件化與交接</h3>
+              <p>留下操作說明、風險提醒與回復方式，避免系統只靠記憶維護。</p>
+            </article>
           </div>
-          <div class="step-list">
-            <article>
-              <span>Step 1</span>
-              <h3>確認任務</h3>
-              <p>先用白話確認使用者、輸入資料、期待輸出與不能碰的資料。</p>
-            </article>
-            <article>
-              <span>Step 2</span>
-              <h3>建立原型</h3>
-              <p>做出可操作的 demo，不放真 token，不碰正式資料，先看流程是否合理。</p>
-            </article>
-            <article>
-              <span>Step 3</span>
-              <h3>測試與修正</h3>
-              <p>用實際情境測試錯誤回覆、空資料、格式問題與例外狀況。</p>
-            </article>
-            <article>
-              <span>Step 4</span>
-              <h3>準備上線</h3>
-              <p>補上文件、部署方式、回復方式與後續維護清單，再決定是否正式使用。</p>
-            </article>
+          <div class="support-visual">
+            <img
+              src="./public/images/service-overview-cards.png"
+              alt="Bunun Studio AI automation service overview cards"
+            >
           </div>
         </div>
       </section>
 
-      <section class="section architecture-section">
-        <div class="section-heading">
-          <p class="eyebrow">System view</p>
-          <h2>典型自動化架構</h2>
+      <section id="process" class="section section-shell">
+        <div class="section-heading narrow">
+          <p class="eyebrow">How We Work</p>
+          <h2>先做小，再做穩。</h2>
           <p>
-            除了抽象架構，我也整理了 11 張 n8n 操作邏輯流程圖。首頁只放重點預覽，完整圖集可另外開頁查看。
+            AI 自動化最容易失控的地方，是一開始就想做完整系統。
+            我會把它拆成能看、能測、能改的階段。
           </p>
         </div>
-        <div class="flow-diagram" aria-label="典型 AI 自動化流程">
-          <div class="flow-node">LINE / 表單</div>
-          <div class="flow-arrow">→</div>
-          <div class="flow-node">n8n 分流</div>
-          <div class="flow-arrow">→</div>
-          <div class="flow-node">AI / RAG / OCR</div>
-          <div class="flow-arrow">→</div>
-          <div class="flow-node wide">回覆與紀錄</div>
-        </div>
-        <div class="diagram-preview">
-          <div class="diagram-preview-copy">
-            <span class="card-kicker">n8n workflow library</span>
-            <h3>把 workflow 變成看得懂的流程圖</h3>
-            <p>
-              這組圖包含 LINE AI、Tender AI、RAG、OCR、向量資料庫與自動化中心。
-              放進網站後，客戶不用先看 JSON，也能理解系統怎麼運作。
-            </p>
-            <a class="button light" href="./n8n-diagrams.html">查看 11 張流程圖</a>
-          </div>
-          <a class="diagram-preview-image" href="./n8n-diagrams.html" aria-label="查看 n8n 流程圖展示頁">
-            <img src="./assets/n8n-diagrams/line_ai_business_assistant.svg" alt="LINE AI 業務助理 n8n 操作邏輯流程圖預覽">
-          </a>
+        <div class="timeline">
+          <article class="timeline-step">
+            <span>Step 1</span>
+            <h3>確認任務</h3>
+            <p>先用白話確認使用者、輸入資料、期待輸出與不能碰的資料。</p>
+          </article>
+          <article class="timeline-step">
+            <span>Step 2</span>
+            <h3>建立原型</h3>
+            <p>做出可操作的 demo，不放真 token，不碰正式資料，先看流程是否合理。</p>
+          </article>
+          <article class="timeline-step">
+            <span>Step 3</span>
+            <h3>測試與修正</h3>
+            <p>用實際情境測試錯誤回覆、空資料、格式問題與例外狀況。</p>
+          </article>
+          <article class="timeline-step">
+            <span>Step 4</span>
+            <h3>準備上線</h3>
+            <p>補上文件、部署方式、回復方式與後續維護清單，再決定是否正式使用。</p>
+          </article>
         </div>
       </section>
 
-      <section id="contact" class="section contact-section">
+      <section class="section section-shell system-section">
+        <div class="system-copy">
+          <p class="eyebrow">System View</p>
+          <h2>典型自動化架構</h2>
+          <p>
+            除了抽象架構，我也整理了 11 張 n8n 操作邏輯流程圖。
+            首頁只放重點預覽，完整圖集可另外開頁查看。
+          </p>
+          <div class="flow-nodes" aria-label="典型 AI 自動化流程">
+            <span>LINE / 表單</span>
+            <span>n8n 分流</span>
+            <span>AI / RAG / OCR</span>
+            <span>回覆與紀錄</span>
+          </div>
+        </div>
+        <div class="system-visual">
+          <img
+            src="./public/images/system-architecture-overview.png"
+            alt="Typical AI automation system architecture"
+          >
+        </div>
+      </section>
+
+      <section class="section section-shell library-preview">
+        <div class="library-copy">
+          <p class="eyebrow">n8n workflow library</p>
+          <h2>把 workflow 變成看得懂的流程圖</h2>
+          <p>
+            這組圖包含 LINE AI、Tender AI、RAG、OCR、向量資料庫與自動化中心。
+            放進網站後，客戶不用先看 JSON，也能理解系統怎麼運作。
+          </p>
+          <a class="button primary" href="./n8n-diagrams.html">查看 11 張流程圖</a>
+        </div>
+        <div class="library-thumbs" aria-label="流程圖預覽">
+          <img src="./public/images/line-ai-business-assistant.png" alt="LINE AI business assistant workflow preview">
+          <img src="./public/images/tender-ai-rag-flow.png" alt="Tender AI RAG workflow preview">
+          <img src="./public/images/n8n-automation-hub.png" alt="n8n automation hub diagram preview">
+        </div>
+      </section>
+
+      <section id="contact" class="section section-shell contact-cta">
         <div>
           <p class="eyebrow">Contact</p>
           <h2>想先整理一個流程嗎？</h2>
+          <p>
+            你可以先寄一段簡單描述：現在卡在哪裡、每天大概花多少時間、
+            目前用 LINE、Excel、PDF、網站或其他工具。不要在信中放 API key、token 或密碼。
+          </p>
         </div>
-        <p>
-          你可以先寄一段簡單描述：現在卡在哪裡、每天大概花多少時間、
-          目前用 LINE、Excel、PDF、網站或其他工具。不要在信中放 API key、token 或密碼。
-        </p>
-        <a class="email-link" href="mailto:panda@bunun.co">panda@bunun.co</a>
+        <div class="contact-actions">
+          <a class="button primary" href="mailto:panda@bunun.co">寄信給 Alvis</a>
+          <a class="email-link" href="mailto:panda@bunun.co">panda@bunun.co</a>
+        </div>
       </section>
     </main>
 
