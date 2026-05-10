@@ -1,0 +1,145 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1900" viewBox="0 0 1600 1900" role="img" aria-label="標案 n8n 主工作流 操作邏輯流程圖">
+<defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1"><stop offset="0%" stop-color="#f8fbff"/><stop offset="100%" stop-color="#eef7f1"/></linearGradient>
+    <filter id="shadow" x="-8%" y="-8%" width="125%" height="130%"><feDropShadow dx="0" dy="8" stdDeviation="9" flood-color="#0f172a" flood-opacity=".12"/></filter>
+    <marker id="arrowBlue" markerWidth="14" markerHeight="14" refX="11" refY="7" orient="auto"><path d="M2,2 L12,7 L2,12 Z" fill="#155bd5"/></marker>
+    <marker id="arrowOrange" markerWidth="14" markerHeight="14" refX="11" refY="7" orient="auto"><path d="M2,2 L12,7 L2,12 Z" fill="#f97316"/></marker>
+    <marker id="arrowGreen" markerWidth="14" markerHeight="14" refX="11" refY="7" orient="auto"><path d="M2,2 L12,7 L2,12 Z" fill="#16a34a"/></marker>
+  </defs>
+<rect width="1600" height="1900" fill="url(#bg)"/>
+<rect x="48" y="54" width="120" height="120" rx="28" fill="#06c755" filter="url(#shadow)"/>
+<text x="108" y="128" text-anchor="middle" font-family="Microsoft JhengHei, Noto Sans TC, Segoe UI, Arial, sans-serif" font-size="29" font-weight="900" fill="#fff">LINE</text>
+<circle cx="225" cy="116" r="48" fill="#dce9f7"/><circle cx="205" cy="116" r="7" fill="#17324d"/><circle cx="225" cy="116" r="7" fill="#17324d"/><circle cx="245" cy="116" r="7" fill="#17324d"/>
+<text x="800" y="82" text-anchor="middle" font-family="Microsoft JhengHei, Noto Sans TC, Segoe UI, Arial, sans-serif" font-size="58" font-weight="900" fill="#0b1b35">使用者操作介面流程圖</text>
+<text x="800" y="135" text-anchor="middle" font-family="Microsoft JhengHei, Noto Sans TC, Segoe UI, Arial, sans-serif" font-size="34" font-weight="800" fill="#334155">標案 n8n 主工作流（模式控制 / 子流程串接 / LINE 回覆）</text>
+<rect x="1286" y="42" width="112" height="150" rx="18" fill="#d9ecff" stroke="#1e3a5f" stroke-width="3" filter="url(#shadow)"/>
+<rect x="1302" y="64" width="80" height="36" rx="12" fill="#fff"/><rect x="1320" y="112" width="62" height="28" rx="12" fill="#22c55e"/><circle cx="1428" cy="134" r="54" fill="#fff" stroke="#1e3a5f" stroke-width="3"/><rect x="1388" y="108" width="80" height="58" rx="22" fill="#0b1b35"/><circle cx="1413" cy="136" r="7" fill="#35e08b"/><circle cx="1443" cy="136" r="7" fill="#35e08b"/><path d="M1414 153 Q1428 164 1442 153" fill="none" stroke="#35e08b" stroke-width="4" stroke-linecap="round"/>
+<rect x="485" y="195" width="630" height="70" rx="14" fill="#fff" stroke="#16a34a" stroke-width="2"/>
+<circle cx="535" cy="230" r="21" fill="#22c55e"/><rect x="510" y="254" width="50" height="22" rx="11" fill="#22c55e"/>
+<text x="800" y="240" text-anchor="middle" font-family="Microsoft JhengHei, Noto Sans TC, Segoe UI, Arial, sans-serif" font-size="27" font-weight="800" fill="#111827">使用者開啟 LINE 對話</text>
+<path d="M800 265 L800 320" stroke="#155bd5" stroke-width="5" marker-end="url(#arrowBlue)"/>
+<rect x="470" y="320" width="660" height="76" rx="14" fill="#fff" stroke="#155bd5" stroke-width="2"/>
+<circle cx="520" cy="358" r="25" fill="#155bd5"/><circle cx="511" cy="358" r="4" fill="#fff"/><circle cx="520" cy="358" r="4" fill="#fff"/><circle cx="529" cy="358" r="4" fill="#fff"/>
+<text x="800" y="369" text-anchor="middle" font-family="Microsoft JhengHei, Noto Sans TC, Segoe UI, Arial, sans-serif" font-size="29" font-weight="900" fill="#10233f">一般聊天模式（預設）</text>
+<path d="M800 396 L800 432 L191 432 L191 480" stroke="#155bd5" stroke-width="4" fill="none" marker-end="url(#arrowBlue)"/>
+<rect x="55" y="480" width="272" height="220" rx="14" fill="#ffffff" stroke="#155bd5" stroke-width="2"/>
+<text x="83" y="525" text-anchor="start" font-family="Microsoft JhengHei, Noto Sans TC, Segoe UI, Arial, sans-serif" font-size="22" font-weight="900" fill="#155bd5">A. LINE 入口</text>
+<rect x="85" y="562" width="212" height="58" rx="13" fill="#f8fbff" stroke="#155bd5" stroke-width="2"/>
+<text x="191" y="599" text-anchor="middle" font-family="Microsoft JhengHei, Noto Sans TC, Segoe UI, Arial, sans-serif" font-size="20" font-weight="800" fill="#111827">接收文字</text>
+<text x="89" y="656" text-anchor="start" font-family="Microsoft JhengHei, Noto Sans TC, Segoe UI, Arial, sans-serif" font-size="18" font-weight="650" fill="#334155">Webhook</text>
+<path d="M800 396 L800 432 L516 432 L516 480" stroke="#155bd5" stroke-width="4" fill="none" marker-end="url(#arrowBlue)"/>
+<rect x="380" y="480" width="272" height="220" rx="14" fill="#ffffff" stroke="#f97316" stroke-width="2"/>
+<text x="408" y="525" text-anchor="start" font-family="Microsoft JhengHei, Noto Sans TC, Segoe UI, Arial, sans-serif" font-size="22" font-weight="900" fill="#f97316">B. 模式判斷</text>
+<rect x="410" y="562" width="212" height="58" rx="13" fill="#f8fbff" stroke="#f97316" stroke-width="2"/>
+<text x="516" y="599" text-anchor="middle" font-family="Microsoft JhengHei, Noto Sans TC, Segoe UI, Arial, sans-serif" font-size="20" font-weight="800" fill="#111827">是否標案模式</text>
+<text x="414" y="656" text-anchor="start" font-family="Microsoft JhengHei, Noto Sans TC, Segoe UI, Arial, sans-serif" font-size="18" font-weight="650" fill="#334155">狀態控制</text>
+<path d="M800 396 L800 432 L841 432 L841 480" stroke="#155bd5" stroke-width="4" fill="none" marker-end="url(#arrowBlue)"/>
+<rect x="705" y="480" width="272" height="220" rx="14" fill="#ffffff" stroke="#7c3aed" stroke-width="2"/>
+<text x="733" y="525" text-anchor="start" font-family="Microsoft JhengHei, Noto Sans TC, Segoe UI, Arial, sans-serif" font-size="22" font-weight="900" fill="#7c3aed">C. 呼叫子流程</text>
+<rect x="735" y="562" width="212" height="58" rx="13" fill="#f8fbff" stroke="#7c3aed" stroke-width="2"/>
+<text x="841" y="599" text-anchor="middle" font-family="Microsoft JhengHei, Noto Sans TC, Segoe UI, Arial, sans-serif" font-size="20" font-weight="800" fill="#111827">RAG / Parser / OCR</text>
+<text x="739" y="656" text-anchor="start" font-family="Microsoft JhengHei, Noto Sans TC, Segoe UI, Arial, sans-serif" font-size="18" font-weight="650" fill="#334155">服務編排</text>
+<path d="M800 396 L800 432 L1166 432 L1166 480" stroke="#155bd5" stroke-width="4" fill="none" marker-end="url(#arrowBlue)"/>
+<rect x="1030" y="480" width="272" height="220" rx="14" fill="#ffffff" stroke="#16a34a" stroke-width="2"/>
+<text x="1058" y="525" text-anchor="start" font-family="Microsoft JhengHei, Noto Sans TC, Segoe UI, Arial, sans-serif" font-size="22" font-weight="900" fill="#16a34a">D. LINE 回覆</text>
+<rect x="1060" y="562" width="212" height="58" rx="13" fill="#f8fbff" stroke="#16a34a" stroke-width="2"/>
+<text x="1166" y="599" text-anchor="middle" font-family="Microsoft JhengHei, Noto Sans TC, Segoe UI, Arial, sans-serif" font-size="20" font-weight="800" fill="#111827">整理答案</text>
+<text x="1064" y="656" text-anchor="start" font-family="Microsoft JhengHei, Noto Sans TC, Segoe UI, Arial, sans-serif" font-size="18" font-weight="650" fill="#334155">回傳使用者</text>
+<path d="M1390 397 L1515 397 L1515 1695 L1476 1695" stroke="#155bd5" stroke-width="5" fill="none" marker-end="url(#arrowBlue)"/>
+<rect x="42" y="810" width="720" height="690" rx="24" fill="#fffaf3" stroke="#f97316" stroke-width="2"/>
+<text x="402" y="868" text-anchor="middle" font-family="Microsoft JhengHei, Noto Sans TC, Segoe UI, Arial, sans-serif" font-size="30" font-weight="900" fill="#c2410c">標案查詢主流程</text>
+<rect x="212" y="832" width="42" height="38" rx="7" fill="#f59e0b"/><circle cx="248" cy="868" r="12" fill="#fff7ed" stroke="#c2410c" stroke-width="4"/>
+<circle cx="68" cy="946" r="16" fill="#f97316"/>
+<text x="68" y="952" text-anchor="middle" font-family="Microsoft JhengHei, Noto Sans TC, Segoe UI, Arial, sans-serif" font-size="17" font-weight="900" fill="#fff">1</text>
+<rect x="107" y="918" width="300" height="62" rx="14" fill="#fff" stroke="#f97316" stroke-width="2"/>
+<text x="257" y="957" text-anchor="middle" font-family="Microsoft JhengHei, Noto Sans TC, Segoe UI, Arial, sans-serif" font-size="18" font-weight="800" fill="#111827">接收 LINE 訊息</text>
+<path d="M257 980 L257 1013" stroke="#f97316" stroke-width="4" marker-end="url(#arrowOrange)"/>
+<circle cx="68" cy="1046" r="16" fill="#f97316"/>
+<text x="68" y="1052" text-anchor="middle" font-family="Microsoft JhengHei, Noto Sans TC, Segoe UI, Arial, sans-serif" font-size="17" font-weight="900" fill="#fff">2</text>
+<rect x="107" y="1018" width="300" height="62" rx="14" fill="#fff" stroke="#f97316" stroke-width="2"/>
+<text x="257" y="1057" text-anchor="middle" font-family="Microsoft JhengHei, Noto Sans TC, Segoe UI, Arial, sans-serif" font-size="18" font-weight="800" fill="#111827">判斷是否進入標案模式</text>
+<path d="M257 1080 L257 1113" stroke="#f97316" stroke-width="4" marker-end="url(#arrowOrange)"/>
+<circle cx="68" cy="1146" r="16" fill="#f97316"/>
+<text x="68" y="1152" text-anchor="middle" font-family="Microsoft JhengHei, Noto Sans TC, Segoe UI, Arial, sans-serif" font-size="17" font-weight="900" fill="#fff">3</text>
+<rect x="107" y="1118" width="300" height="62" rx="14" fill="#fff" stroke="#f97316" stroke-width="2"/>
+<text x="257" y="1157" text-anchor="middle" font-family="Microsoft JhengHei, Noto Sans TC, Segoe UI, Arial, sans-serif" font-size="18" font-weight="800" fill="#111827">整理查詢關鍵字</text>
+<path d="M257 1180 L257 1213" stroke="#f97316" stroke-width="4" marker-end="url(#arrowOrange)"/>
+<circle cx="68" cy="1246" r="16" fill="#f97316"/>
+<text x="68" y="1252" text-anchor="middle" font-family="Microsoft JhengHei, Noto Sans TC, Segoe UI, Arial, sans-serif" font-size="17" font-weight="900" fill="#fff">4</text>
+<rect x="107" y="1218" width="300" height="62" rx="14" fill="#fff" stroke="#f97316" stroke-width="2"/>
+<text x="257" y="1257" text-anchor="middle" font-family="Microsoft JhengHei, Noto Sans TC, Segoe UI, Arial, sans-serif" font-size="18" font-weight="800" fill="#111827">呼叫 RAG 查詢 API</text>
+<path d="M257 1280 L257 1313" stroke="#f97316" stroke-width="4" marker-end="url(#arrowOrange)"/>
+<circle cx="68" cy="1346" r="16" fill="#f97316"/>
+<text x="68" y="1352" text-anchor="middle" font-family="Microsoft JhengHei, Noto Sans TC, Segoe UI, Arial, sans-serif" font-size="17" font-weight="900" fill="#fff">5</text>
+<rect x="107" y="1318" width="300" height="62" rx="14" fill="#fff" stroke="#f97316" stroke-width="2"/>
+<text x="257" y="1357" text-anchor="middle" font-family="Microsoft JhengHei, Noto Sans TC, Segoe UI, Arial, sans-serif" font-size="18" font-weight="800" fill="#111827">回覆標案摘要</text>
+<rect x="442" y="920" width="280" height="510" rx="18" fill="#fff" stroke="#f97316" stroke-width="2" stroke-dasharray="10 8"/>
+<text x="582" y="958" text-anchor="middle" font-family="Microsoft JhengHei, Noto Sans TC, Segoe UI, Arial, sans-serif" font-size="21" font-weight="900" fill="#c2410c">離開模式確認</text>
+<rect x="472" y="995" width="220" height="80" rx="14" fill="#fffaf3" stroke="#f97316" stroke-width="2"/>
+<text x="582" y="1045" text-anchor="middle" font-family="Microsoft JhengHei, Noto Sans TC, Segoe UI, Arial, sans-serif" font-size="19" font-weight="800" fill="#111827">使用者輸入：離開</text>
+<path d="M582 1075 L582 1120" stroke="#f97316" stroke-width="4" marker-end="url(#arrowOrange)"/>
+<rect x="462" y="1120" width="240" height="100" rx="14" fill="#fff" stroke="#f97316" stroke-width="2"/>
+<text x="582" y="1160" text-anchor="middle" font-family="Microsoft JhengHei, Noto Sans TC, Segoe UI, Arial, sans-serif" font-size="18" font-weight="800" fill="#111827">系統詢問：是否確定離開？</text>
+<text x="582" y="1192" text-anchor="middle" font-family="Microsoft JhengHei, Noto Sans TC, Segoe UI, Arial, sans-serif" font-size="18" font-weight="800" fill="#111827">（Y / N）</text>
+<circle cx="507" cy="1280" r="25" fill="#fff" stroke="#16a34a" stroke-width="4"/>
+<text x="507" y="1289" text-anchor="middle" font-family="Microsoft JhengHei, Noto Sans TC, Segoe UI, Arial, sans-serif" font-size="24" font-weight="900" fill="#16a34a">Y</text>
+<circle cx="657" cy="1280" r="25" fill="#fff" stroke="#dc2626" stroke-width="4"/>
+<text x="657" y="1289" text-anchor="middle" font-family="Microsoft JhengHei, Noto Sans TC, Segoe UI, Arial, sans-serif" font-size="24" font-weight="900" fill="#dc2626">N</text>
+<rect x="447" y="1325" width="130" height="70" rx="14" fill="#f0fdf4" stroke="#16a34a" stroke-width="2"/>
+<text x="512" y="1368" text-anchor="middle" font-family="Microsoft JhengHei, Noto Sans TC, Segoe UI, Arial, sans-serif" font-size="18" font-weight="800" fill="#14532d">回一般</text>
+<rect x="607" y="1325" width="130" height="70" rx="14" fill="#fff7f7" stroke="#dc2626" stroke-width="2"/>
+<text x="672" y="1368" text-anchor="middle" font-family="Microsoft JhengHei, Noto Sans TC, Segoe UI, Arial, sans-serif" font-size="18" font-weight="800" fill="#7f1d1d">保留模式</text>
+<rect x="820" y="810" width="720" height="690" rx="24" fill="#f4fff6" stroke="#16a34a" stroke-width="2"/>
+<text x="1180" y="868" text-anchor="middle" font-family="Microsoft JhengHei, Noto Sans TC, Segoe UI, Arial, sans-serif" font-size="30" font-weight="900" fill="#15803d">模式切換流程</text>
+<rect x="986" y="832" width="48" height="38" rx="8" fill="#22c55e"/><circle cx="1004" cy="852" r="8" fill="#fff"/><rect x="1016" y="845" width="28" height="6" rx="3" fill="#fff"/><rect x="1016" y="860" width="36" height="6" rx="3" fill="#fff"/>
+<circle cx="850" cy="943" r="16" fill="#16a34a"/>
+<text x="850" y="949" text-anchor="middle" font-family="Microsoft JhengHei, Noto Sans TC, Segoe UI, Arial, sans-serif" font-size="17" font-weight="900" fill="#fff">1</text>
+<rect x="885" y="918" width="350" height="55" rx="14" fill="#fff" stroke="#16a34a" stroke-width="2"/>
+<text x="1060" y="953" text-anchor="middle" font-family="Microsoft JhengHei, Noto Sans TC, Segoe UI, Arial, sans-serif" font-size="18" font-weight="800" fill="#111827">使用者輸入我要查標案</text>
+<path d="M1060 973 L1060 996" stroke="#16a34a" stroke-width="4" marker-end="url(#arrowGreen)"/>
+<circle cx="850" cy="1025" r="16" fill="#16a34a"/>
+<text x="850" y="1031" text-anchor="middle" font-family="Microsoft JhengHei, Noto Sans TC, Segoe UI, Arial, sans-serif" font-size="17" font-weight="900" fill="#fff">2</text>
+<rect x="885" y="1000" width="350" height="55" rx="14" fill="#fff" stroke="#16a34a" stroke-width="2"/>
+<text x="1060" y="1035" text-anchor="middle" font-family="Microsoft JhengHei, Noto Sans TC, Segoe UI, Arial, sans-serif" font-size="18" font-weight="800" fill="#111827">設定標案模式</text>
+<path d="M1060 1055 L1060 1078" stroke="#16a34a" stroke-width="4" marker-end="url(#arrowGreen)"/>
+<circle cx="850" cy="1107" r="16" fill="#16a34a"/>
+<text x="850" y="1113" text-anchor="middle" font-family="Microsoft JhengHei, Noto Sans TC, Segoe UI, Arial, sans-serif" font-size="17" font-weight="900" fill="#fff">3</text>
+<rect x="885" y="1082" width="350" height="55" rx="14" fill="#fff" stroke="#16a34a" stroke-width="2"/>
+<text x="1060" y="1117" text-anchor="middle" font-family="Microsoft JhengHei, Noto Sans TC, Segoe UI, Arial, sans-serif" font-size="18" font-weight="800" fill="#111827">持續接收標案問題</text>
+<path d="M1060 1137 L1060 1160" stroke="#16a34a" stroke-width="4" marker-end="url(#arrowGreen)"/>
+<circle cx="850" cy="1189" r="16" fill="#16a34a"/>
+<text x="850" y="1195" text-anchor="middle" font-family="Microsoft JhengHei, Noto Sans TC, Segoe UI, Arial, sans-serif" font-size="17" font-weight="900" fill="#fff">4</text>
+<rect x="885" y="1164" width="350" height="55" rx="14" fill="#fff" stroke="#16a34a" stroke-width="2"/>
+<text x="1060" y="1199" text-anchor="middle" font-family="Microsoft JhengHei, Noto Sans TC, Segoe UI, Arial, sans-serif" font-size="18" font-weight="800" fill="#111827">使用者輸入離開</text>
+<path d="M1060 1219 L1060 1242" stroke="#16a34a" stroke-width="4" marker-end="url(#arrowGreen)"/>
+<circle cx="850" cy="1271" r="16" fill="#16a34a"/>
+<text x="850" y="1277" text-anchor="middle" font-family="Microsoft JhengHei, Noto Sans TC, Segoe UI, Arial, sans-serif" font-size="17" font-weight="900" fill="#fff">5</text>
+<rect x="885" y="1246" width="350" height="55" rx="14" fill="#fff" stroke="#16a34a" stroke-width="2"/>
+<text x="1060" y="1281" text-anchor="middle" font-family="Microsoft JhengHei, Noto Sans TC, Segoe UI, Arial, sans-serif" font-size="18" font-weight="800" fill="#111827">確認 Y / N</text>
+<path d="M1060 1301 L1060 1324" stroke="#16a34a" stroke-width="4" marker-end="url(#arrowGreen)"/>
+<circle cx="850" cy="1353" r="16" fill="#16a34a"/>
+<text x="850" y="1359" text-anchor="middle" font-family="Microsoft JhengHei, Noto Sans TC, Segoe UI, Arial, sans-serif" font-size="17" font-weight="900" fill="#fff">6</text>
+<rect x="885" y="1328" width="350" height="55" rx="14" fill="#fff" stroke="#16a34a" stroke-width="2"/>
+<text x="1060" y="1363" text-anchor="middle" font-family="Microsoft JhengHei, Noto Sans TC, Segoe UI, Arial, sans-serif" font-size="18" font-weight="800" fill="#111827">回到一般聊天</text>
+<rect x="1275" y="920" width="220" height="510" rx="18" fill="#fff" stroke="#16a34a" stroke-width="2" stroke-dasharray="10 8"/>
+<text x="1385" y="958" text-anchor="middle" font-family="Microsoft JhengHei, Noto Sans TC, Segoe UI, Arial, sans-serif" font-size="21" font-weight="900" fill="#15803d">例外 / 離開</text>
+<rect x="1305" y="1005" width="160" height="80" rx="14" fill="#f0fdf4" stroke="#16a34a" stroke-width="2"/>
+<text x="1385" y="1054" text-anchor="middle" font-family="Microsoft JhengHei, Noto Sans TC, Segoe UI, Arial, sans-serif" font-size="18" font-weight="800" fill="#111827">輸入離開</text>
+<rect x="1305" y="1130" width="160" height="100" rx="14" fill="#fff" stroke="#16a34a" stroke-width="2"/>
+<text x="1385" y="1188" text-anchor="middle" font-family="Microsoft JhengHei, Noto Sans TC, Segoe UI, Arial, sans-serif" font-size="18" font-weight="800" fill="#111827">確認 Y / N</text>
+<rect x="1290" y="1310" width="190" height="74" rx="14" fill="#f0fdf4" stroke="#16a34a" stroke-width="2"/>
+<text x="1385" y="1354" text-anchor="middle" font-family="Microsoft JhengHei, Noto Sans TC, Segoe UI, Arial, sans-serif" font-size="18" font-weight="800" fill="#14532d">回一般聊天</text>
+<rect x="770" y="1535" width="730" height="265" rx="24" fill="#fffaff" stroke="#8b5cf6" stroke-width="2.5" filter="url(#shadow)"/>
+<circle cx="825" cy="1588" r="28" fill="#8b5cf6"/><text x="825" y="1598" text-anchor="middle" font-size="33" font-weight="900" fill="#fff">★</text>
+<text x="875" y="1598" text-anchor="start" font-family="Microsoft JhengHei, Noto Sans TC, Segoe UI, Arial, sans-serif" font-size="29" font-weight="900" fill="#6d28d9">操作規則重點</text>
+<circle cx="840" cy="1644" r="5" fill="#6d28d9"/>
+<text x="865" y="1650" text-anchor="start" font-family="Microsoft JhengHei, Noto Sans TC, Segoe UI, Arial, sans-serif" font-size="20" font-weight="700" fill="#1f2937">模式控制要清楚</text>
+<circle cx="840" cy="1682" r="5" fill="#6d28d9"/>
+<text x="865" y="1688" text-anchor="start" font-family="Microsoft JhengHei, Noto Sans TC, Segoe UI, Arial, sans-serif" font-size="20" font-weight="700" fill="#1f2937">子流程錯誤要回覆可理解訊息</text>
+<circle cx="840" cy="1720" r="5" fill="#6d28d9"/>
+<text x="865" y="1726" text-anchor="start" font-family="Microsoft JhengHei, Noto Sans TC, Segoe UI, Arial, sans-serif" font-size="20" font-weight="700" fill="#1f2937">RAG 與 Parser 結果要合併</text>
+<circle cx="840" cy="1758" r="5" fill="#6d28d9"/>
+<text x="865" y="1764" text-anchor="start" font-family="Microsoft JhengHei, Noto Sans TC, Segoe UI, Arial, sans-serif" font-size="20" font-weight="700" fill="#1f2937">離開模式需確認</text>
+<circle cx="840" cy="1796" r="5" fill="#6d28d9"/>
+<text x="865" y="1802" text-anchor="start" font-family="Microsoft JhengHei, Noto Sans TC, Segoe UI, Arial, sans-serif" font-size="20" font-weight="700" fill="#1f2937">正式 LINE token 只放 n8n credentials</text>
+</svg>

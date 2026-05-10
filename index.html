@@ -3,335 +3,234 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Bunun Studio | Alvis Chen</title>
+    <title>Bunun Studio | AI 自動化與網站工作室</title>
     <meta
       name="description"
-      content="Bunun Studio 是 Alvis 的個人品牌網站，結合資深業務經驗、AI 工具、自動化流程與流程顧問服務。"
+      content="Bunun Studio 協助小型團隊把 AI、LINE、n8n、文件處理與網站展示整理成能被理解、能被使用的自動化流程。"
     >
     <link rel="stylesheet" href="./styles.css">
   </head>
   <body>
     <header class="site-header">
-      <a class="brand" href="#top" aria-label="Bunun Studio 首頁">Bunun Studio</a>
+      <a class="brand" href="#top" aria-label="回到首頁">Bunun Studio</a>
       <nav class="nav" aria-label="主要導覽">
-        <a href="#about">關於</a>
+        <a href="#work">作品</a>
         <a href="#services">服務</a>
-        <a href="#projects">作品</a>
-        <a href="#learning">學習</a>
-        <a href="#architecture">架構</a>
+        <a href="#process">流程</a>
+        <a href="./n8n-diagrams.html">流程圖</a>
+        <a href="./about-alvis.html">關於 Alvis</a>
         <a href="#contact">聯絡</a>
       </nav>
     </header>
 
     <main id="top">
       <section class="hero" aria-labelledby="hero-title">
+        <div class="hero-media" aria-hidden="true">
+          <img src="./assets/hero-ai-workspace.png" alt="">
+        </div>
         <div class="hero-content">
-          <p class="eyebrow">Sales experience × AI automation × fast learning</p>
-          <h1 id="hero-title">我是能把業務現場問題，快速轉成 AI 工具的人。</h1>
+          <p class="eyebrow">AI automation studio</p>
+          <h1 id="hero-title">把複雜流程，整理成看得懂、用得上的 AI 工具。</h1>
           <p class="hero-copy">
-            我是 Alvis，一位資深業務，也是一個正在用 AI 快速學習新技能的人。
-            我擅長理解公司現場流程、客戶需求與重複工作，並用 AI、n8n、LINE Bot 與自動化工具，
-            把繁雜流程整理成可測試、可改善、可累積的小系統。
+            我是 Alvis。Bunun Studio 專注在 LINE AI 助理、n8n 自動化、文件搜尋與網站展示。
+            先做出可示範的版本，再逐步變成穩定可用的系統。
           </p>
-          <div class="hero-actions">
-            <a class="button primary" href="#services">了解合作方式</a>
-            <a class="button secondary" href="#projects">查看作品</a>
+          <form class="prompt-box" action="#contact">
+            <label for="prompt">今天想先改善哪一段流程？</label>
+            <div class="prompt-row">
+              <input id="prompt" name="prompt" type="text" value="把客戶訊息、文件整理和回覆流程自動化">
+              <button type="submit">開始討論</button>
+            </div>
+          </form>
+          <div class="hero-links" aria-label="快速連結">
+            <a href="#work">看作品</a>
+            <a href="#services">看服務</a>
+            <a href="mailto:panda@bunun.co">panda@bunun.co</a>
           </div>
         </div>
       </section>
 
-      <section id="about" class="section">
+      <section class="news-strip" aria-label="重點摘要">
+        <a href="./projects/line-ai-assistant.html">
+          <span>Active</span>
+          LINE AI 助理：把詢問、分類與回覆串成一條流程
+        </a>
+        <a href="./projects/tender-ai.html">
+          <span>RAG</span>
+          Tender AI：用文件搜尋降低人工查找時間
+        </a>
+        <a href="./projects/n8n-automation-hub.html">
+          <span>n8n</span>
+          自動化中心：把大型 workflow 拆成可維護模組
+        </a>
+      </section>
+
+      <section id="work" class="section">
         <div class="section-heading">
-          <p class="eyebrow">About</p>
-          <h2>關於 Alvis</h2>
+          <p class="eyebrow">Selected work</p>
+          <h2>正在整理的 AI 專案</h2>
+          <p>
+            這裡放的不是漂亮口號，而是目前真正可以拆解、示範、持續改進的工作。
+            每個案例都會說明問題、流程與下一步。
+          </p>
         </div>
-        <div class="text-block">
-          <p>
-            我長期接觸客戶需求、銷售流程與工作現場的實際問題。我的優勢不是只會寫工具，
-            而是能先聽懂現場的痛點，再判斷哪些流程值得 AI 化、哪些步驟應該保留人工判斷。
-          </p>
-          <p>
-            我希望這個網站同時是求職作品集、創業實驗室與合作入口。你可以在這裡看到我如何從發想、
-            設計、架構到實作，一步一步把 AI 工具做成接近真實工作可用的流程。
-          </p>
+
+        <div class="feature-grid">
+          <article class="feature-card large">
+            <a href="./projects/line-ai-assistant.html">
+              <span class="card-kicker">LINE / n8n / AI Agent</span>
+              <h3>LINE AI 商務助理</h3>
+              <p>讓 LINE 不只收訊息，也能分類需求、呼叫流程、整理回覆，逐步變成可追蹤的客戶工作台。</p>
+            </a>
+          </article>
+          <article class="feature-card">
+            <a href="./projects/tender-ai.html">
+              <span class="card-kicker">PDF / OCR / RAG</span>
+              <h3>Tender AI 標案搜尋</h3>
+              <p>把散落的招標文件整理成可查詢的知識庫，減少人工翻文件的時間。</p>
+            </a>
+          </article>
+          <article class="feature-card">
+            <a href="./projects/n8n-automation-hub.html">
+              <span class="card-kicker">Workflow system</span>
+              <h3>n8n 自動化中心</h3>
+              <p>把大型流程拆成清楚模組，讓錯誤、測試與後續擴充更容易管理。</p>
+            </a>
+          </article>
+          <article class="feature-card">
+            <a href="./projects/line-public-info.html">
+              <span class="card-kicker">Public data</span>
+              <h3>LINE 公共資訊查詢</h3>
+              <p>把天氣、空氣品質或公開資料包成簡單可問的 LINE 查詢介面。</p>
+            </a>
+          </article>
+          <article class="feature-card">
+            <a href="./projects/ocr-business-card.html">
+              <span class="card-kicker">Vision / OCR</span>
+              <h3>名片 OCR 實驗</h3>
+              <p>從圖片取出聯絡資料，整理成後續可匯入、可追蹤的格式。</p>
+            </a>
+          </article>
         </div>
       </section>
 
-      <section id="services" class="section service-section">
+      <section id="services" class="section contrast">
         <div class="section-heading">
-          <p class="eyebrow">Service Direction</p>
-          <h2>我想協助的公司與團隊</h2>
-          <p class="section-intro">
-            如果公司裡有固定、繁雜、重複、需要跨系統整理的流程，我可以用低門檻的方式協助盤點，
-            找出哪些地方適合先用 AI 與自動化提升效率。
+          <p class="eyebrow">What I build</p>
+          <h2>適合小團隊的 AI 自動化服務</h2>
+          <p>
+            我會先把問題講清楚，再做最小可用版本。重點不是堆很多技術，
+            而是讓你知道每一步為什麼存在、出了問題要去哪裡看。
           </p>
         </div>
 
         <div class="service-grid">
           <article class="service-card">
-            <h3>流程盤點</h3>
-            <p>先了解目前怎麼做、卡在哪裡、誰在處理、哪些資料重複輸入，找出最值得改善的流程。</p>
-          </article>
-          <article class="service-card">
-            <h3>AI 化顧問</h3>
-            <p>不一開始追求大型系統，而是先用小工具驗證：查詢、摘要、分類、提醒、回覆、表單整理。</p>
-          </article>
-          <article class="service-card">
-            <h3>低成本試作</h3>
-            <p>以互相學習成長為方向，用較低費用協助建立可測試版本，再一起判斷是否值得擴大。</p>
-          </article>
-          <article class="service-card">
-            <h3>業務視角整合</h3>
-            <p>我理解客戶溝通、銷售追蹤與現場壓力，能把技術設計拉回真正有人會使用的流程。</p>
-          </article>
-        </div>
-      </section>
-
-      <section id="projects" class="section">
-        <div class="section-heading">
-          <p class="eyebrow">Portfolio</p>
-          <h2>作品集</h2>
-          <p class="section-intro">
-            作品集已依照目前大型系統的子專案拆分方式整理：以使用者在 LINE 上的功能入口與實際使用情境分類，
-            讓每個作品都能說清楚它解決什麼問題、怎麼設計、目前做到哪裡。
-          </p>
-        </div>
-        <div class="case-list">
-          <article class="case-card">
-            <div class="case-meta">
-              <p class="project-status">Active</p>
-              <h3>LINE AI 業務助理</h3>
-            </div>
-            <div class="case-content">
-              <p>
-                <strong>發想：</strong>業務工作常常分散在 LINE 對話、客戶紀錄、查詢資料與臨時提醒中。
-                這個專案希望把 LINE 變成一個熟悉的工作入口，讓日常問題可以直接被分類、查詢與回覆。
-              </p>
-              <p>
-                <strong>設計：</strong>以 n8n 接收 LINE webhook，先整理輸入，再交給意圖分析與任務規劃。
-                系統會依照問題類型路由到聊天、記憶、標案查詢、名片掃描、聯絡人搜尋或工具查詢。
-              </p>
-              <p>
-                <strong>架構：</strong>LINE 入口、n8n routing、AI agent、memory controller、外部工具 API 與 LINE 回覆輸出。
-              </p>
-              <a class="text-link" href="./projects/line-ai-assistant.html">查看完整案例</a>
-            </div>
-          </article>
-
-          <article class="case-card">
-            <div class="case-meta">
-              <p class="project-status">Active</p>
-              <h3>LINE 公開資訊與一般 AI 查詢</h3>
-            </div>
-            <div class="case-content">
-              <p>
-                <strong>發想：</strong>業務或日常工作中，常需要快速查天氣、空氣品質或一般問題。
-                透過 LINE 入口，可以不用切換網站或 App，直接得到整理後的答案。
-              </p>
-              <p>
-                <strong>設計：</strong>系統先判斷使用者是否在一般聊天模式，再依需求路由到 AI 回覆、
-                天氣 API 或 AQI 查詢。
-              </p>
-              <p>
-                <strong>架構：</strong>LINE 文字輸入、n8n 意圖判斷、公開資訊 API、回覆格式整理與 LINE 訊息輸出。
-              </p>
-              <a class="text-link" href="./projects/line-public-info.html">查看完整案例</a>
-            </div>
-          </article>
-
-          <article class="case-card">
-            <div class="case-meta">
-              <p class="project-status">Active</p>
-              <h3>Tender AI 標案查詢</h3>
-            </div>
-            <div class="case-content">
-              <p>
-                <strong>發想：</strong>標案文件通常頁數多、附件多、格式不一致。人工查找容易漏掉條件、
-                時程、資格或規格重點，因此需要一個能快速協助查詢與摘要的流程。
-              </p>
-              <p>
-                <strong>設計：</strong>把標案 PDF、公告與附件經過文字抽取、OCR、切 chunk、向量化與查詢流程處理，
-                再由 AI 依照問題回覆重點，降低反覆翻文件的時間。
-              </p>
-              <p>
-                <strong>架構：</strong>n8n 問題入口、FastAPI / RAG 查詢服務、PGVector 或向量資料庫、LLM 回答整理。
-              </p>
-              <a class="text-link" href="./projects/tender-ai.html">查看完整案例</a>
-            </div>
-          </article>
-
-          <article class="case-card">
-            <div class="case-meta">
-              <p class="project-status">Building</p>
-              <h3>n8n 多功能自動化中樞</h3>
-            </div>
-            <div class="case-content">
-              <p>
-                <strong>發想：</strong>不同功能一開始常被放在同一個 workflow 裡，方便快速測試，但後期會變得難維護。
-                因此下一步是把大型流程拆成幾個清楚的 n8n JSON。
-              </p>
-              <p>
-                <strong>設計：</strong>目前主 workflow 約 155 個節點，已包含入口、意圖分析、記憶、標案 RAG、
-                名片掃描、聯絡人查詢、天氣 / 空氣品質與第三階段規劃節點。
-              </p>
-              <p>
-                <strong>拆分方向：</strong>建議拆成入口路由、記憶系統、標案查詢、名片掃描、聯絡人資料庫、
-                工具查詢與 Stage 3 規劃七個 workflow。
-              </p>
-              <a class="text-link" href="./projects/n8n-automation-hub.html">查看完整案例</a>
-            </div>
-          </article>
-
-          <article class="case-card">
-            <div class="case-meta">
-              <p class="project-status">Planned</p>
-              <h3>Stage 3 產品擴充</h3>
-            </div>
-            <div class="case-content">
-              <p>
-                <strong>發想：</strong>當個人 AI 助理走向團隊使用，就需要權限、資料隔離、Admin 視角與更多業務流程。
-              </p>
-              <p>
-                <strong>設計：</strong>規劃多使用者、權限分級、郵件摘要、行事曆、請款、活動紀錄與報表匯出。
-              </p>
-              <p>
-                <strong>架構：</strong>使用者驗證、角色權限、功能模式、資料分層、Admin 管理與觀測紀錄。
-              </p>
-              <a class="text-link" href="./projects/stage3-product-expansion.html">查看完整案例</a>
-            </div>
-          </article>
-
-          <article class="case-card">
-            <div class="case-meta">
-              <p class="project-status">Experiment</p>
-              <h3>OCR 與名片掃描</h3>
-            </div>
-            <div class="case-content">
-              <p>
-                <strong>發想：</strong>業務現場常拿到名片、截圖或紙本資料，如果能快速轉成聯絡人資料，
-                後續追蹤與整理會省下很多時間。
-              </p>
-              <p>
-                <strong>設計：</strong>LINE 上傳圖片後，流程取得圖片、轉 base64、送到 vision model 或 OCR 服務，
-                再把結果解析成姓名、公司、電話、Email 與備註。
-              </p>
-              <p>
-                <strong>架構：</strong>LINE 圖片入口、n8n 圖片處理、Gemini / Qwen vision、資料清理、Postgres 聯絡人資料庫。
-              </p>
-              <a class="text-link" href="./projects/ocr-business-card.html">查看完整案例</a>
-            </div>
-          </article>
-        </div>
-      </section>
-
-      <section id="learning" class="section learning-section">
-        <div class="section-heading">
-          <p class="eyebrow">Learning Notes</p>
-          <h2>你可以在這裡學到什麼</h2>
-          <p class="section-intro">
-            我會把學習 AI 工具與自動化的過程整理出來，讓同樣不是工程背景的人，也能看懂怎麼從問題開始，
-            慢慢做出可用的小系統。
-          </p>
-        </div>
-
-        <div class="learning-grid">
-          <article class="learning-card">
             <span>01</span>
-            <h3>如何把流程拆成可自動化步驟</h3>
-            <p>從「每天重複做什麼」開始，整理輸入、判斷、處理、輸出與例外狀況。</p>
+            <h3>流程盤點</h3>
+            <p>找出重複、耗時、容易出錯的工作，畫成簡單流程圖，確認哪些部分值得自動化。</p>
           </article>
-          <article class="learning-card">
+          <article class="service-card">
             <span>02</span>
-            <h3>AI 工具不是取代人，而是先減少雜事</h3>
-            <p>把查找、摘要、格式整理、分類與提醒交給系統，把判斷和關係經營留給人。</p>
+            <h3>AI 助理原型</h3>
+            <p>用 LINE、n8n、RAG 或 API 做出可測試版本，先驗證使用情境與回覆品質。</p>
           </article>
-          <article class="learning-card">
+          <article class="service-card">
             <span>03</span>
-            <h3>從小 demo 到可維護系統</h3>
-            <p>先做能跑的版本，再補測試、備份、權限、錯誤處理與文件，逐步變成穩定工具。</p>
+            <h3>網站與展示頁</h3>
+            <p>把專案、服務與案例整理成清楚網站，讓客戶快速理解你能解決什麼問題。</p>
+          </article>
+          <article class="service-card">
+            <span>04</span>
+            <h3>文件化與交接</h3>
+            <p>留下操作說明、風險提醒與回復方式，避免系統只靠記憶維護。</p>
           </article>
         </div>
       </section>
 
-      <section id="architecture" class="section architecture-section">
-        <div class="section-heading">
-          <p class="eyebrow">n8n Architecture</p>
-          <h2>目前自動化架構</h2>
-          <p class="section-intro">
-            目前主流程已經把多個功能整合在一起。下一階段會把它拆成可獨立維護、測試與部署的 workflow。
-          </p>
-        </div>
-
-        <div class="flow-diagram" aria-label="n8n 自動化流程圖">
-          <div class="flow-node">LINE Webhook</div>
-          <div class="flow-arrow">→</div>
-          <div class="flow-node">輸入整理</div>
-          <div class="flow-arrow">→</div>
-          <div class="flow-node">意圖分析</div>
-          <div class="flow-arrow">→</div>
-          <div class="flow-node wide">任務路由</div>
-        </div>
-
-        <div class="module-grid">
-          <article class="module-card">
-            <h3>聊天與任務規劃</h3>
-            <p>處理一般對話、問題拆解與回覆整理。</p>
-          </article>
-          <article class="module-card">
-            <h3>記憶系統</h3>
-            <p>讀取、分類與更新使用者偏好或工作上下文。</p>
-          </article>
-          <article class="module-card">
-            <h3>標案 RAG 查詢</h3>
-            <p>把標案問題轉送查詢服務，回傳重點答案。</p>
-          </article>
-          <article class="module-card">
-            <h3>名片掃描</h3>
-            <p>處理圖片、OCR / vision 抽取與聯絡人資料整理。</p>
-          </article>
-          <article class="module-card">
-            <h3>聯絡人查詢</h3>
-            <p>從資料庫搜尋客戶或名片資料，格式化回覆。</p>
-          </article>
-          <article class="module-card">
-            <h3>外部工具</h3>
-            <p>天氣、空氣品質、日期時間與未來工具入口。</p>
-          </article>
+      <section id="process" class="section">
+        <div class="split-layout">
+          <div class="section-heading sticky-heading">
+            <p class="eyebrow">How we work</p>
+            <h2>先做小，再做穩。</h2>
+            <p>
+              AI 自動化最容易失控的地方，是一開始就想做完整系統。
+              我會把它拆成能看、能測、能改的階段。
+            </p>
+          </div>
+          <div class="step-list">
+            <article>
+              <span>Step 1</span>
+              <h3>確認任務</h3>
+              <p>先用白話確認使用者、輸入資料、期待輸出與不能碰的資料。</p>
+            </article>
+            <article>
+              <span>Step 2</span>
+              <h3>建立原型</h3>
+              <p>做出可操作的 demo，不放真 token，不碰正式資料，先看流程是否合理。</p>
+            </article>
+            <article>
+              <span>Step 3</span>
+              <h3>測試與修正</h3>
+              <p>用實際情境測試錯誤回覆、空資料、格式問題與例外狀況。</p>
+            </article>
+            <article>
+              <span>Step 4</span>
+              <h3>準備上線</h3>
+              <p>補上文件、部署方式、回復方式與後續維護清單，再決定是否正式使用。</p>
+            </article>
+          </div>
         </div>
       </section>
 
-      <section id="demo" class="section demo-section">
+      <section class="section architecture-section">
         <div class="section-heading">
-          <p class="eyebrow">Collaboration</p>
-          <h2>合作與測試入口</h2>
+          <p class="eyebrow">System view</p>
+          <h2>典型自動化架構</h2>
+          <p>
+            除了抽象架構，我也整理了 11 張 n8n 操作邏輯流程圖。首頁只放重點預覽，完整圖集可另外開頁查看。
+          </p>
         </div>
-        <div class="text-block">
-          <p>
-            Demo 入口目前準備中。之後會先開放使用測試資料的安全版本，不會公開 API key、token、
-            內部資料庫或私人資料。若你有公司內部流程想嘗試 AI 化，也可以先從一次簡單盤點開始。
-          </p>
-          <p>
-            我目前希望用低門檻、低費用、互相學習成長的方式找合作夥伴。適合的題目包含：
-            報價流程、文件查詢、客戶追蹤、標案整理、表單處理、LINE 通知、內部知識查詢與資料彙整。
-          </p>
+        <div class="flow-diagram" aria-label="典型 AI 自動化流程">
+          <div class="flow-node">LINE / 表單</div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-node">n8n 分流</div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-node">AI / RAG / OCR</div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-node wide">回覆與紀錄</div>
+        </div>
+        <div class="diagram-preview">
+          <div class="diagram-preview-copy">
+            <span class="card-kicker">n8n workflow library</span>
+            <h3>把 workflow 變成看得懂的流程圖</h3>
+            <p>
+              這組圖包含 LINE AI、Tender AI、RAG、OCR、向量資料庫與自動化中心。
+              放進網站後，客戶不用先看 JSON，也能理解系統怎麼運作。
+            </p>
+            <a class="button light" href="./n8n-diagrams.html">查看 11 張流程圖</a>
+          </div>
+          <a class="diagram-preview-image" href="./n8n-diagrams.html" aria-label="查看 n8n 流程圖展示頁">
+            <img src="./assets/n8n-diagrams/line_ai_business_assistant.svg" alt="LINE AI 業務助理 n8n 操作邏輯流程圖預覽">
+          </a>
         </div>
       </section>
 
       <section id="contact" class="section contact-section">
-        <div class="section-heading">
+        <div>
           <p class="eyebrow">Contact</p>
-          <h2>聯絡</h2>
+          <h2>想先整理一個流程嗎？</h2>
         </div>
-        <p class="contact-copy">
-          若你正在找能快速學習、懂業務現場、也能把 AI 工具落地的人，或想用低成本試做公司流程 AI 化，
-          可以透過 Email 聯絡我。
+        <p>
+          你可以先寄一段簡單描述：現在卡在哪裡、每天大概花多少時間、
+          目前用 LINE、Excel、PDF、網站或其他工具。不要在信中放 API key、token 或密碼。
         </p>
         <a class="email-link" href="mailto:panda@bunun.co">panda@bunun.co</a>
       </section>
     </main>
 
     <footer class="site-footer">
-      <p>© 2026 Bunun Studio. Built by Alvis.</p>
+      <p>© 2026 Bunun Studio. Built by Alvis Chen.</p>
     </footer>
   </body>
 </html>
