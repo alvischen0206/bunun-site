@@ -1,0 +1,230 @@
+<!doctype html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bunun Studio | Alvis</title>
+    <meta
+      name="description"
+      content="Bunun Studio 是 Alvis 的個人作品入口，記錄 AI 工具、自動化流程與業務應用實驗。"
+    >
+    <link rel="stylesheet" href="./styles.css">
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="#top" aria-label="Bunun Studio 首頁">Bunun Studio</a>
+      <nav class="nav" aria-label="主要導覽">
+        <a href="#about">關於</a>
+        <a href="#projects">作品</a>
+        <a href="#architecture">架構</a>
+        <a href="#demo">Demo</a>
+        <a href="#contact">聯絡</a>
+      </nav>
+    </header>
+
+    <main id="top">
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero-content">
+          <p class="eyebrow">AI tools for practical business workflows</p>
+          <h1 id="hero-title">把業務現場的問題，整理成可以運作的小工具。</h1>
+          <p class="hero-copy">
+            我是 Alvis，一位資深業務。現在透過 AI、n8n、LINE Bot 與自動化工具，
+            把實際工作流程做成可測試、可改進、可累積的系統。
+          </p>
+          <div class="hero-actions">
+            <a class="button primary" href="#projects">查看作品</a>
+            <a class="button secondary" href="mailto:panda@bunun.co">聯絡我</a>
+          </div>
+        </div>
+      </section>
+
+      <section id="about" class="section">
+        <div class="section-heading">
+          <p class="eyebrow">About</p>
+          <h2>關於 Alvis</h2>
+        </div>
+        <div class="text-block">
+          <p>
+            我長期接觸客戶需求、銷售流程與工作現場的實際問題。這個網站用來記錄我如何把
+            AI 工具、流程自動化與業務經驗結合，做出能協助查詢、整理、回覆與追蹤的小工具。
+          </p>
+          <p>
+            目前作品仍在持續開發中，第一階段會先公開專案介紹與開發紀錄。可以安全展示的功能，
+            之後會逐步做成 Demo 讓訪客測試。
+          </p>
+        </div>
+      </section>
+
+      <section id="projects" class="section">
+        <div class="section-heading">
+          <p class="eyebrow">Portfolio</p>
+          <h2>作品集</h2>
+          <p class="section-intro">
+            這些作品都來自實際業務工作場景。核心想法不是做展示用玩具，而是把每天會遇到的查詢、
+            整理、判斷、回覆與追蹤，逐步變成可以運作的系統。
+          </p>
+        </div>
+        <div class="case-list">
+          <article class="case-card">
+            <div class="case-meta">
+              <p class="project-status">Active</p>
+              <h3>LINE AI 業務助理</h3>
+            </div>
+            <div class="case-content">
+              <p>
+                <strong>發想：</strong>業務工作常常分散在 LINE 對話、客戶紀錄、查詢資料與臨時提醒中。
+                這個專案希望把 LINE 變成一個熟悉的工作入口，讓日常問題可以直接被分類、查詢與回覆。
+              </p>
+              <p>
+                <strong>設計：</strong>以 n8n 接收 LINE webhook，先整理輸入，再交給意圖分析與任務規劃。
+                系統會依照問題類型路由到聊天、記憶、標案查詢、名片掃描、聯絡人搜尋或工具查詢。
+              </p>
+              <p>
+                <strong>架構：</strong>LINE 入口、n8n routing、AI agent、memory controller、外部工具 API 與 LINE 回覆輸出。
+              </p>
+            </div>
+          </article>
+
+          <article class="case-card">
+            <div class="case-meta">
+              <p class="project-status">Active</p>
+              <h3>Tender AI 標案查詢</h3>
+            </div>
+            <div class="case-content">
+              <p>
+                <strong>發想：</strong>標案文件通常頁數多、附件多、格式不一致。人工查找容易漏掉條件、
+                時程、資格或規格重點，因此需要一個能快速協助查詢與摘要的流程。
+              </p>
+              <p>
+                <strong>設計：</strong>把標案 PDF、公告與附件經過文字抽取、OCR、切 chunk、向量化與查詢流程處理，
+                再由 AI 依照問題回覆重點，降低反覆翻文件的時間。
+              </p>
+              <p>
+                <strong>架構：</strong>n8n 問題入口、FastAPI / RAG 查詢服務、PGVector 或向量資料庫、LLM 回答整理。
+              </p>
+            </div>
+          </article>
+
+          <article class="case-card">
+            <div class="case-meta">
+              <p class="project-status">Building</p>
+              <h3>n8n 多功能自動化中樞</h3>
+            </div>
+            <div class="case-content">
+              <p>
+                <strong>發想：</strong>不同功能一開始常被放在同一個 workflow 裡，方便快速測試，但後期會變得難維護。
+                因此下一步是把大型流程拆成幾個清楚的 n8n JSON。
+              </p>
+              <p>
+                <strong>設計：</strong>目前主 workflow 約 155 個節點，已包含入口、意圖分析、記憶、標案 RAG、
+                名片掃描、聯絡人查詢、天氣 / 空氣品質與第三階段規劃節點。
+              </p>
+              <p>
+                <strong>拆分方向：</strong>建議拆成入口路由、記憶系統、標案查詢、名片掃描、聯絡人資料庫、
+                工具查詢與 Stage 3 規劃七個 workflow。
+              </p>
+            </div>
+          </article>
+
+          <article class="case-card">
+            <div class="case-meta">
+              <p class="project-status">Experiment</p>
+              <h3>OCR 與名片掃描</h3>
+            </div>
+            <div class="case-content">
+              <p>
+                <strong>發想：</strong>業務現場常拿到名片、截圖或紙本資料，如果能快速轉成聯絡人資料，
+                後續追蹤與整理會省下很多時間。
+              </p>
+              <p>
+                <strong>設計：</strong>LINE 上傳圖片後，流程取得圖片、轉 base64、送到 vision model 或 OCR 服務，
+                再把結果解析成姓名、公司、電話、Email 與備註。
+              </p>
+              <p>
+                <strong>架構：</strong>LINE 圖片入口、n8n 圖片處理、Gemini / Qwen vision、資料清理、Postgres 聯絡人資料庫。
+              </p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section id="architecture" class="section architecture-section">
+        <div class="section-heading">
+          <p class="eyebrow">n8n Architecture</p>
+          <h2>目前自動化架構</h2>
+          <p class="section-intro">
+            目前主流程已經把多個功能整合在一起。下一階段會把它拆成可獨立維護、測試與部署的 workflow。
+          </p>
+        </div>
+
+        <div class="flow-diagram" aria-label="n8n 自動化流程圖">
+          <div class="flow-node">LINE Webhook</div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-node">輸入整理</div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-node">意圖分析</div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-node wide">任務路由</div>
+        </div>
+
+        <div class="module-grid">
+          <article class="module-card">
+            <h3>聊天與任務規劃</h3>
+            <p>處理一般對話、問題拆解與回覆整理。</p>
+          </article>
+          <article class="module-card">
+            <h3>記憶系統</h3>
+            <p>讀取、分類與更新使用者偏好或工作上下文。</p>
+          </article>
+          <article class="module-card">
+            <h3>標案 RAG 查詢</h3>
+            <p>把標案問題轉送查詢服務，回傳重點答案。</p>
+          </article>
+          <article class="module-card">
+            <h3>名片掃描</h3>
+            <p>處理圖片、OCR / vision 抽取與聯絡人資料整理。</p>
+          </article>
+          <article class="module-card">
+            <h3>聯絡人查詢</h3>
+            <p>從資料庫搜尋客戶或名片資料，格式化回覆。</p>
+          </article>
+          <article class="module-card">
+            <h3>外部工具</h3>
+            <p>天氣、空氣品質、日期時間與未來工具入口。</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="demo" class="section demo-section">
+        <div class="section-heading">
+          <p class="eyebrow">Demo</p>
+          <h2>系統測試入口</h2>
+        </div>
+        <div class="text-block">
+          <p>
+            Demo 入口目前準備中。之後會先開放使用測試資料的安全版本，不會公開 API key、token、
+            內部資料庫或私人資料。
+          </p>
+          <p>
+            第一批預計展示：標案查詢流程、AI 業務助理功能片段、OCR / 名片掃描測試。
+          </p>
+        </div>
+      </section>
+
+      <section id="contact" class="section contact-section">
+        <div class="section-heading">
+          <p class="eyebrow">Contact</p>
+          <h2>聯絡</h2>
+        </div>
+        <p class="contact-copy">
+          若你對 AI 工具、業務流程自動化或作品合作有興趣，可以透過 Email 聯絡。
+        </p>
+        <a class="email-link" href="mailto:panda@bunun.co">panda@bunun.co</a>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>© 2026 Bunun Studio. Built by Alvis.</p>
+    </footer>
+  </body>
+</html>
