@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>n8n 多功能自動化中樞 | Bunun Studio</title>
+    <meta name="description" content="n8n 多功能自動化中樞案例介紹：將 LINE、AI、RAG、OCR、資料庫與外部工具整合成可維護流程。">
+    <link rel="stylesheet" href="../styles.css">
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="../index.html">Bunun Studio</a>
+      <nav class="nav" aria-label="主要導覽">
+        <a href="../index.html#projects">作品</a>
+        <a href="../index.html#architecture">架構</a>
+        <a href="../index.html#contact">聯絡</a>
+      </nav>
+    </header>
+
+    <main class="page-main">
+      <section class="project-hero">
+        <p class="eyebrow">Case Study</p>
+        <h1>n8n 多功能自動化中樞</h1>
+        <p class="hero-copy">
+          從單一大型 workflow 開始，把業務助理、標案查詢、名片掃描、聯絡人搜尋與外部工具整合成自動化中樞。
+        </p>
+        <div class="project-summary">
+          <div class="summary-item"><span>狀態</span><strong>Building</strong></div>
+          <div class="summary-item"><span>目前規模</span><strong>約 155 個節點</strong></div>
+          <div class="summary-item"><span>核心工具</span><strong>n8n、LLM、API</strong></div>
+          <div class="summary-item"><span>下一步</span><strong>拆分 workflow</strong></div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="content-grid">
+          <div class="detail-stack">
+            <article class="detail-panel">
+              <h2>發想</h2>
+              <p>
+                一開始用 n8n 做 AI 自動化時，最有效的方法是先把功能串起來，讓它可以跑。等功能越來越多，
+                同一個 workflow 會逐漸變得難讀、難測、難維護。
+              </p>
+              <p>
+                這個作品代表的是從「能跑」走向「可維護」的過程。它不是單一小工具，而是一個把不同模組連在一起的自動化中樞。
+              </p>
+            </article>
+
+            <article class="detail-panel">
+              <h2>設計思路</h2>
+              <ul>
+                <li>先把 LINE 當作共同入口，避免每個功能都要做一個新的使用介面。</li>
+                <li>用路由節點與 AI agent 判斷要交給哪個模組。</li>
+                <li>把記憶、標案、名片、聯絡人與外部工具拆成獨立責任。</li>
+                <li>未來透過 Execute Workflow 或 API 呼叫，讓每個子流程可以獨立測試。</li>
+              </ul>
+            </article>
+
+            <article class="detail-panel">
+              <h2>建議拆分</h2>
+              <div class="workflow-map">
+                <div class="workflow-row"><div class="workflow-label">01</div><div class="workflow-value">LINE 入口與任務路由</div></div>
+                <div class="workflow-row"><div class="workflow-label">02</div><div class="workflow-value">記憶系統與上下文管理</div></div>
+                <div class="workflow-row"><div class="workflow-label">03</div><div class="workflow-value">Tender AI 標案 RAG 查詢</div></div>
+                <div class="workflow-row"><div class="workflow-label">04</div><div class="workflow-value">名片掃描與 OCR / Vision</div></div>
+                <div class="workflow-row"><div class="workflow-label">05</div><div class="workflow-value">聯絡人資料庫保存與搜尋</div></div>
+                <div class="workflow-row"><div class="workflow-label">06</div><div class="workflow-value">天氣、AQI、日期時間等外部工具</div></div>
+                <div class="workflow-row"><div class="workflow-label">07</div><div class="workflow-value">Stage 3 架構規劃與未來模組 placeholder</div></div>
+              </div>
+            </article>
+          </div>
+
+          <aside class="sidebar">
+            <div class="sidebar-card">
+              <h2>技術關鍵字</h2>
+              <div class="tag-list">
+                <span class="tag">n8n</span>
+                <span class="tag">Workflow</span>
+                <span class="tag">Webhook</span>
+                <span class="tag">HTTP API</span>
+                <span class="tag">Postgres</span>
+                <span class="tag">LLM</span>
+              </div>
+            </div>
+            <div class="sidebar-card">
+              <h2>拆分原則</h2>
+              <div class="timeline">
+                <div class="timeline-step"><strong>先備份</strong><p>完整 workflow 先保存，避免拆壞後回不去。</p></div>
+                <div class="timeline-step"><strong>低風險先拆</strong><p>先拆 placeholder 與外部工具，再拆核心入口。</p></div>
+                <div class="timeline-step"><strong>每拆必測</strong><p>每個子流程都要有固定測試問題與回覆格式。</p></div>
+              </div>
+            </div>
+          </aside>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p><a class="text-link" href="../index.html#projects">回作品集</a></p>
+    </footer>
+  </body>
+</html>

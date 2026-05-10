@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>n8n 流程圖作品集 | Bunun Studio</title>
+    <meta
+      name="description"
+      content="Bunun Studio 的 n8n workflow 作品圖集，包含 LINE AI、Tender AI、RAG API、OCR、向量資料庫與產品 roadmap。"
+    >
+    <meta property="og:title" content="n8n 流程圖作品集 | Bunun Studio">
+    <meta property="og:description" content="把 workflow 變成客戶看得懂的流程圖與作品展示。">
+    <meta property="og:image" content="https://bunun-site-m2r9.vercel.app/images/diagrams/10-n8n-automation-hub-logic.png">
+    <link rel="stylesheet" href="./styles.css">
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="./index.html">
+        <span class="brand-mark"></span>
+        Bunun Studio
+      </a>
+      <nav class="nav" aria-label="主要導覽">
+        <a href="./index.html#work">作品</a>
+        <a href="./index.html#services">服務</a>
+        <a href="./index.html#process">流程</a>
+        <a href="./n8n-diagrams.html">流程圖</a>
+        <a href="./about-alvis.html">關於 Alvis</a>
+        <a href="./index.html#contact">聯絡</a>
+      </nav>
+    </header>
+
+    <main class="page-main">
+      <section class="page-hero section-shell">
+        <p class="eyebrow">Workflow Portfolio</p>
+        <h1>n8n workflow library</h1>
+        <p class="hero-copy">
+          每張圖都對應一種不同的自動化情境。這一頁不是單純放流程圖，
+          而是把 AI 助理、文件搜尋、OCR、RAG、資料庫與產品規劃整理成可展示的作品集。
+        </p>
+      </section>
+
+      <section class="section section-shell diagram-section">
+        <div class="diagram-gallery">
+          <article class="diagram-card large">
+            <div class="diagram-image">
+              <img src="/images/diagrams/01-line-ai-business-assistant-logic.png" alt="LINE AI 業務助理操作邏輯流程圖" loading="lazy">
+            </div>
+            <div class="diagram-copy">
+              <span class="card-kicker">LINE / AI Agent / n8n</span>
+              <h2>LINE AI 業務助理</h2>
+              <p>手機聊天情境連到後端節點流程，說明 LINE 訊息如何進入、分類、觸發 AI 回覆與回傳。</p>
+              <div class="tag-list">
+                <span class="tag">LINE Bot</span>
+                <span class="tag">AI Agent</span>
+                <span class="tag">Memory</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="diagram-card">
+            <div class="diagram-image">
+              <img src="/images/diagrams/02-line-public-data-assistant-logic.png" alt="LINE 公開資訊助理 API 操作邏輯流程圖" loading="lazy">
+            </div>
+            <div class="diagram-copy">
+              <span class="card-kicker">API center</span>
+              <h2>LINE 公開資訊助理</h2>
+              <p>把天氣、AQI 或公開資料 API 包成 LINE 可問的服務。</p>
+              <div class="tag-list"><span class="tag">Open data</span><span class="tag">API</span><span class="tag">LINE</span></div>
+            </div>
+          </article>
+
+          <article class="diagram-card">
+            <div class="diagram-image">
+              <img src="/images/diagrams/03-line-business-card-ocr-logic.png" alt="LINE 名片掃描助理 OCR 操作邏輯流程圖" loading="lazy">
+            </div>
+            <div class="diagram-copy">
+              <span class="card-kicker">OCR pipeline</span>
+              <h2>LINE 名片掃描助理</h2>
+              <p>從圖片進入 OCR，再整理聯絡資訊與確認欄位。</p>
+              <div class="tag-list"><span class="tag">Vision</span><span class="tag">OCR</span><span class="tag">Contact data</span></div>
+            </div>
+          </article>
+
+          <article class="diagram-card large">
+            <div class="diagram-image">
+              <img src="/images/diagrams/04-tender-ai-query-logic.png" alt="Tender AI 標案查詢 RAG 操作邏輯流程圖" loading="lazy">
+            </div>
+            <div class="diagram-copy">
+              <span class="card-kicker">RAG / Tender search</span>
+              <h2>Tender AI 標案查詢</h2>
+              <p>漏斗式查詢圖，呈現標案問題如何經過文件檢索、條件整理與 AI 回答。</p>
+              <div class="tag-list"><span class="tag">Tender AI</span><span class="tag">RAG</span><span class="tag">PDF</span></div>
+            </div>
+          </article>
+
+          <article class="diagram-card">
+            <div class="diagram-image">
+              <img src="/images/diagrams/05-rag-query-api-logic.png" alt="RAG 查詢 API 操作邏輯流程圖" loading="lazy">
+            </div>
+            <div class="diagram-copy">
+              <span class="card-kicker">Sequence diagram</span>
+              <h2>RAG 查詢 API</h2>
+              <p>用 sequence diagram 說明查詢、檢索、重組與回答的順序。</p>
+              <div class="tag-list"><span class="tag">FastAPI</span><span class="tag">Vector search</span><span class="tag">LLM</span></div>
+            </div>
+          </article>
+
+          <article class="diagram-card">
+            <div class="diagram-image">
+              <img src="/images/diagrams/06-vector-database-builder-logic.png" alt="向量資料庫建立器資料處理操作邏輯流程圖" loading="lazy">
+            </div>
+            <div class="diagram-copy">
+              <span class="card-kicker">Data pipeline</span>
+              <h2>向量資料庫建立器</h2>
+              <p>把文件切分、嵌入、寫入資料庫與重建索引拆成可維護流水線。</p>
+              <div class="tag-list"><span class="tag">Embedding</span><span class="tag">Vector DB</span><span class="tag">Indexing</span></div>
+            </div>
+          </article>
+
+          <article class="diagram-card">
+            <div class="diagram-image">
+              <img src="/images/diagrams/07-ocr-document-processing-logic.png" alt="OCR 文件處理操作邏輯流程圖" loading="lazy">
+            </div>
+            <div class="diagram-copy">
+              <span class="card-kicker">Decision tree</span>
+              <h2>OCR 文件處理流程</h2>
+              <p>用文件處理決策樹呈現掃描、辨識、清理與失敗回補。</p>
+              <div class="tag-list"><span class="tag">OCR</span><span class="tag">Parser</span><span class="tag">Validation</span></div>
+            </div>
+          </article>
+
+          <article class="diagram-card">
+            <div class="diagram-image">
+              <img src="/images/diagrams/08-tender-content-parser-logic.png" alt="標案內容解析器欄位整理操作邏輯流程圖" loading="lazy">
+            </div>
+            <div class="diagram-copy">
+              <span class="card-kicker">Parser dashboard</span>
+              <h2>標案內容解析器</h2>
+              <p>把標案欄位、日期、資格與摘要整理成 dashboard 型態。</p>
+              <div class="tag-list"><span class="tag">Field extraction</span><span class="tag">Rules</span><span class="tag">Summary</span></div>
+            </div>
+          </article>
+
+          <article class="diagram-card">
+            <div class="diagram-image">
+              <img src="/images/diagrams/09-tender-n8n-main-workflow-logic.png" alt="標案 n8n 主流程操作邏輯流程圖" loading="lazy">
+            </div>
+            <div class="diagram-copy">
+              <span class="card-kicker">Metro map</span>
+              <h2>標案 n8n 主流程</h2>
+              <p>以地鐵線路圖方式呈現 Tender AI 主流程與子流程的串接。</p>
+              <div class="tag-list"><span class="tag">n8n</span><span class="tag">Sub-workflow</span><span class="tag">Routing</span></div>
+            </div>
+          </article>
+
+          <article class="diagram-card large">
+            <div class="diagram-image">
+              <img src="/images/diagrams/10-n8n-automation-hub-logic.png" alt="n8n 自動化中心入口與模組操作邏輯流程圖" loading="lazy">
+            </div>
+            <div class="diagram-copy">
+              <span class="card-kicker">Hub-and-spoke</span>
+              <h2>n8n 自動化中心</h2>
+              <p>Hub-and-spoke 放射圖，呈現自動化中心如何管理入口、路由、子流程與輸出規則。</p>
+              <div class="tag-list"><span class="tag">Automation hub</span><span class="tag">Workflow ops</span><span class="tag">Monitoring</span></div>
+            </div>
+          </article>
+
+          <article class="diagram-card large">
+            <div class="diagram-image">
+              <img src="/images/diagrams/11-stage3-product-expansion-roadmap-logic.png" alt="Stage 3 產品擴展 roadmap 操作邏輯流程圖" loading="lazy">
+            </div>
+            <div class="diagram-copy">
+              <span class="card-kicker">Product roadmap</span>
+              <h2>Stage 3 產品擴展</h2>
+              <p>把未來產品化、管理介面、權限、營運與客戶維護功能整理成 roadmap。</p>
+              <div class="tag-list"><span class="tag">Roadmap</span><span class="tag">Admin</span><span class="tag">Productization</span></div>
+            </div>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p><a class="text-link" href="./index.html">回到首頁</a></p>
+    </footer>
+  </body>
+</html>
