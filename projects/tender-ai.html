@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Tender AI 標案查詢 | Bunun Studio</title>
+    <meta name="description" content="Tender AI 標案查詢案例介紹：協助整理、搜尋與摘要標案文件。">
+    <link rel="stylesheet" href="../styles.css">
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="../index.html">Bunun Studio</a>
+      <nav class="nav" aria-label="主要導覽">
+        <a href="../index.html#projects">作品</a>
+        <a href="../index.html#architecture">架構</a>
+        <a href="../index.html#contact">聯絡</a>
+      </nav>
+    </header>
+
+    <main class="page-main">
+      <section class="project-hero">
+        <p class="eyebrow">Case Study</p>
+        <h1>Tender AI 標案查詢</h1>
+        <p class="hero-copy">
+          面對大量 PDF、公告與附件，用 AI 協助快速找出資格、時程、規格、文件要求與風險重點。
+        </p>
+        <div class="project-summary">
+          <div class="summary-item"><span>狀態</span><strong>Active / 優先穩定</strong></div>
+          <div class="summary-item"><span>問題</span><strong>標案文件難查</strong></div>
+          <div class="summary-item"><span>核心工具</span><strong>RAG、OCR、FastAPI</strong></div>
+          <div class="summary-item"><span>目標</span><strong>縮短判讀時間</strong></div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="content-grid">
+          <div class="detail-stack">
+            <article class="detail-panel">
+              <h2>發想</h2>
+              <p>
+                標案文件常常包含公告、投標須知、附件、規格書、評選文件與補充說明。人工閱讀時最困難的不是單頁內容，
+                而是「問題答案可能散在很多不同文件裡」。
+              </p>
+              <p>
+                Tender AI 的目標是把文件先整理成可搜尋的知識庫，讓使用者可以用自然語言詢問，例如資格限制、
+                截止日期、押標金、履約條件、需要準備哪些文件。
+              </p>
+            </article>
+
+            <article class="detail-panel">
+              <h2>設計思路</h2>
+              <ul>
+                <li>先把 PDF 與附件轉成可處理文字，必要時加入 OCR。</li>
+                <li>把長文件切成 chunk，保留來源、頁碼與段落脈絡。</li>
+                <li>建立向量資料庫，讓問題可以找到相關段落。</li>
+                <li>由 LLM 根據檢索結果整理答案，並盡量避免沒有根據的推測。</li>
+              </ul>
+            </article>
+
+            <article class="detail-panel">
+              <h2>目前架構</h2>
+              <div class="workflow-map">
+                <div class="workflow-row"><div class="workflow-label">資料來源</div><div class="workflow-value">標案公告、PDF、壓縮附件與掃描文件。</div></div>
+                <div class="workflow-row"><div class="workflow-label">處理層</div><div class="workflow-value">文字抽取、OCR、chunking、metadata 標記。</div></div>
+                <div class="workflow-row"><div class="workflow-label">檢索層</div><div class="workflow-value">向量資料庫 / PGVector 依問題找相關內容。</div></div>
+                <div class="workflow-row"><div class="workflow-label">回答層</div><div class="workflow-value">LLM 整理答案、摘要、提醒可能風險。</div></div>
+                <div class="workflow-row"><div class="workflow-label">入口層</div><div class="workflow-value">透過 LINE AI 業務助理或 n8n workflow 問問題。</div></div>
+              </div>
+            </article>
+          </div>
+
+          <aside class="sidebar">
+            <div class="sidebar-card">
+              <h2>技術關鍵字</h2>
+              <div class="tag-list">
+                <span class="tag">Tender</span>
+                <span class="tag">RAG</span>
+                <span class="tag">PDF</span>
+                <span class="tag">OCR</span>
+                <span class="tag">PGVector</span>
+                <span class="tag">FastAPI</span>
+              </div>
+            </div>
+            <div class="sidebar-card">
+              <h2>目前重點</h2>
+              <div class="timeline">
+                <div class="timeline-step"><strong>穩定查詢</strong><p>確認不穩定點是在 n8n、FastAPI、OCR、chunking、regex 還是 LLM。</p></div>
+                <div class="timeline-step"><strong>建立測試問題</strong><p>用固定題目驗證回答是否能穩定命中文件內容。</p></div>
+                <div class="timeline-step"><strong>補上引用</strong><p>未來希望答案能附來源文件與段落依據。</p></div>
+              </div>
+            </div>
+          </aside>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p><a class="text-link" href="../index.html#projects">回作品集</a></p>
+    </footer>
+  </body>
+</html>

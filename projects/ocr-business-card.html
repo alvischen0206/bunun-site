@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>OCR 與名片掃描 | Bunun Studio</title>
+    <meta name="description" content="OCR 與名片掃描案例介紹：從 LINE 圖片上傳到 AI 視覺辨識、資料清理與聯絡人保存。">
+    <link rel="stylesheet" href="../styles.css">
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="../index.html">Bunun Studio</a>
+      <nav class="nav" aria-label="主要導覽">
+        <a href="../index.html#projects">作品</a>
+        <a href="../index.html#architecture">架構</a>
+        <a href="../index.html#contact">聯絡</a>
+      </nav>
+    </header>
+
+    <main class="page-main">
+      <section class="project-hero">
+        <p class="eyebrow">Case Study</p>
+        <h1>OCR 與名片掃描</h1>
+        <p class="hero-copy">
+          把名片照片、截圖或紙本資訊轉成可搜尋的聯絡人資料，讓業務現場取得的資訊不再散落。
+        </p>
+        <div class="project-summary">
+          <div class="summary-item"><span>狀態</span><strong>Experiment / 可運作測試</strong></div>
+          <div class="summary-item"><span>入口</span><strong>LINE 圖片上傳</strong></div>
+          <div class="summary-item"><span>核心工具</span><strong>OCR、Vision Model</strong></div>
+          <div class="summary-item"><span>目標</span><strong>自動建立聯絡人</strong></div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="content-grid">
+          <div class="detail-stack">
+            <article class="detail-panel">
+              <h2>發想</h2>
+              <p>
+                業務現場常常會拿到名片、展場資料、截圖或臨時拍下來的聯絡資訊。如果沒有馬上整理，
+                後續很容易找不到、忘記追蹤，或需要重複輸入。
+              </p>
+              <p>
+                這個功能希望把「拍照」變成資料建立流程。使用者只要把圖片丟到 LINE，系統就盡量抽出姓名、
+                公司、職稱、電話、Email、地址與備註。
+              </p>
+            </article>
+
+            <article class="detail-panel">
+              <h2>設計思路</h2>
+              <ul>
+                <li>從 LINE 取得圖片訊息，下載圖片內容。</li>
+                <li>轉成可送給 vision model 或 OCR 服務的格式。</li>
+                <li>讓模型抽取名片欄位，再用程式整理成固定 schema。</li>
+                <li>進行重複資料檢查，避免同一張名片反覆寫入。</li>
+                <li>保存到 Postgres 或匯出檔案，讓聯絡人可以被查詢。</li>
+              </ul>
+            </article>
+
+            <article class="detail-panel">
+              <h2>目前架構</h2>
+              <div class="workflow-map">
+                <div class="workflow-row"><div class="workflow-label">圖片入口</div><div class="workflow-value">使用者透過 LINE 上傳名片照片。</div></div>
+                <div class="workflow-row"><div class="workflow-label">圖片處理</div><div class="workflow-value">n8n 取得圖片並轉成 base64 或檔案格式。</div></div>
+                <div class="workflow-row"><div class="workflow-label">AI 辨識</div><div class="workflow-value">Gemini / Qwen vision 或 OCR 服務抽出文字與欄位。</div></div>
+                <div class="workflow-row"><div class="workflow-label">資料清理</div><div class="workflow-value">整理姓名、公司、電話、Email、備註等欄位。</div></div>
+                <div class="workflow-row"><div class="workflow-label">資料保存</div><div class="workflow-value">寫入聯絡人資料庫，供後續查詢使用。</div></div>
+              </div>
+            </article>
+          </div>
+
+          <aside class="sidebar">
+            <div class="sidebar-card">
+              <h2>技術關鍵字</h2>
+              <div class="tag-list">
+                <span class="tag">OCR</span>
+                <span class="tag">Vision AI</span>
+                <span class="tag">LINE Image</span>
+                <span class="tag">Postgres</span>
+                <span class="tag">Data Cleaning</span>
+              </div>
+            </div>
+            <div class="sidebar-card">
+              <h2>下一步</h2>
+              <div class="timeline">
+                <div class="timeline-step"><strong>欄位穩定</strong><p>讓不同版型名片都能輸出一致欄位。</p></div>
+                <div class="timeline-step"><strong>重複判斷</strong><p>用電話、Email、公司與姓名降低重複資料。</p></div>
+                <div class="timeline-step"><strong>查詢整合</strong><p>把名片資料接到 LINE 聯絡人查詢。</p></div>
+              </div>
+            </div>
+          </aside>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p><a class="text-link" href="../index.html#projects">回作品集</a></p>
+    </footer>
+  </body>
+</html>
