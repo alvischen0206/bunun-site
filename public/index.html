@@ -45,11 +45,36 @@
           </div>
           <p class="hero-email">panda@bunun.co</p>
         </div>
-        <div class="hero-visual">
-          <img
-            src="/images/hero-ai-workflow.png"
-            alt="Bunun Studio AI workflow dashboard illustration"
-          >
+        <div class="hero-visual automation-visual" aria-label="Bunun Studio AI automation mode flow animation">
+          <div class="automation-panel">
+            <div class="panel-topline">
+              <span class="live-dot"></span>
+              <span>Automation loop</span>
+              <strong>RUNNING</strong>
+            </div>
+            <div class="automation-canvas mode-flow-canvas">
+              <section class="logic-flow query-flow" aria-label="File query mode workflow">
+                <div class="mode-title"><span class="mode-icon">Q</span><strong>&#27284;&#26696;&#26597;&#35426;&#27169;&#24335;</strong></div>
+                <div class="logic-steps">
+                  <div class="flow-step"><b>01</b><span>&#36664;&#20837;&#27161;&#26696;&#38364;&#37749;&#23383;</span><small>LINE message / query intent</small></div>
+                  <div class="flow-step"><b>02</b><span>RAG &#26597;&#25214;&#25991;&#20214;&#29255;&#27573;</span><small>retrieve matched tender content</small></div>
+                  <div class="flow-step"><b>03</b><span>AI &#25972;&#29702;&#26597;&#35426;&#22238;&#31572;</span><small>summarize answer with source notes</small></div>
+                  <div class="flow-step"><b>04</b><span>&#22238;&#20659;&#32080;&#26524;&#33287;&#35352;&#37636;</span><small>reply and keep searchable logs</small></div>
+                </div>
+                <div class="flow-loop"><span>&#36861;&#21839; / &#20877;&#26597;&#19968;&#31558;</span></div>
+              </section>
+              <section class="logic-flow scan-flow" aria-label="Business card scan mode workflow">
+                <div class="mode-title"><span class="mode-icon">OCR</span><strong>&#21517;&#29255;&#25475;&#25551;&#27169;&#24335;</strong></div>
+                <div class="logic-steps">
+                  <div class="flow-step"><b>01</b><span>&#19978;&#20659;&#21517;&#29255;&#22294;&#29255;</span><small>image input from LINE</small></div>
+                  <div class="flow-step"><b>02</b><span>OCR &#36776;&#35672;&#33287;&#27396;&#20301;&#35299;&#26512;</span><small>name / company / phone / email</small></div>
+                  <div class="flow-step"><b>03</b><span>&#23531;&#20837;&#21517;&#29255;&#36039;&#26009;&#24235;</span><small>structured contact record</small></div>
+                  <div class="flow-step"><b>04</b><span>&#23436;&#25104;&#26032;&#22686;&#33287;&#22238;&#20659;</span><small>confirm and prepare next upload</small></div>
+                </div>
+                <div class="flow-loop"><span>&#32380;&#32396;&#19978;&#20659;&#19979;&#19968;&#24373;</span></div>
+              </section>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -73,7 +98,7 @@
 
         <div class="work-grid">
           <article class="work-card featured">
-            <a href="./projects/line-ai-assistant.html">
+            <a href="./n8n-diagrams.html#line-ai-business-assistant">
               <span class="card-kicker">LINE / n8n / AI Agent</span>
               <h3>LINE AI 商務助理</h3>
               <p>讓 LINE 不只收訊息，也能分類需求、呼叫流程、整理回覆，逐步變成可追蹤的客戶工作台。</p>
@@ -84,7 +109,7 @@
             </a>
           </article>
           <article class="work-card">
-            <a href="./projects/tender-ai.html">
+            <a href="./n8n-diagrams.html#tender-ai-query">
               <span class="card-kicker">PDF / OCR / RAG</span>
               <h3>Tender AI 標案搜尋</h3>
               <p>把散落的招標文件整理成可查詢的知識庫，減少人工翻文件的時間。</p>
@@ -95,7 +120,7 @@
             </a>
           </article>
           <article class="work-card">
-            <a href="./projects/n8n-automation-hub.html">
+            <a href="./n8n-diagrams.html#n8n-automation-hub">
               <span class="card-kicker">Workflow system</span>
               <h3>n8n 自動化中心</h3>
               <p>把大型 workflow 拆成清楚模組，讓錯誤、測試與後續擴充更容易管理。</p>
@@ -106,7 +131,7 @@
             </a>
           </article>
           <article class="work-card">
-            <a href="./projects/line-public-info.html">
+            <a href="./n8n-diagrams.html#line-public-data-assistant">
               <span class="card-kicker">API / LINE / Open data</span>
               <h3>LINE 公共資訊查詢</h3>
               <p>把天氣、空氣品質或公開資料包成簡單可問的 LINE 查詢介面。</p>
@@ -117,7 +142,7 @@
             </a>
           </article>
           <article class="work-card">
-            <a href="./projects/ocr-business-card.html">
+            <a href="./n8n-diagrams.html#business-card-ocr">
               <span class="card-kicker">Vision / OCR</span>
               <h3>名片 OCR 實驗</h3>
               <p>從圖片取出聯絡資料，整理成後續可匯入、可追蹤的格式。</p>
@@ -165,7 +190,7 @@
           </div>
           <div class="support-visual">
             <img
-              src="/images/service-overview-cards.png"
+              src="images/service-overview-cards.png"
               alt="Bunun Studio AI automation service overview cards"
             >
           </div>
@@ -222,26 +247,9 @@
         </div>
         <div class="system-visual">
           <img
-            src="/images/system-architecture-overview.png"
+            src="images/system-architecture-overview.png"
             alt="Typical AI automation system architecture"
           >
-        </div>
-      </section>
-
-      <section class="section section-shell library-preview">
-        <div class="library-copy">
-          <p class="eyebrow">n8n workflow library</p>
-          <h2>把 workflow 變成看得懂的流程圖</h2>
-          <p>
-            這組圖包含 LINE AI、Tender AI、RAG、OCR、向量資料庫與自動化中心。
-            放進網站後，客戶不用先看 JSON，也能理解系統怎麼運作。
-          </p>
-          <a class="button primary" href="./n8n-diagrams.html">查看 11 張流程圖</a>
-        </div>
-        <div class="library-thumbs" aria-label="流程圖預覽">
-          <img src="/images/line-ai-business-assistant.png" alt="LINE AI business assistant workflow preview">
-          <img src="/images/tender-ai-rag-flow.png" alt="Tender AI RAG workflow preview">
-          <img src="/images/n8n-automation-hub.png" alt="n8n automation hub diagram preview">
         </div>
       </section>
 

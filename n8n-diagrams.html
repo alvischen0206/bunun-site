@@ -32,24 +32,28 @@
     <main class="page-main">
       <section class="page-hero section-shell">
         <p class="eyebrow">Workflow Portfolio</p>
-        <h1>n8n workflow library</h1>
+        <h1>&#35373;&#35336;&#27010;&#24565;&#33287;&#27969;&#31243;&#32048;&#37096;&#35498;&#26126;</h1>
         <p class="hero-copy">
-          每張圖都對應一種不同的自動化情境。這一頁不是單純放流程圖，
-          而是把 AI 助理、文件搜尋、OCR、RAG、資料庫與產品規劃整理成可展示的作品集。
+          這一頁整理每個作品背後的設計概念：資料從哪裡進來、怎麼分流、AI 在哪一步介入，以及最後如何回覆、紀錄與維護。
         </p>
       </section>
 
       <section class="section section-shell diagram-section">
         <div class="diagram-gallery">
-          <article class="diagram-card large">
+          <article id="line-ai-business-assistant" class="diagram-card large">
             <div class="diagram-image">
-              <img src="/images/diagrams/01-line-ai-business-assistant-logic.png" alt="LINE AI 業務助理操作邏輯流程圖" loading="lazy">
+              <img src="public/images/diagrams/01-line-ai-business-assistant-logic.png" alt="LINE AI 業務助理操作邏輯流程圖" loading="lazy">
             </div>
             <div class="diagram-copy">
               <span class="card-kicker">LINE / AI Agent / n8n</span>
               <h2>LINE AI 業務助理</h2>
               <p>手機聊天情境連到後端節點流程，說明 LINE 訊息如何進入、分類、觸發 AI 回覆與回傳。</p>
-              <div class="tag-list">
+                            <ul class="concept-list">
+                <li><span>01</span>&#20837;&#21475;&#65306;LINE &#35338;&#24687;&#20808;&#34987;&#25972;&#29702;&#25104;&#21487;&#21028;&#26039;&#30340;&#20219;&#21209;&#12290;</li>
+                <li><span>02</span>&#20998;&#27969;&#65306;n8n &#20381;&#29031;&#24847;&#22294;&#27770;&#23450;&#35201;&#26597;&#36039;&#26009;&#12289;&#21839; AI &#25110;&#30041;&#19979;&#20154;&#24037;&#34389;&#29702;&#12290;</li>
+                <li><span>03</span>&#36664;&#20986;&#65306;&#22238;&#35206;&#23458;&#25142;&#65292;&#21516;&#26178;&#30041;&#19979;&#32000;&#37636;&#65292;&#26041;&#20415;&#24460;&#32396;&#36861;&#36452;&#12290;</li>
+              </ul>
+<div class="tag-list">
                 <span class="tag">LINE Bot</span>
                 <span class="tag">AI Agent</span>
                 <span class="tag">Memory</span>
@@ -57,45 +61,60 @@
             </div>
           </article>
 
-          <article class="diagram-card">
+          <article id="line-public-data-assistant" class="diagram-card">
             <div class="diagram-image">
-              <img src="/images/diagrams/02-line-public-data-assistant-logic.png" alt="LINE 公開資訊助理 API 操作邏輯流程圖" loading="lazy">
+              <img src="public/images/diagrams/02-line-public-data-assistant-logic.png" alt="LINE 公開資訊助理 API 操作邏輯流程圖" loading="lazy">
             </div>
             <div class="diagram-copy">
               <span class="card-kicker">API center</span>
               <h2>LINE 公開資訊助理</h2>
               <p>把天氣、AQI 或公開資料 API 包成 LINE 可問的服務。</p>
-              <div class="tag-list"><span class="tag">Open data</span><span class="tag">API</span><span class="tag">LINE</span></div>
+                            <ul class="concept-list">
+                <li><span>01</span>&#20837;&#21475;&#65306;&#20351;&#29992;&#32773;&#29992; LINE &#21839;&#22825;&#27683;&#12289;&#31354;&#27683;&#21697;&#36074;&#25110;&#20844;&#38283;&#36039;&#26009;&#12290;</li>
+                <li><span>02</span>&#25972;&#21512;&#65306;n8n &#21628;&#21483; API&#65292;&#25972;&#29702;&#27396;&#20301;&#33287;&#26684;&#24335;&#12290;</li>
+                <li><span>03</span>&#36664;&#20986;&#65306;&#29992;&#30333;&#35441;&#22238;&#35206;&#65292;&#19981;&#35731;&#20351;&#29992;&#32773;&#30475;&#35079;&#38620;&#36039;&#26009;&#34920;&#12290;</li>
+              </ul>
+<div class="tag-list"><span class="tag">Open data</span><span class="tag">API</span><span class="tag">LINE</span></div>
             </div>
           </article>
 
-          <article class="diagram-card">
+          <article id="business-card-ocr" class="diagram-card">
             <div class="diagram-image">
-              <img src="/images/diagrams/03-line-business-card-ocr-logic.png" alt="LINE 名片掃描助理 OCR 操作邏輯流程圖" loading="lazy">
+              <img src="public/images/diagrams/03-line-business-card-ocr-logic.png" alt="LINE 名片掃描助理 OCR 操作邏輯流程圖" loading="lazy">
             </div>
             <div class="diagram-copy">
               <span class="card-kicker">OCR pipeline</span>
               <h2>LINE 名片掃描助理</h2>
               <p>從圖片進入 OCR，再整理聯絡資訊與確認欄位。</p>
-              <div class="tag-list"><span class="tag">Vision</span><span class="tag">OCR</span><span class="tag">Contact data</span></div>
+                            <ul class="concept-list">
+                <li><span>01</span>&#20837;&#21475;&#65306;&#20351;&#29992;&#32773;&#19978;&#20659;&#21517;&#29255;&#22294;&#29255;&#12290;</li>
+                <li><span>02</span>&#36776;&#35672;&#65306;OCR &#25277;&#20986;&#22995;&#21517;&#12289;&#20844;&#21496;&#12289;&#38651;&#35441;&#12289;Email &#31561;&#27396;&#20301;&#12290;</li>
+                <li><span>03</span>&#36664;&#20986;&#65306;&#25972;&#29702;&#25104;&#21487;&#21295;&#20837;&#12289;&#21487;&#36861;&#36452;&#30340;&#32879;&#32097;&#36039;&#26009;&#12290;</li>
+              </ul>
+<div class="tag-list"><span class="tag">Vision</span><span class="tag">OCR</span><span class="tag">Contact data</span></div>
             </div>
           </article>
 
-          <article class="diagram-card large">
+          <article id="tender-ai-query" class="diagram-card large">
             <div class="diagram-image">
-              <img src="/images/diagrams/04-tender-ai-query-logic.png" alt="Tender AI 標案查詢 RAG 操作邏輯流程圖" loading="lazy">
+              <img src="public/images/diagrams/04-tender-ai-query-logic.png" alt="Tender AI 標案查詢 RAG 操作邏輯流程圖" loading="lazy">
             </div>
             <div class="diagram-copy">
               <span class="card-kicker">RAG / Tender search</span>
               <h2>Tender AI 標案查詢</h2>
               <p>漏斗式查詢圖，呈現標案問題如何經過文件檢索、條件整理與 AI 回答。</p>
-              <div class="tag-list"><span class="tag">Tender AI</span><span class="tag">RAG</span><span class="tag">PDF</span></div>
+                            <ul class="concept-list">
+                <li><span>01</span>&#20837;&#21475;&#65306;&#25226; PDF&#12289;OCR &#32080;&#26524;&#33287;&#27161;&#26696;&#27396;&#20301;&#25972;&#29702;&#25104;&#21487;&#27298;&#32034;&#36039;&#26009;&#12290;</li>
+                <li><span>02</span>&#21028;&#26039;&#65306;&#20808;&#30906;&#35469;&#21839;&#38988;&#39006;&#22411;&#65292;&#20877;&#27770;&#23450;&#26597;&#21738;&#19968;&#27573;&#25991;&#20214;&#12290;</li>
+                <li><span>03</span>&#36664;&#20986;&#65306;&#22238;&#31572;&#38468;&#19978;&#20358;&#28304;&#26041;&#21521;&#65292;&#38477;&#20302;&#20154;&#24037;&#32763;&#25991;&#20214;&#26178;&#38291;&#12290;</li>
+              </ul>
+<div class="tag-list"><span class="tag">Tender AI</span><span class="tag">RAG</span><span class="tag">PDF</span></div>
             </div>
           </article>
 
-          <article class="diagram-card">
+          <article id="rag-query-api" class="diagram-card">
             <div class="diagram-image">
-              <img src="/images/diagrams/05-rag-query-api-logic.png" alt="RAG 查詢 API 操作邏輯流程圖" loading="lazy">
+              <img src="public/images/diagrams/05-rag-query-api-logic.png" alt="RAG 查詢 API 操作邏輯流程圖" loading="lazy">
             </div>
             <div class="diagram-copy">
               <span class="card-kicker">Sequence diagram</span>
@@ -105,9 +124,9 @@
             </div>
           </article>
 
-          <article class="diagram-card">
+          <article id="vector-database-builder" class="diagram-card">
             <div class="diagram-image">
-              <img src="/images/diagrams/06-vector-database-builder-logic.png" alt="向量資料庫建立器資料處理操作邏輯流程圖" loading="lazy">
+              <img src="public/images/diagrams/06-vector-database-builder-logic.png" alt="向量資料庫建立器資料處理操作邏輯流程圖" loading="lazy">
             </div>
             <div class="diagram-copy">
               <span class="card-kicker">Data pipeline</span>
@@ -117,9 +136,9 @@
             </div>
           </article>
 
-          <article class="diagram-card">
+          <article id="ocr-document-processing" class="diagram-card">
             <div class="diagram-image">
-              <img src="/images/diagrams/07-ocr-document-processing-logic.png" alt="OCR 文件處理操作邏輯流程圖" loading="lazy">
+              <img src="public/images/diagrams/07-ocr-document-processing-logic.png" alt="OCR 文件處理操作邏輯流程圖" loading="lazy">
             </div>
             <div class="diagram-copy">
               <span class="card-kicker">Decision tree</span>
@@ -129,9 +148,9 @@
             </div>
           </article>
 
-          <article class="diagram-card">
+          <article id="tender-content-parser" class="diagram-card">
             <div class="diagram-image">
-              <img src="/images/diagrams/08-tender-content-parser-logic.png" alt="標案內容解析器欄位整理操作邏輯流程圖" loading="lazy">
+              <img src="public/images/diagrams/08-tender-content-parser-logic.png" alt="標案內容解析器欄位整理操作邏輯流程圖" loading="lazy">
             </div>
             <div class="diagram-copy">
               <span class="card-kicker">Parser dashboard</span>
@@ -141,9 +160,9 @@
             </div>
           </article>
 
-          <article class="diagram-card">
+          <article id="tender-n8n-main-workflow" class="diagram-card">
             <div class="diagram-image">
-              <img src="/images/diagrams/09-tender-n8n-main-workflow-logic.png" alt="標案 n8n 主流程操作邏輯流程圖" loading="lazy">
+              <img src="public/images/diagrams/09-tender-n8n-main-workflow-logic.png" alt="標案 n8n 主流程操作邏輯流程圖" loading="lazy">
             </div>
             <div class="diagram-copy">
               <span class="card-kicker">Metro map</span>
@@ -153,21 +172,26 @@
             </div>
           </article>
 
-          <article class="diagram-card large">
+          <article id="n8n-automation-hub" class="diagram-card large">
             <div class="diagram-image">
-              <img src="/images/diagrams/10-n8n-automation-hub-logic.png" alt="n8n 自動化中心入口與模組操作邏輯流程圖" loading="lazy">
+              <img src="public/images/diagrams/10-n8n-automation-hub-logic.png" alt="n8n 自動化中心入口與模組操作邏輯流程圖" loading="lazy">
             </div>
             <div class="diagram-copy">
               <span class="card-kicker">Hub-and-spoke</span>
               <h2>n8n 自動化中心</h2>
               <p>Hub-and-spoke 放射圖，呈現自動化中心如何管理入口、路由、子流程與輸出規則。</p>
-              <div class="tag-list"><span class="tag">Automation hub</span><span class="tag">Workflow ops</span><span class="tag">Monitoring</span></div>
+                            <ul class="concept-list">
+                <li><span>01</span>&#20837;&#21475;&#65306;&#25152;&#26377;&#33258;&#21205;&#21270;&#38656;&#27714;&#20808;&#36914;&#20837;&#21516;&#19968;&#20491;&#25511;&#21046;&#20013;&#24515;&#12290;</li>
+                <li><span>02</span>&#27169;&#32068;&#65306;&#25226;&#24120;&#29992;&#20219;&#21209;&#25286;&#25104;&#23376;&#27969;&#31243;&#65292;&#28187;&#23569;&#21934;&#19968; workflow &#36942;&#38263;&#12290;</li>
+                <li><span>03</span>&#32173;&#35703;&#65306;&#35731;&#37679;&#35492;&#12289;&#28204;&#35430;&#33287;&#25844;&#20805;&#26377;&#22266;&#23450;&#20301;&#32622;&#21487;&#20197;&#26597;&#30475;&#12290;</li>
+              </ul>
+<div class="tag-list"><span class="tag">Automation hub</span><span class="tag">Workflow ops</span><span class="tag">Monitoring</span></div>
             </div>
           </article>
 
-          <article class="diagram-card large">
+          <article id="stage3-product-expansion" class="diagram-card large">
             <div class="diagram-image">
-              <img src="/images/diagrams/11-stage3-product-expansion-roadmap-logic.png" alt="Stage 3 產品擴展 roadmap 操作邏輯流程圖" loading="lazy">
+              <img src="public/images/diagrams/11-stage3-product-expansion-roadmap-logic.png" alt="Stage 3 產品擴展 roadmap 操作邏輯流程圖" loading="lazy">
             </div>
             <div class="diagram-copy">
               <span class="card-kicker">Product roadmap</span>
