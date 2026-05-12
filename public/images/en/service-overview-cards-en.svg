@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="820" viewBox="0 0 1200 820" role="img" aria-label="Bunun Studio AI automation service overview in English">
+  <rect width="1200" height="820" rx="36" fill="#0f172a"/>
+  <text x="80" y="90" font-family="Arial, sans-serif" font-size="42" font-weight="800" fill="#f8fafc">AI Automation Services</text>
+  <text x="80" y="132" font-family="Arial, sans-serif" font-size="20" fill="#cbd5e1">A practical path from workflow review to a maintainable system.</text>
+  <g font-family="Arial, sans-serif">
+    <rect x="80" y="190" width="470" height="210" rx="22" fill="#172033" stroke="#334155"/><text x="118" y="250" font-size="22" font-weight="800" fill="#14b8a6">01 Workflow Review</text><text x="118" y="295" font-size="18" fill="#cbd5e1">Find repeated tasks, risks and handoff points.</text><text x="118" y="330" font-size="18" fill="#cbd5e1">Turn the work into a clear map.</text>
+    <rect x="650" y="190" width="470" height="210" rx="22" fill="#172033" stroke="#334155"/><text x="688" y="250" font-size="22" font-weight="800" fill="#f59e0b">02 AI Prototype</text><text x="688" y="295" font-size="18" fill="#cbd5e1">Build a small working version with LINE, n8n,</text><text x="688" y="330" font-size="18" fill="#cbd5e1">RAG, OCR or APIs.</text>
+    <rect x="80" y="470" width="470" height="210" rx="22" fill="#172033" stroke="#334155"/><text x="118" y="530" font-size="22" font-weight="800" fill="#60a5fa">03 Web Demo</text><text x="118" y="575" font-size="18" fill="#cbd5e1">Package services and cases into pages that</text><text x="118" y="610" font-size="18" fill="#cbd5e1">clients can understand quickly.</text>
+    <rect x="650" y="470" width="470" height="210" rx="22" fill="#172033" stroke="#334155"/><text x="688" y="530" font-size="22" font-weight="800" fill="#a78bfa">04 Documentation</text><text x="688" y="575" font-size="18" fill="#cbd5e1">Leave operating notes, recovery steps and</text><text x="688" y="610" font-size="18" fill="#cbd5e1">maintenance checkpoints.</text>
+  </g>
+</svg>

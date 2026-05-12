@@ -111,6 +111,32 @@ p {
   color: var(--text);
 }
 
+.language-switch {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  margin-left: 4px;
+  padding: 3px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.language-switch a {
+  min-width: 36px;
+  padding: 5px 9px;
+  border-radius: 999px;
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 900;
+  text-align: center;
+}
+
+.language-switch a.active {
+  background: rgba(245, 158, 11, 0.92);
+  color: #111827;
+}
+
 .hero {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(360px, 0.82fr);
@@ -725,14 +751,30 @@ h3 {
 
 .career-item {
   display: grid;
-  grid-template-columns: minmax(120px, 0.3fr) minmax(0, 1fr);
-  gap: 20px;
-  padding: 18px 0;
+  grid-template-columns: minmax(140px, 180px) minmax(0, 1fr);
+  column-gap: 28px;
+  row-gap: 8px;
+  padding: 22px 0;
   border-bottom: 1px solid var(--line);
 }
 
+.career-item span {
+  grid-column: 1;
+  grid-row: 1 / span 2;
+  align-self: start;
+  line-height: 1.35;
+}
+
 .career-item h3 {
+  grid-column: 2;
+  margin: 0;
   font-size: 22px;
+}
+
+.career-item p {
+  grid-column: 2;
+  max-width: 920px;
+  line-height: 1.85;
 }
 
 .tag-list.expanded {
@@ -838,6 +880,16 @@ h3 {
   .flow-nodes,
   .career-item {
     grid-template-columns: 1fr;
+  }
+
+  .career-item span,
+  .career-item h3,
+  .career-item p {
+    grid-column: 1;
+  }
+
+  .career-item span {
+    grid-row: auto;
   }
 
   .work-card a,
