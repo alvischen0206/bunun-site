@@ -3,6 +3,18 @@
   "trailingSlash": false,
   "rewrites": [
     {
+      "source": "/jinshunfa",
+      "destination": "/public/jinshunfa/index.html"
+    },
+    {
+      "source": "/jinshunfa/",
+      "destination": "/public/jinshunfa/index.html"
+    },
+    {
+      "source": "/jinshunfa/(.*)",
+      "destination": "/public/jinshunfa/$1"
+    },
+    {
       "source": "/images/(.*)",
       "destination": "/public/images/$1"
     }

@@ -1,0 +1,28 @@
+<svg width="900" height="760" viewBox="0 0 900 760" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">金飾展示</title>
+  <desc id="desc">金色手鍊、戒指、項鍊與銀樓櫃台展示插圖</desc>
+  <rect x="90" y="90" width="720" height="520" rx="6" fill="#FFF8EA"/>
+  <rect x="123" y="122" width="654" height="458" rx="4" fill="#FFFDF8" stroke="#D9B160" stroke-width="3"/>
+  <rect x="165" y="470" width="570" height="52" rx="4" fill="#263142"/>
+  <rect x="185" y="488" width="150" height="10" rx="5" fill="#D9B160"/>
+  <rect x="355" y="488" width="200" height="10" rx="5" fill="#D9B160"/>
+  <rect x="575" y="488" width="140" height="10" rx="5" fill="#D9B160"/>
+  <circle cx="330" cy="274" r="104" stroke="#B9862E" stroke-width="24"/>
+  <circle cx="330" cy="274" r="65" stroke="#E9C66E" stroke-width="12"/>
+  <circle cx="515" cy="284" r="74" stroke="#B9862E" stroke-width="18"/>
+  <circle cx="515" cy="284" r="45" stroke="#F2D88A" stroke-width="10"/>
+  <path d="M618 166C636 250 636 330 618 416" stroke="#B9862E" stroke-width="16" stroke-linecap="round"/>
+  <path d="M661 170C681 248 681 333 661 411" stroke="#E5BD61" stroke-width="11" stroke-linecap="round"/>
+  <path d="M215 200C254 162 318 143 386 156C461 171 520 222 540 285" stroke="#D9B160" stroke-width="12" stroke-linecap="round"/>
+  <path d="M214 200C249 241 315 270 390 269C463 268 522 236 548 191" stroke="#9B2F24" stroke-width="5" stroke-linecap="round" opacity=".72"/>
+  <circle cx="214" cy="200" r="18" fill="#B9862E"/>
+  <circle cx="548" cy="191" r="18" fill="#B9862E"/>
+  <path d="M166 594H734L690 694H210L166 594Z" fill="#2D3748"/>
+  <path d="M210 694H690V724H210V694Z" fill="#1A2230"/>
+  <path d="M166 594H734" stroke="#D9B160" stroke-width="10"/>
+  <rect x="292" y="620" width="316" height="48" rx="4" fill="#FFF8EA" stroke="#D9B160" stroke-width="2"/>
+  <path d="M386 649H514" stroke="#B9862E" stroke-width="7" stroke-linecap="round"/>
+  <circle cx="732" cy="148" r="42" fill="#9B2F24"/>
+  <path d="M714 148H750M732 130V166" stroke="#FFF8EA" stroke-width="6" stroke-linecap="round"/>
+  <path d="M111 108L78 74M789 108L822 74M111 592L78 626M789 592L822 626" stroke="#D9B160" stroke-width="4" stroke-linecap="round"/>
+</svg>
