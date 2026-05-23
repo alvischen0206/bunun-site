@@ -7,7 +7,7 @@ import shutil
 from pathlib import Path
 
 
-SITE = Path(r"C:\AI_project\Website_Studio\bunun-site")
+SITE = Path(__file__).resolve().parents[2]
 TAIWAN_SRC = Path(r"C:\Users\bigpa\Documents\New project 5\AI_Taiwan_Travel")
 JAPAN_SRC = Path(r"C:\Users\bigpa\Documents\New project 6\AI_JJAPAN_Travel")
 
@@ -128,6 +128,18 @@ def export_image(src: Path, dest: Path) -> None:
         shutil.copy2(src, fallback)
 
 
+def is_collage_pair(cover: Path, single: Path) -> bool:
+    try:
+        from PIL import Image
+
+        with Image.open(cover) as cover_image, Image.open(single) as single_image:
+            cw, ch = cover_image.size
+            sw, sh = single_image.size
+        return abs(cw - sw * 2) <= 4 and abs(ch - sh * 2) <= 4
+    except Exception:
+        return False
+
+
 def copy_images(posts: list[dict], src_root: Path, target_root: Path) -> None:
     for post in posts:
         asset_dir = target_root / "assets" / str(post["slug"])
@@ -138,16 +150,25 @@ def copy_images(posts: list[dict], src_root: Path, target_root: Path) -> None:
             dest = asset_dir / dest_name
             export_image(path, dest)
             copied.append(f"assets/{post['slug']}/{dest_name}")
+        cover_file = asset_dir / "cover.webp"
+        first_photo = asset_dir / "photo-01.webp"
+        if cover_file.exists() and first_photo.exists() and is_collage_pair(cover_file, first_photo):
+            shutil.copy2(first_photo, cover_file)
         post["local_images"] = copied
         post["cover"] = copied[0] if copied else ""
 
 
-def nav(brand: str) -> str:
+def web_path(base_path: str, path: object) -> str:
+    value = str(path or "").lstrip("./")
+    return f"{base_path}/{value}" if value else ""
+
+
+def nav(brand: str, base_path: str) -> str:
     return f"""
     <header class="travel-header">
-      <a class="travel-brand" href="./index.html"><span></span>{esc(brand)}</a>
+      <a class="travel-brand" href="{esc(base_path)}/"><span></span>{esc(brand)}</a>
       <nav aria-label="travel navigation">
-        <a href="../index.html">Bunun Studio</a>
+        <a href="/">Bunun Studio</a>
       </nav>
     </header>"""
 
@@ -159,11 +180,12 @@ def render_index(
     subtitle: str,
     persona_note: str,
     posts: list[dict],
+    base_path: str,
 ) -> str:
     featured = posts[-1]
-    cards = "\n".join(render_card(post) for post in posts)
+    cards = "\n".join(render_card(post, base_path) for post in posts)
     mosaic = "\n".join(
-        f'<img src="{esc(post.get("cover"))}" alt="{esc(post.get("spot"))}">' for post in posts[:4]
+        f'<img src="{esc(web_path(base_path, post.get("cover")))}" alt="{esc(post.get("spot"))}">' for post in posts[:4]
     )
     return f"""<!doctype html>
 <html lang="zh-Hant">
@@ -172,10 +194,10 @@ def render_index(
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{esc(title)} | Bunun Travel</title>
     <meta name="description" content="{esc(subtitle)}">
-    <link rel="stylesheet" href="./travel.css">
+    <link rel="stylesheet" href="{esc(base_path)}/travel.css">
   </head>
   <body>
-{nav(brand)}
+{nav(brand, base_path)}
     <main>
       <section class="travel-hero">
         <div class="hero-copy">
@@ -186,7 +208,7 @@ def render_index(
             <a class="travel-button primary" href="#posts">閱讀這個 Blog</a>
           </div>
         </div>
-        <div class="photo-mosaic" aria-label="旅遊照片精選">
+        <div class="hero-carousel" aria-label="旅遊照片精選">
           {mosaic}
         </div>
       </section>
@@ -200,23 +222,23 @@ def render_index(
 """
 
 
-def render_card(post: dict) -> str:
+def render_card(post: dict, base_path: str) -> str:
     return f"""
         <article class="post-card">
-          <a href="./{esc(post["slug"])}.html">
-            <img src="{esc(post.get("cover"))}" alt="{esc(post.get("spot"))}">
+          <a href="{esc(base_path)}/{esc(post["slug"])}.html">
+            <img src="{esc(web_path(base_path, post.get("cover")))}" alt="{esc(post.get("spot"))}">
           </a>
           <div class="post-card-body">
           <p class="date-line">{esc(post.get("area"))} / {esc(post.get("spot"))}</p>
-            <h2><a href="./{esc(post["slug"])}.html">{esc(post.get("title"))}</a></h2>
+            <h2><a href="{esc(base_path)}/{esc(post["slug"])}.html">{esc(post.get("title"))}</a></h2>
             <p>{esc(post.get("excerpt"))}</p>
           </div>
         </article>"""
 
 
-def render_article(kind: str, brand: str, collection_title: str, post: dict) -> str:
+def render_article(kind: str, brand: str, collection_title: str, post: dict, base_path: str) -> str:
     gallery = "\n".join(
-        f'<img src="{esc(path)}" alt="{esc(post.get("spot"))} travel photo">'
+        f'<img src="{esc(web_path(base_path, path))}" alt="{esc(post.get("spot"))} travel photo">'
         for path in post.get("local_images", [])[1:5]
     )
     return f"""<!doctype html>
@@ -226,12 +248,12 @@ def render_article(kind: str, brand: str, collection_title: str, post: dict) -> 
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{esc(post.get("title"))} | Bunun Travel</title>
     <meta name="description" content="{esc(post.get("excerpt"))}">
-    <link rel="stylesheet" href="./travel.css">
+    <link rel="stylesheet" href="{esc(base_path)}/travel.css">
   </head>
   <body>
-{nav(brand)}
+{nav(brand, base_path)}
     <main class="article-main">
-      <a class="back-link" href="./index.html">回到{esc(collection_title)}</a>
+      <a class="back-link" href="{esc(base_path)}/">回到{esc(collection_title)}</a>
       <article class="travel-article">
         <header class="article-hero">
           <div>
@@ -239,7 +261,7 @@ def render_article(kind: str, brand: str, collection_title: str, post: dict) -> 
             <h1>{esc(post.get("title"))}</h1>
             <p class="article-lead">{esc(post.get("excerpt"))}</p>
           </div>
-          <img src="{esc(post.get("cover"))}" alt="{esc(post.get("spot"))}">
+          <img src="{esc(web_path(base_path, post.get("cover")))}" alt="{esc(post.get("spot"))}">
         </header>
         <div class="gallery-strip">
           {gallery}
@@ -395,14 +417,17 @@ main {
 }
 .travel-button.ghost { background: rgba(255, 255, 255, 0.68); }
 
-.photo-mosaic {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 14px;
+.hero-carousel {
+  position: relative;
   width: min(100%, 520px);
+  aspect-ratio: 4 / 5;
   margin-left: auto;
+  overflow: hidden;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.72);
+  box-shadow: var(--shadow);
 }
-.photo-mosaic img,
+.hero-carousel img,
 .post-card img,
 .article-hero img,
 .gallery-strip img {
@@ -413,9 +438,20 @@ main {
   background: rgba(255, 255, 255, 0.72);
   border-radius: 8px;
 }
-.photo-mosaic img { aspect-ratio: 4 / 5; }
-.photo-mosaic img {
-  aspect-ratio: 3 / 4;
+.hero-carousel img {
+  position: absolute;
+  inset: 0;
+  border-radius: 10px;
+  opacity: 0;
+  animation: heroFade 18s infinite;
+}
+.hero-carousel img:nth-child(1) { animation-delay: 0s; }
+.hero-carousel img:nth-child(2) { animation-delay: 4.5s; }
+.hero-carousel img:nth-child(3) { animation-delay: 9s; }
+.hero-carousel img:nth-child(4) { animation-delay: 13.5s; }
+@keyframes heroFade {
+  0%, 22% { opacity: 1; }
+  28%, 100% { opacity: 0; }
 }
 
 .post-card h2 {
@@ -558,7 +594,7 @@ main {
     min-height: auto;
     padding-top: 42px;
   }
-  .photo-mosaic { gap: 12px; }
+  .hero-carousel { margin: 0 auto; }
   .post-grid { grid-template-columns: 1fr; }
   .gallery-strip { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .article-hero { min-height: auto; }
@@ -581,6 +617,7 @@ def write_collection(
     title: str,
     subtitle: str,
     persona_note: str,
+    base_path: str,
 ) -> list[dict]:
     target = SITE / target_name
     if target.exists() and target.resolve().parent == SITE.resolve():
@@ -589,12 +626,12 @@ def write_collection(
     copy_images(posts, src, target)
     (target / "travel.css").write_text(CSS, encoding="utf-8")
     (target / "index.html").write_text(
-        render_index(kind, brand, title, subtitle, persona_note, posts),
+        render_index(kind, brand, title, subtitle, persona_note, posts, base_path),
         encoding="utf-8",
     )
     for post in posts:
         (target / f"{post['slug']}.html").write_text(
-            render_article(kind, brand, title, post), encoding="utf-8"
+            render_article(kind, brand, title, post, base_path), encoding="utf-8"
         )
     return posts
 
@@ -690,6 +727,7 @@ def main() -> None:
         "Irene 台灣趴趴造",
         "跟著 Irene 鑽進台灣的山城小路、老街香氣和城市角落，把每一次散步都寫成有畫面的小旅行。",
         "Irene 喜歡把台灣巷弄、山海和老街小吃，收進一篇篇像散步一樣輕鬆的旅行筆記。",
+        "/Taiwan_travel",
     )
     jp_posts = write_collection(
         JAPAN_SRC,
@@ -700,6 +738,7 @@ def main() -> None:
         "Miu旅日生活",
         "跟著 Miu 把日本日常走成一篇篇小冒險，雨後街角、神社風鈴、城下町點心都慢慢收藏起來。",
         "Miu 喜歡在日本街角、神社和小鎮日常裡找驚喜，慢慢寫下像生活一樣的旅行片段。",
+        "/japan_travel",
     )
     mirror_public_collection("Taiwan_travel")
     mirror_public_collection("Japan_travel")
@@ -713,3 +752,4 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
+
