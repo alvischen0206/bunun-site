@@ -545,6 +545,10 @@ main {
   aspect-ratio: 5 / 4;
   box-shadow: var(--shadow);
 }
+.travel-japan .article-hero img {
+  height: auto;
+  aspect-ratio: 3 / 2;
+}
 .article-lead {
   max-width: 600px;
   margin: 20px 0 0;
