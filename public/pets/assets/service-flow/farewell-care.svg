@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" role="img" aria-labelledby="title desc">
+  <title id="title">告別處理</title>
+  <desc id="desc">花、燭光與紀念牌象徵溫柔告別與尊嚴處理。</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#fff7e7"/>
+      <stop offset=".52" stop-color="#eef6f1"/>
+      <stop offset="1" stop-color="#f7fbfd"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="150%">
+      <feDropShadow dx="0" dy="18" stdDeviation="18" flood-color="#21352d" flood-opacity=".14"/>
+    </filter>
+  </defs>
+  <rect width="640" height="360" rx="32" fill="url(#bg)"/>
+  <circle cx="160" cy="90" r="64" fill="#d79b33" opacity=".16"/>
+  <circle cx="502" cy="260" r="88" fill="#8db8ca" opacity=".16"/>
+  <path d="M98 278c100 28 204 28 441-4" fill="none" stroke="#2f7d5a" stroke-width="7" stroke-linecap="round" opacity=".12"/>
+  <g filter="url(#shadow)">
+    <rect x="205" y="172" width="230" height="100" rx="36" fill="#fff7e5" stroke="#d6b36f" stroke-width="5"/>
+    <path d="M248 219h145M276 245h88" stroke="#6d5840" stroke-width="8" stroke-linecap="round" opacity=".75"/>
+    <circle cx="231" cy="205" r="10" fill="#2f7d5a"/>
+    <circle cx="409" cy="205" r="10" fill="#2f7d5a"/>
+  </g>
+  <g filter="url(#shadow)">
+    <path d="M319 156c-30-44-76-61-139-48 15 47 73 66 139 48z" fill="#2f7d5a"/>
+    <path d="M320 156c27-48 73-68 137-61-11 48-67 73-137 61z" fill="#8db8ca"/>
+    <path d="M320 172c-11-47-53-68-140-64M320 172c15-45 61-70 137-77" fill="none" stroke="#34483f" stroke-width="6" stroke-linecap="round" opacity=".82"/>
+  </g>
+  <g filter="url(#shadow)">
+    <rect x="126" y="168" width="54" height="91" rx="18" fill="#fffdfa" stroke="#d7c197" stroke-width="4"/>
+    <path d="M153 132c17 22 19 34 0 50-19-16-17-28 0-50z" fill="#d79b33"/>
+    <path d="M153 150c7 11 8 17 0 25" fill="none" stroke="#fff3cf" stroke-width="5" stroke-linecap="round"/>
+  </g>
+  <g filter="url(#shadow)">
+    <rect x="456" y="158" width="66" height="108" rx="18" fill="#fffdfa" stroke="#c7dccf" stroke-width="4"/>
+    <path d="M476 192h28M476 214h28M476 236h18" stroke="#2f7d5a" stroke-width="7" stroke-linecap="round"/>
+  </g>
+</svg>

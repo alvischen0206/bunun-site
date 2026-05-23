@@ -1,6 +1,13 @@
 {
   "cleanUrls": false,
   "trailingSlash": false,
+  "redirects": [
+    {
+      "source": "/pets",
+      "destination": "/pets/",
+      "permanent": false
+    }
+  ],
   "rewrites": [
     {
       "source": "/jinshunfa",
@@ -13,6 +20,14 @@
     {
       "source": "/jinshunfa/(.*)",
       "destination": "/public/jinshunfa/$1"
+    },
+    {
+      "source": "/pets/",
+      "destination": "/public/pets/index.html"
+    },
+    {
+      "source": "/pets/(.*)",
+      "destination": "/public/pets/$1"
     },
     {
       "source": "/images/(.*)",

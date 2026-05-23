@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" role="img" aria-labelledby="title desc">
+  <title id="title">費用公開</title>
+  <desc id="desc">公開帳本、憑證、金額與個資保護的透明化插畫。</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#eef7f1"/>
+      <stop offset=".5" stop-color="#f8f4ea"/>
+      <stop offset="1" stop-color="#eef7fb"/>
+    </linearGradient>
+    <linearGradient id="book" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#2f7d5a"/>
+      <stop offset="1" stop-color="#1d5f43"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="150%">
+      <feDropShadow dx="0" dy="18" stdDeviation="18" flood-color="#21352d" flood-opacity=".14"/>
+    </filter>
+  </defs>
+  <rect width="640" height="360" rx="32" fill="url(#bg)"/>
+  <circle cx="510" cy="77" r="62" fill="#f2d59c" opacity=".22"/>
+  <circle cx="118" cy="280" r="78" fill="#6f9db2" opacity=".13"/>
+  <path d="M104 284h433" stroke="#d6c29a" stroke-width="8" stroke-linecap="round" opacity=".45"/>
+  <g filter="url(#shadow)">
+    <path d="M157 92h152c25 0 45 20 45 45v133H202c-25 0-45-20-45-45z" fill="url(#book)" stroke="#244337" stroke-width="5"/>
+    <path d="M354 137c0-25 20-45 45-45h84v178h-84c-25 0-45 20-45 45z" fill="#fffdf7" stroke="#244337" stroke-width="5"/>
+    <path d="M354 137v178" stroke="#244337" stroke-width="5"/>
+    <rect x="190" y="127" width="124" height="92" rx="18" fill="#fffdf7" opacity=".95"/>
+    <path d="M216 154h70M216 181h82M216 207h47" stroke="#1f4a38" stroke-width="8" stroke-linecap="round"/>
+    <path d="M392 132h55M392 164h66M392 196h48" stroke="#2f7d5a" stroke-width="8" stroke-linecap="round"/>
+  </g>
+  <g filter="url(#shadow)">
+    <path d="M486 190l59 26v40c0 42-59 67-59 67s-59-25-59-67v-40z" fill="#fff3d0" stroke="#d79b33" stroke-width="5" stroke-linejoin="round"/>
+    <path d="M458 250l20 20 43-54" fill="none" stroke="#2f7d5a" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <g filter="url(#shadow)">
+    <rect x="101" y="177" width="76" height="98" rx="16" fill="#ffffff" stroke="#c7dccf" stroke-width="4"/>
+    <path d="M123 204h32M123 228h28M123 252h36" stroke="#6f9db2" stroke-width="7" stroke-linecap="round"/>
+  </g>
+</svg>
