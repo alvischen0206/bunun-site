@@ -196,7 +196,7 @@ def render_index(
     <meta name="description" content="{esc(subtitle)}">
     <link rel="stylesheet" href="{esc(base_path)}/travel.css">
   </head>
-  <body>
+  <body class="travel-{esc(kind)}">
 {nav(brand, base_path)}
     <main>
       <section class="travel-hero">
@@ -250,7 +250,7 @@ def render_article(kind: str, brand: str, collection_title: str, post: dict, bas
     <meta name="description" content="{esc(post.get("excerpt"))}">
     <link rel="stylesheet" href="{esc(base_path)}/travel.css">
   </head>
-  <body>
+  <body class="travel-{esc(kind)}">
 {nav(brand, base_path)}
     <main class="article-main">
       <a class="back-link" href="{esc(base_path)}/">回到{esc(collection_title)}</a>
@@ -452,6 +452,13 @@ main {
 @keyframes heroFade {
   0%, 22% { opacity: 1; }
   28%, 100% { opacity: 0; }
+}
+.travel-japan .hero-carousel {
+  width: min(100%, 560px);
+  aspect-ratio: 3 / 2;
+}
+.travel-japan .article-hero img {
+  aspect-ratio: 3 / 2;
 }
 
 .post-card h2 {
