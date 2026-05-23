@@ -599,6 +599,15 @@ def write_collection(
     return posts
 
 
+def mirror_public_collection(target_name: str) -> None:
+    source = SITE / target_name
+    target = SITE / "public" / target_name
+    public_root = (SITE / "public").resolve()
+    if target.exists() and target.resolve().parent == public_root:
+        shutil.rmtree(target)
+    shutil.copytree(source, target)
+
+
 def update_vercel() -> None:
     path = SITE / "vercel.json"
     data = json.loads(path.read_text(encoding="utf-8-sig"))
@@ -629,6 +638,8 @@ def write_log(tw_posts: list[dict], jp_posts: list[dict], tw_skipped: list[dict]
         "- Source Japan: `C:\\Users\\bigpa\\Documents\\New project 6\\AI_JJAPAN_Travel`",
         "- Destination Taiwan draft: `Taiwan_travel/`",
         "- Destination Japan draft: `Japan_travel/`",
+        "- Production mirror Taiwan: `public/Taiwan_travel/`",
+        "- Production mirror Japan: `public/Japan_travel/`",
         "- Current rule: source folders are read-only; blog pages copy article text from `## Blog 文章` and copy referenced image files into the website draft folders.",
         "- Future update check: compare source `posts/*.md` and `images/*` LastWriteTime with the files listed below; add new/changed posts to the website draft, then update this log.",
         "- Incremental rule: next update should compare source post slugs against `manifest.json` and only generate slugs that are not listed there, unless the user explicitly asks to rebuild everything.",
@@ -690,6 +701,8 @@ def main() -> None:
         "跟著 Miu 把日本日常走成一篇篇小冒險，雨後街角、神社風鈴、城下町點心都慢慢收藏起來。",
         "Miu 喜歡在日本街角、神社和小鎮日常裡找驚喜，慢慢寫下像生活一樣的旅行片段。",
     )
+    mirror_public_collection("Taiwan_travel")
+    mirror_public_collection("Japan_travel")
     update_vercel()
     write_log(tw_posts, jp_posts, tw_skipped, jp_skipped)
     print(

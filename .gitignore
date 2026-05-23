@@ -35,3 +35,4 @@ public/images/diagrams/manifest.json
 Thumbs.db
 .vscode/
 .idea/
+.vercel

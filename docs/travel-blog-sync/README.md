@@ -5,6 +5,8 @@
 - Source Japan: `C:\Users\bigpa\Documents\New project 6\AI_JJAPAN_Travel`
 - Destination Taiwan draft: `Taiwan_travel/`
 - Destination Japan draft: `Japan_travel/`
+- Production mirror Taiwan: `public/Taiwan_travel/`
+- Production mirror Japan: `public/Japan_travel/`
 - Current rule: source folders are read-only; blog pages copy article text from `## Blog 文章` and copy referenced image files into the website draft folders.
 - Future update check: compare source `posts/*.md` and `images/*` LastWriteTime with the files listed below; add new/changed posts to the website draft, then update this log.
 - Incremental rule: next update should compare source post slugs against `manifest.json` and only generate slugs that are not listed there, unless the user explicitly asks to rebuild everything.
