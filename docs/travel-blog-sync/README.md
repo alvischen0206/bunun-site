@@ -1,0 +1,117 @@
+# Travel Blog Sync Log
+
+- Last draft sync: latest local draft
+- Source Taiwan: `C:\Users\bigpa\Documents\New project 5\AI_Taiwan_Travel`
+- Source Japan: `C:\Users\bigpa\Documents\New project 6\AI_JJAPAN_Travel`
+- Destination Taiwan draft: `Taiwan_travel/`
+- Destination Japan draft: `Japan_travel/`
+- Current rule: source folders are read-only; blog pages copy article text from `## Blog 文章` and copy referenced image files into the website draft folders.
+- Future update check: compare source `posts/*.md` and `images/*` LastWriteTime with the files listed below; add new/changed posts to the website draft, then update this log.
+- Incremental rule: next update should compare source post slugs against `manifest.json` and only generate slugs that are not listed there, unless the user explicitly asks to rebuild everything.
+- Homepage image rule: pick visually varied actions for the four hero photos; avoid images that crop off the face, cut the body awkwardly, or repeat the same pose too closely.
+- Global image crop rule: all homepage, card, article hero, and gallery images must avoid cutting off faces, heads, hands, or awkward body parts. Prefer `object-fit: contain` or a safer image selection over aggressive cropping.
+
+## Taiwan Draft Posts
+
+- `hsinchu-city-temple` / 新竹都城隍廟｜廟口香氣裡的小旅行
+- `hualien-qixingtan` / 七星潭｜把心情交給太平洋的藍色早晨
+- `kaohsiung-cijin` / 旗津海岸｜把心情吹成橘粉色的海邊傍晚
+- `keelung-zhengbin` / 正濱漁港｜被彩色小屋哄好的港邊午後
+- `newtaipei-jiufen` / 九份老街｜山城燈籠亮起來的溫柔傍晚
+- `taichung-gaomei` / 高美濕地｜風很大但夕陽好溫柔
+- `tainan-anping` / 安平古堡｜紅磚牆旁邊慢慢喜歡台南
+- `taipei-xiangshan` / 象山步道｜換一個高度重新喜歡台北
+- `taoyuan-daxi` / 大溪老街｜午後老街裡甜甜的復古感
+- `nantou-sunmoonlake` / 日月潭｜把雲和湖光一起收進口袋
+- `taitung-sanxiantai` / 三仙台｜海風把我頭髮吹成心動形狀
+- `chiayi-fenqihu` / 奮起湖老街｜雲霧裡的便當香把我抱緊緊
+- `yilan-luodong-forestry-culture-park` / 羅東林業文化園區｜梅雨天的木香把我哄慢了
+- `pingtung-kenting-longpan-park` / 龍磐公園｜海風把我吹得好自由
+- `tainan-sicao-green-tunnel` / 四草綠色隧道｜被滿滿綠意抱一下
+- `hualien-qingshui-cliff` / 清水斷崖｜海風把心跳吹得好大聲
+- `taipei-maokong-gondola` / 貓空纜車｜把台北收進雲霧裡
+- `miaoli-longteng-bridge` / 龍騰斷橋｜在紅磚拱門裡偷走一點風
+- `changhua-lukang-old-street` / 鹿港老街｜把午後雨聲收進摺扇裡
+- `newtaipei-shifen-waterfall` / 十分瀑布｜被水霧親到的夏天前奏
+- `tainan-chimei-museum` / 奇美博物館｜把夏天亮成白色宮殿
+- `newtaipei-yehliu-geopark` / 野柳地質公園｜被海風吹成地質小探險
+- `newtaipei-tamsui-fishermans-wharf` / 淡水漁人碼頭｜把夕陽吹成甜甜的海風
+- `taitung-chishang-brown-boulevard` / 池上伯朗大道｜在稻浪裡騎進夏天
+- `taipei-dihua-street` / 迪化街｜在紅磚騎樓裡偷一點老台北甜味
+- `yilan-taipingshan-bongbong-train` / 太平山蹦蹦車｜把霧氣坐成森林小冒險
+- `penghu-qimei-twin-hearts-stone-weir` / 七美雙心石滬｜把海風收進小小心事裡
+- `kaohsiung-lotus-pond-dragon-tiger-pagodas` / 蓮池潭龍虎塔｜把好運走成湖邊小雀躍
+- `taipei-beitou-thermal-valley` / 北投地熱谷｜把霧氣走成軟綿綿的心情
+- `nantou-qingjing-green-green-grassland` / 清境青青草原｜把雲朵牧場走成小小心動
+- `taipei-national-palace-museum` / 國立故宮博物院｜把青綠屋簷收進小小心跳
+- `yunlin-beigang-chaotian-temple` / 北港朝天宮｜把香火街景走成甜甜小祈願
+- `taitung-duoliang-station` / 多良車站｜把海風和火車聲收進心裡
+- `kaohsiung-weiwuying-national-arts-center` / 衛武營國家藝術文化中心｜在白色波浪下偷一點晚風
+- `kinmen-deyue-tower-shuitou-settlement` / 得月樓與水頭聚落｜在紅磚巷口把晚風收藏
+- `changhua-baguashan-great-buddha` / 八卦山大佛｜在山腰把彰化風景慢慢收進心裡
+- `pingtung-xiaoliuqiu-vase-rock` / 小琉球花瓶岩｜把海風收進透明藍裡
+- `chiayi-alishan-sisters-ponds` / 阿里山姊妹潭｜把霧氣收進森林心跳裡
+- `hsinchu-neiwan-old-street` / 內灣老街｜把山城小火車走成甜甜回憶
+- `newtaipei-jinguashi-gold-museum` / 金瓜石黃金博物館｜把山城礦光收進小小心事
+- `newtaipei-wulai-old-street-waterfall` / 烏來老街與烏來瀑布｜雨後山谷裡的小小甜心散步
+- `tainan-chihkan-tower` / 赤崁樓｜在紅磚古城裡偷一口府城晚風
+- `miaoli-nanzhuang-old-street-guihua-alley` / 南庄老街桂花巷｜把山城甜香藏進裙襬裡
+- `taichung-national-taichung-theater` / 臺中國家歌劇院｜在曲牆裡聽見城市呼吸
+- `taipei-bangka-longshan-temple` / 艋舺龍山寺｜在香火與老街光影裡慢慢許願
+
+## Japan Draft Posts
+
+- `kyoto-kiyomizudera` / 京都清水寺｜被京都溫柔包起來的一天
+- `tokyo-asakusa-sensoji` / 東京淺草寺｜在人群裡收集東京的小禮物
+- `hokkaido-otaru-canal` / 北海道小樽運河｜越待越喜歡的復古浪漫
+- `okinawa-kouri-bridge` / 沖繩古宇利大橋｜藍到讓人忘記呼吸的海
+- `nara-park` / 奈良公園｜遇見小鹿就亮起來的一天
+- `kawaguchiko-sakura-ubuya` / 河口湖櫻花與 Ubuya｜醒來就看見富士山的粉色早晨
+- `kyoto-arashiyama` / 京都嵐山｜在竹林和河風裡慢慢變輕
+- `kanazawa-kenrokuen` / 金澤兼六園｜像把時間放慢的日式庭園
+- `hiroshima-miyajima` / 廣島宮島｜海風裡的鳥居和楓葉饅頭
+- `fukuoka-itoshima` / 福岡糸島｜白色鳥居旁邊的海邊小假期
+- `hakone-lake-ashi` / 箱根蘆之湖｜霧氣裡的水上鳥居和一杯熱飲
+- `gifu-shirakawa-go` / 白川鄉合掌村｜雨後木屋的溫柔反光與一串五平餅
+- `nagano-kamikochi` / 上高地｜把呼吸交給山和梓川的那一天
+- `osaka-dotonbori` / 道頓堀｜把霓虹的倒影收進眼睛裡
+- `tokyo-shinjuku-gyoen` / 東京新宿御苑｜把城市的吵，換成一整片綠
+- `kagawa-naoshima-yellow-pumpkin` / 直島黃南瓜｜在瀨戶內海邊，遇見最可愛的點點
+- `toyama-tateyama-yuki-no-otani` / 雪之大谷｜在白色雪牆裡走路，真的會安靜下來
+- `kyoto-fushimi-inari-senbon-torii` / 伏見稻荷千本鳥居｜走進朱紅隧道，雜念會被洗掉一點點
+- `nara-kasuga-taisha-wakakusa` / 奈良春日大社與若草山｜被石燈籠和夕陽溫柔牽著走
+- `tochigi-nikko-toshogu-yomeimon` / 日光東照宮陽明門｜雨後的金色雕刻，亮得像在呼吸
+- `kanagawa-kamakura-hasedera-ajisai` / 鎌倉長谷寺紫陽花路｜在雨季，把心交給一整坡藍紫
+- `aomori-warasse-bay-bridge` / 青森ワ・ラッセ與海灣大橋｜把紅色立面和藍調海風一起收進相機
+- `tottori-sand-dunes` / 鳥取砂丘｜把風紋走成一張明信片的午後
+- `yamagata-ginzan-onsen` / 山形銀山溫泉｜藍調時刻的瓦斯燈散步：大正浪漫木造旅館沿著銀山川
+- `hokkaido-biei-shirogane-blue-pond` / 北海道美瑛白金青い池｜把藍綠色收進眼睛裡的午後
+- `okayama-kurashiki-bikan-quarter` / 岡山倉敷美觀地區｜雨後白壁與柳影，把散步走慢一點
+- `ehime-dogo-onsen` / 愛媛道後溫泉｜雨後傍晚的本館、商店街與路面電車
+- `wakayama-nachi-falls` / 和歌山那智瀑布｜雨季裡被杉木林和水氣抱住的一天
+- `yamaguchi-motonosumi-shrine` / 山口元乃隅神社｜紅色鳥居把海風串成一條路
+- `miyagi-matsushima-bay` / 宮城松島灣｜海上小島把夏天吹得好柔軟
+- `kanagawa-yokohama-minato-mirai` / 橫濱港未來｜把青春感穿進海風和摩天輪裡
+- `kochi-katsurahama` / 高知桂濱｜把太平洋海風收進草帽裡
+- `nagasaki-glover-garden` / 長崎哥拉巴園｜在斜坡和港風裡慢慢變成明信片
+- `hyogo-himeji-castle` / 姬路城｜在白鷺城的白牆下把心情拍亮
+- `mie-ise-jingu-okage-yokocho` / 伊勢神宮內宮｜在宇治橋和老街之間慢慢把心安放好
+- `hokkaido-furano-farm-tomita` / 富田農場｜在花田坡道上走到心也變柔軟了
+- `kumamoto-aso-kusasenri` / 阿蘇草千里｜在火山草原把心情吹成亮亮的綠色
+- `akita-kakunodate-samurai-district` / 角館武家屋敷通｜在黑板塀小路把雨聲收進旅日記
+- `shiga-omihachiman-hachimanbori` / 近江八幡八幡堀｜坐進水巷，把老街的白牆慢慢收進心裡
+- `niigata-sado-ogi-taraibune` / 佐渡小木たらい舟｜坐進圓圓木舟，把海風划成亮晶晶的夏天
+- `fukushima-ouchi-juku` / 大內宿｜走進茅葺老街，把夏天收成一碗蔥蕎麥
+- `tokushima-iya-kazurabashi` / 祖谷藤蔓橋｜踩著山谷微風，慢慢跨過會搖的夏天
+- `gunma-kusatsu-onsen-yubatake` / 草津溫泉湯畑｜把山裡的白煙收進暖暖旅日記
+- `kagoshima-sakurajima-yunohira` / 櫻島｜在火山海風裡，把旅程走得亮亮的
+- `miyazaki-aoshima-shrine` / 青島神社｜在南國海風裡，把願望綁得甜甜的
+- `aichi-inuyama-castle` / 犬山城｜在木曾川風裡，把城下町走成夏日小冒險
+- `iwate-geibikei-gorge` / 岩手猊鼻溪｜在峽谷小船裡，把願望丟進風裡
+- `fukui-eiheiji-temple` / 永平寺｜雨後杉林裡，把心也放輕一點
+- `shimane-izumo-taisha` / 出雲大社｜在雨後參道，把心願輕輕收好
+- `saitama-kawagoe-kurazukuri-hikawa` / 川越藏造老街｜雨後小江戶的風鈴甜甜散步
+
+## Skipped Source Items
+
+- None

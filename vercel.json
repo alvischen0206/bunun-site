@@ -29,6 +29,30 @@
     {
       "source": "/images/(.*)",
       "destination": "/public/images/$1"
+    },
+    {
+      "source": "/Taiwan_travel",
+      "destination": "/Taiwan_travel/index.html"
+    },
+    {
+      "source": "/Taiwan_travel/",
+      "destination": "/Taiwan_travel/index.html"
+    },
+    {
+      "source": "/Taiwan_travel/(.*)",
+      "destination": "/Taiwan_travel/$1"
+    },
+    {
+      "source": "/japan_travel",
+      "destination": "/Japan_travel/index.html"
+    },
+    {
+      "source": "/japan_travel/",
+      "destination": "/Japan_travel/index.html"
+    },
+    {
+      "source": "/japan_travel/(.*)",
+      "destination": "/Japan_travel/$1"
     }
   ],
   "headers": [
