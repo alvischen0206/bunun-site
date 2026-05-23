@@ -1784,6 +1784,18 @@ td small {
   margin-top: 18px;
 }
 
+.member-detail-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
+  gap: 18px;
+  margin-bottom: 18px;
+}
+
+.sensitive-panel {
+  border-color: rgba(166, 93, 31, .28);
+  background: linear-gradient(180deg, #fffaf3, #fff);
+}
+
 .admin-login-actions .button {
   min-width: 132px;
 }

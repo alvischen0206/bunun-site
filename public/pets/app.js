@@ -197,6 +197,7 @@ function normalizeData() {
 normalizeData();
 
 let activeAdmin = "dashboard";
+let activeMemberId = "";
 let adminLoggedIn = sessionStorage.getItem("charityAdminLoggedIn") === "true";
 let currentAdminRole = sessionStorage.getItem("charityAdminRole") || "admin";
 let currentAdminUsername = sessionStorage.getItem("charityAdminUsername") || db.adminAuth.username;
@@ -588,6 +589,81 @@ function filteredTable(kind, rows, config) {
 function crudList(title, addText, collection, headers, rows, idGetter) {
   const source = db[collection];
   return `<div class="admin-top"><div><h1>${title}</h1><p>支援新增、編輯與刪除。</p></div><button class="button" data-admin-create="${collection}">${addText}</button></div>${table(headers, rows, collection, source.map(idGetter))}`;
+}
+
+function memberKeyFrom(parts) {
+  const email = String(parts.email || "").trim().toLowerCase();
+  const phone = String(parts.phone || "").replace(/\D/g, "");
+  const lineId = String(parts.lineId || "").trim().toLowerCase();
+  const name = String(parts.name || "").trim();
+  if (email) return `email:${email}`;
+  if (phone) return `phone:${phone}`;
+  if (lineId) return `line:${lineId}`;
+  return name ? `name:${name}` : "";
+}
+
+function readonlyTable(headers, rows) {
+  return `<div class="table-wrap"><table><thead><tr>${headers.map(h => `<th>${h}</th>`).join("")}</tr></thead><tbody>${rows.length ? rows.map(row => `<tr>${row.map(cell => `<td>${cell}</td>`).join("")}</tr>`).join("") : `<tr><td class="empty" colspan="${headers.length}">沒有符合條件的資料</td></tr>`}</tbody></table></div>`;
+}
+
+function buildMembers() {
+  const map = new Map();
+  const ensure = input => {
+    const key = memberKeyFrom(input);
+    if (!key) return null;
+    if (!map.has(key)) {
+      map.set(key, { id: key, name: input.name || "", phone: input.phone || "", email: input.email || "", lineId: input.lineId || "", address: input.address || "", area: input.area || "", roles: new Set(), donations: [], orders: [], adoptions: [], contacts: [] });
+    }
+    const member = map.get(key);
+    ["name", "phone", "email", "lineId", "address", "area"].forEach(field => {
+      if (!member[field] && input[field]) member[field] = input[field];
+    });
+    if (input.role) member.roles.add(input.role);
+    return member;
+  };
+  safeList(db.donations).forEach(item => {
+    if (item.anonymous && !item.email && !item.phone) return;
+    const member = ensure({ name: item.name, phone: item.phone, email: item.email, role: "捐款人" });
+    if (member) member.donations.push(item);
+  });
+  safeList(db.orders).forEach(item => {
+    const member = ensure({ name: item.buyer, phone: item.phone, email: item.email, address: item.address, role: "購買商品者" });
+    if (member) member.orders.push(item);
+  });
+  safeList(db.adoptionApplications).forEach(item => {
+    const member = ensure({ name: item.applicant, phone: item.phone, email: item.email, lineId: item.lineId, area: item.city, role: "認養申請者" });
+    if (member) member.adoptions.push(item);
+  });
+  safeList(db.serviceContacts).forEach(item => {
+    const member = ensure({ name: item.name, phone: item.phone, email: item.email, lineId: item.lineId, area: item.area, role: "志工/聯絡" });
+    if (member) member.contacts.push(item);
+  });
+  return [...map.values()].map(member => {
+    member.roles = [...member.roles];
+    member.donationTotal = sum(member.donations);
+    member.orderTotal = member.orders.reduce((total, item) => total + Number(item.total || 0), 0);
+    member.lastActivity = [member.donations[0]?.paidAt, member.orders[0]?.createdAt, member.adoptions[0]?.appliedAt, member.contacts[0]?.createdAt].filter(Boolean).sort().reverse()[0] || "";
+    return member;
+  }).sort((a, b) => String(b.lastActivity).localeCompare(String(a.lastActivity)));
+}
+
+function memberSummaryPanel(member) {
+  return `<div class="member-detail-grid"><article class="panel sensitive-panel"><span class="tag">機敏資料</span><h2>${esc(member.name || "未填姓名")}</h2><div class="money-ledger"><div><span>Email</span><strong>${esc(member.email || "-")}</strong></div><div><span>電話</span><strong>${esc(member.phone || "-")}</strong></div><div><span>LINE</span><strong>${esc(member.lineId || "-")}</strong></div><div><span>地址/地區</span><strong>${esc(member.address || member.area || "-")}</strong></div><div><span>身份標籤</span><strong>${member.roles.map(role => badge(role)).join(" ") || "-"}</strong></div></div><p class="muted-note">此頁含個資與互動紀錄，正式系統應限制權限並留下查閱紀錄。</p></article><article class="panel"><h2>會員統計</h2>${metricGrid([["捐款總額", money(member.donationTotal)], ["捐款次數", member.donations.length], ["購買總額", money(member.orderTotal)], ["購買次數", member.orders.length], ["服務紀錄", member.adoptions.length + member.contacts.length]])}</article></div>`;
+}
+
+function memberDetailPanel(member) {
+  return `<div class="admin-top"><div><h1>會員詳細資料</h1><p>整合此會員填寫過的聯絡方式、捐款、購買、認養與志工/聯絡紀錄。</p></div><button class="button secondary" type="button" data-member-back>回會員列表</button></div>${memberSummaryPanel(member)}<div class="panel"><h2>捐款紀錄</h2>${readonlyTable(["日期", "捐款編號", "專案", "金額", "付款", "收據", "狀態"], member.donations.map(item => [item.paidAt || "-", item.no || "-", item.campaign || "-", money(item.amount), item.method || "-", item.receiptNo || "-", badge(item.status || "-")]))}</div><div class="panel" style="margin-top:18px"><h2>購買紀錄</h2>${readonlyTable(["日期", "訂單", "品項", "金額", "付款", "發票", "出貨"], member.orders.map(item => [item.createdAt || "-", item.no || "-", item.item || "-", money(item.total), item.payment || "-", badge(item.invoiceStatus || "-"), badge(item.status || "-")]))}</div><div class="panel" style="margin-top:18px"><h2>認養申請紀錄</h2>${readonlyTable(["日期", "申請編號", "犬隻", "電話", "LINE", "狀態"], member.adoptions.map(item => [item.appliedAt || "-", item.no || "-", `${item.dogId || ""} ${item.dogName || ""}`, item.phone || "-", item.lineId || "-", badge(item.status || "-")]))}</div><div class="panel" style="margin-top:18px"><h2>志工與聯絡紀錄</h2>${readonlyTable(["日期", "聯絡編號", "項目", "可協助時段", "地區", "狀態"], member.contacts.map(item => [item.createdAt || "-", item.no || "-", item.type || "-", item.time || "-", item.area || "-", badge(item.status || "-")]))}</div>`;
+}
+
+function membersPanel() {
+  const members = buildMembers();
+  const selected = members.find(member => member.id === activeMemberId);
+  if (selected) return memberDetailPanel(selected);
+  const donors = members.filter(member => member.donations.length).length;
+  const buyers = members.filter(member => member.orders.length).length;
+  const serviceUsers = members.filter(member => member.adoptions.length || member.contacts.length).length;
+  const rows = members.map(member => [esc(member.name || "未填姓名"), member.roles.map(role => badge(role)).join(" "), esc(member.phone || "-"), esc(member.email || "-"), esc(member.lineId || "-"), money(member.donationTotal), money(member.orderTotal), member.adoptions.length + member.contacts.length, `<button class="button secondary" type="button" data-member-detail="${esc(member.id)}">查看會員</button>`]);
+  return `<div class="admin-top"><div><h1>會員管理</h1><p>彙整所有填過個人資料的人：捐款人、商品購買者、認養申請者、志工與聯絡者。此區含機敏個資，放在系統設定上方並應限制權限。</p></div></div>${metricGrid([["會員總數", members.length], ["捐款人", donors], ["購買商品者", buyers], ["服務/志工相關", serviceUsers], ["會員捐款總額", money(members.reduce((total, item) => total + item.donationTotal, 0))]])}<div class="panel"><h2>會員列表</h2>${readonlyTable(["姓名", "身份", "電話", "Email", "LINE", "捐款總額", "購買總額", "服務紀錄", "查看"], rows)}</div>`;
 }
 
 function table(headers, rows, collection = "", ids = []) {
@@ -1607,10 +1683,15 @@ Object.assign(adminLabels, {
   adoptionApplications: "認養申請",
   serviceContacts: "志工與聯絡"
 });
+Object.assign(adminLabels, { members: "會員管理" });
 if (!navGroups.some(([, keys]) => keys.includes("adoptionApplications"))) {
   navGroups.splice(3, 0, ["服務類", ["serviceOverview", "adoptionApplications", "serviceContacts", "farewell"]]);
   const oldServiceGroup = navGroups.find(([, keys]) => keys.includes("dogs") && keys.includes("farewell"));
   if (oldServiceGroup) oldServiceGroup[1] = oldServiceGroup[1].filter(key => key !== "farewell");
+}
+if (!navGroups.some(([, keys]) => keys.includes("members"))) {
+  const settingsIndex = navGroups.findIndex(([, keys]) => keys.includes("settings"));
+  navGroups.splice(settingsIndex >= 0 ? settingsIndex : navGroups.length, 0, ["敏感資料", ["members"]]);
 }
 
 appliedFilters.orders = appliedFilters.orders || emptyFilters();
@@ -1799,6 +1880,7 @@ function adminView(key) {
   if (key === "products") return crudList("商品管理", "新增商品", "products", ["商品編號", "商品", "分類", "價格", "庫存", "說明", "狀態"], db.products.map(p => [p.id, p.name, p.category, money(p.price), p.stock, p.desc, badge(p.status)]), p => p.id);
   if (key === "orders") return filteredTable("orders", db.orders, orderConfig());
   if (key === "invoice") return filteredTable("invoice", db.orders, invoiceConfig());
+  if (key === "members") return membersPanel();
   if (key === "settings") return settingsPanel();
   return "";
 }
@@ -1818,6 +1900,17 @@ function render() {
 }
 
 function bindRepairLayer() {
+  document.querySelectorAll("[data-member-detail]").forEach(button => button.addEventListener("click", () => {
+    activeMemberId = button.dataset.memberDetail || "";
+    render();
+  }));
+  document.querySelectorAll("[data-admin]").forEach(button => button.addEventListener("click", () => {
+    if (button.dataset.admin !== "members") activeMemberId = "";
+  }));
+  document.querySelector("[data-member-back]")?.addEventListener("click", () => {
+    activeMemberId = "";
+    render();
+  });
   document.querySelector("#frontDonationForm")?.addEventListener("submit", event => {
     event.preventDefault();
     event.stopImmediatePropagation();
@@ -1830,7 +1923,10 @@ function bindRepairLayer() {
     const anonymous = document.querySelector("#frontAnonymousDonation")?.checked || false;
     const nameInput = document.querySelector("#frontDonorName")?.value.trim() || "未填姓名";
     const donorName = anonymous ? "匿名捐款人" : nameInput;
+    const donorEmail = document.querySelector("#frontDonorEmail")?.value.trim() || "";
+    const donorPhone = document.querySelector("#frontDonorPhone")?.value.trim() || "";
     const receiptTitle = document.querySelector("#frontReceiptTitle")?.value.trim() || donorName;
+    const donationNote = document.querySelector("#frontDonationNote")?.value.trim() || "";
     const paymentMethod = document.querySelector("#frontDonationMethod")?.value || "信用卡";
     const no = `DN${Date.now()}`;
     const receiptNo = receiptType === "不需收據" ? "不需收據" : `R${Date.now()}`;
@@ -1838,6 +1934,8 @@ function bindRepairLayer() {
       no,
       paidAt: today,
       name: donorName,
+      email: donorEmail,
+      phone: donorPhone,
       amount,
       campaign,
       method: paymentMethod,
@@ -1846,6 +1944,8 @@ function bindRepairLayer() {
       subject: campaign === "善終服務基金" ? "4103 善終服務基金收入" : "4101 捐款收入",
       receiptNo,
       receiptType,
+      receiptTitle,
+      note: donationNote,
       status: paymentMethod === "信用卡" ? "已入帳" : "待對帳"
     });
     if (receiptType !== "不需收據") {
