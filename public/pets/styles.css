@@ -1636,6 +1636,17 @@ td small {
   background: #fff;
 }
 
+.recurring-period-row {
+  align-items: end;
+  margin-bottom: 14px;
+}
+
+.field-note {
+  margin: 0 0 10px;
+  color: var(--muted);
+  font-size: 14px;
+}
+
 .check-line,
 .free-shipping-note {
   display: flex;
