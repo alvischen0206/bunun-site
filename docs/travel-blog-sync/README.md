@@ -77,7 +77,6 @@
 - `gifu-shirakawa-go` / 白川鄉合掌村｜雨後木屋的溫柔反光與一串五平餅
 - `nagano-kamikochi` / 上高地｜把呼吸交給山和梓川的那一天
 - `osaka-dotonbori` / 道頓堀｜把霓虹的倒影收進眼睛裡
-- `tokyo-shinjuku-gyoen` / 東京新宿御苑｜把城市的吵，換成一整片綠
 - `kagawa-naoshima-yellow-pumpkin` / 直島黃南瓜｜在瀨戶內海邊，遇見最可愛的點點
 - `toyama-tateyama-yuki-no-otani` / 雪之大谷｜在白色雪牆裡走路，真的會安靜下來
 - `kyoto-fushimi-inari-senbon-torii` / 伏見稻荷千本鳥居｜走進朱紅隧道，雜念會被洗掉一點點
@@ -117,3 +116,7 @@
 ## Skipped Source Items
 
 - None
+
+## Excluded Source Items
+
+- Japan `tokyo-shinjuku-gyoen` intentionally excluded from public output because the available images were not suitable.

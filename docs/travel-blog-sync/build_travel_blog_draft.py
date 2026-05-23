@@ -11,6 +11,13 @@ SITE = Path(__file__).resolve().parents[2]
 TAIWAN_SRC = Path(r"C:\Users\bigpa\Documents\New project 5\AI_Taiwan_Travel")
 JAPAN_SRC = Path(r"C:\Users\bigpa\Documents\New project 6\AI_JJAPAN_Travel")
 
+EXCLUDED_SLUGS = {
+    "taiwan": set(),
+    # Image set is unsuitable: the cover is a collage and the single extracted
+    # frame has awkward cropping, so keep this post out of the public blog.
+    "japan": {"tokyo-shinjuku-gyoen"},
+}
+
 MOJIBAKE_HINTS = ("�", "", "嚗", "銝", "撠", "蝝", "摨", "憟", "隞", "餈", "摰")
 
 
@@ -709,6 +716,13 @@ def write_log(tw_posts: list[dict], jp_posts: list[dict], tw_skipped: list[dict]
         lines.append(f"- Taiwan `{post.get('slug')}` skipped because the source text looked unreadable or had no Blog section.")
     for post in jp_skipped:
         lines.append(f"- Japan `{post.get('slug')}` skipped because the source text looked unreadable or had no Blog section.")
+    lines.extend(["", "## Excluded Source Items", ""])
+    if not EXCLUDED_SLUGS["taiwan"] and not EXCLUDED_SLUGS["japan"]:
+        lines.append("- None")
+    for slug in sorted(EXCLUDED_SLUGS["taiwan"]):
+        lines.append(f"- Taiwan `{slug}` intentionally excluded from public output.")
+    for slug in sorted(EXCLUDED_SLUGS["japan"]):
+        lines.append(f"- Japan `{slug}` intentionally excluded from public output because the available images were not suitable.")
     lines.append("")
     (log_dir / "README.md").write_text("\n".join(lines), encoding="utf-8")
 
@@ -720,6 +734,10 @@ def write_log(tw_posts: list[dict], jp_posts: list[dict], tw_skipped: list[dict]
             "taiwan": [str(post.get("slug")) for post in tw_skipped],
             "japan": [str(post.get("slug")) for post in jp_skipped],
         },
+        "excluded": {
+            "taiwan": sorted(EXCLUDED_SLUGS["taiwan"]),
+            "japan": sorted(EXCLUDED_SLUGS["japan"]),
+        },
     }
     (log_dir / "manifest.json").write_text(
         json.dumps(manifest, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
@@ -729,6 +747,8 @@ def write_log(tw_posts: list[dict], jp_posts: list[dict], tw_skipped: list[dict]
 def main() -> None:
     tw_all, tw_skipped = list_readable_posts(TAIWAN_SRC)
     jp_all, jp_skipped = list_readable_posts(JAPAN_SRC)
+    tw_all = [post for post in tw_all if post.get("slug") not in EXCLUDED_SLUGS["taiwan"]]
+    jp_all = [post for post in jp_all if post.get("slug") not in EXCLUDED_SLUGS["japan"]]
     tw_posts = write_collection(
         TAIWAN_SRC,
         tw_all,

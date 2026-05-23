@@ -240,10 +240,6 @@
       "title": "道頓堀｜把霓虹的倒影收進眼睛裡"
     },
     {
-      "slug": "tokyo-shinjuku-gyoen",
-      "title": "東京新宿御苑｜把城市的吵，換成一整片綠"
-    },
-    {
       "slug": "kagawa-naoshima-yellow-pumpkin",
       "title": "直島黃南瓜｜在瀨戶內海邊，遇見最可愛的點點"
     },
@@ -387,5 +383,11 @@
   "skipped": {
     "taiwan": [],
     "japan": []
+  },
+  "excluded": {
+    "taiwan": [],
+    "japan": [
+      "tokyo-shinjuku-gyoen"
+    ]
   }
 }
