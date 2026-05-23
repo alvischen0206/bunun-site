@@ -1959,9 +1959,29 @@ function bindRepairLayer() {
   document.querySelectorAll("input[name='frontDonationCampaign']").forEach(input => input.addEventListener("change", () => {
     document.querySelector("#donationSummaryCampaign").textContent = input.value;
   }));
+  const updateDonationFrequencySummary = () => {
+    const frequencyType = document.querySelector("input[name='frontDonationFrequency']:checked")?.value || "單次捐款";
+    const periodSelect = document.querySelector("#frontRecurringPeriod");
+    const amount = Number(document.querySelector("#frontDonationAmount")?.value || 0);
+    const isRecurring = frequencyType === "定期定額";
+    const amountRow = document.querySelector("#donationSummaryAmount")?.closest("div");
+    if (amountRow && !document.querySelector("#donationSummaryFrequency")) {
+      amountRow.insertAdjacentHTML("afterend", `<div><span>扣款方式</span><strong id="donationSummaryFrequency">單次捐款</strong></div>`);
+    }
+    if (periodSelect) {
+      periodSelect.disabled = !isRecurring;
+      periodSelect.closest(".field")?.classList.toggle("disabled", !isRecurring);
+    }
+    const summary = document.querySelector("#donationSummaryFrequency");
+    if (summary) summary.textContent = isRecurring ? `${periodSelect?.value || "每月"}，每期 ${frontMoney(amount)}` : "單次捐款";
+  };
+  updateDonationFrequencySummary();
+  document.querySelectorAll("input[name='frontDonationFrequency']").forEach(input => input.addEventListener("change", updateDonationFrequencySummary));
+  document.querySelector("#frontRecurringPeriod")?.addEventListener("change", updateDonationFrequencySummary);
   document.querySelector("#frontDonationAmount")?.addEventListener("input", event => {
     const target = document.querySelector("#donationSummaryAmount");
     if (target) target.textContent = frontMoney(event.target.value || 0);
+    updateDonationFrequencySummary();
   });
   document.querySelectorAll("[data-adopt-dog]").forEach(button => button.addEventListener("click", () => {
     const select = document.querySelector("#adoptDogSelect");

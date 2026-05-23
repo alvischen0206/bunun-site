@@ -1647,6 +1647,17 @@ td small {
   font-size: 14px;
 }
 
+.field.disabled {
+  opacity: .58;
+}
+
+.field.disabled select,
+select:disabled {
+  background: #f3f5f3;
+  color: #8a958e;
+  cursor: not-allowed;
+}
+
 .check-line,
 .free-shipping-note {
   display: flex;
