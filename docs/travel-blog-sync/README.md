@@ -60,6 +60,9 @@
 - `miaoli-nanzhuang-old-street-guihua-alley` / 南庄老街桂花巷｜把山城甜香藏進裙襬裡
 - `taichung-national-taichung-theater` / 臺中國家歌劇院｜在曲牆裡聽見城市呼吸
 - `taipei-bangka-longshan-temple` / 艋舺龍山寺｜在香火與老街光影裡慢慢許願
+- `taoyuan-xinwu-green-tunnel` / 新屋綠色走廊｜騎進海風偷偷降溫的綠色隧道
+- `nantou-checheng-wooden-station` / 車埕車站與木業展示館｜在雨後木香裡等一班慢慢的火車
+- `kaohsiung-pier2-art-center` / 駁二藝術特區｜在港邊倉庫裡撿到一點南方浪漫
 
 ## Japan Draft Posts
 
@@ -112,6 +115,9 @@
 - `fukui-eiheiji-temple` / 永平寺｜雨後杉林裡，把心也放輕一點
 - `shimane-izumo-taisha` / 出雲大社｜在雨後參道，把心願輕輕收好
 - `saitama-kawagoe-kurazukuri-hikawa` / 川越藏造老街｜雨後小江戶的風鈴甜甜散步
+- `nagano-matsumoto-castle` / 松本城｜雨後黑色天守，把夏天倒映進護城河
+- `oita-beppu-jigoku-meguri` / 別府地獄巡禮｜蒸氣裡的薄荷色小冒險
+- `shiga-miho-museum` / MIHO MUSEUM｜穿過銀色隧道，走進山裡的光
 
 ## Skipped Source Items
 

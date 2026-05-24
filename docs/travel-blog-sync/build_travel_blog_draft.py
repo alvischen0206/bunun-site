@@ -8,8 +8,8 @@ from pathlib import Path
 
 
 SITE = Path(__file__).resolve().parents[2]
-TAIWAN_SRC = Path(r"C:\Users\bigpa\Documents\New project 5\AI_Taiwan_Travel")
-JAPAN_SRC = Path(r"C:\Users\bigpa\Documents\New project 6\AI_JJAPAN_Travel")
+TAIWAN_SRC = Path(r"D:\CODEX_PROJECT\New project 5\AI_Taiwan_Travel")
+JAPAN_SRC = Path(r"D:\CODEX_PROJECT\New project 6\AI_JJAPAN_Travel")
 
 EXCLUDED_SLUGS = {
     "taiwan": set(),
