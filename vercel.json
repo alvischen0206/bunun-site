@@ -27,6 +27,18 @@
       "destination": "/public/pets/$1"
     },
     {
+      "source": "/ai-workflow-onepager",
+      "destination": "/public/ai-workflow-onepager/index.html"
+    },
+    {
+      "source": "/ai-workflow-onepager/",
+      "destination": "/public/ai-workflow-onepager/index.html"
+    },
+    {
+      "source": "/ai-workflow-onepager/(.*)",
+      "destination": "/public/ai-workflow-onepager/$1"
+    },
+    {
       "source": "/images/(.*)",
       "destination": "/public/images/$1"
     },

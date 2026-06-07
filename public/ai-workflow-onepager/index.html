@@ -1,0 +1,1673 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AI Workflow Solution 一頁式策略總答</title>
+  <style>
+    :root {
+      --bg: #06131d;
+      --bg-2: #091d2c;
+      --panel: #0d2438;
+      --panel-2: #132f45;
+      --line: rgba(129, 170, 205, .18);
+      --text: #f4f8fb;
+      --muted: #b4c4d0;
+      --red: #f33b49;
+      --blue: #52a9e9;
+      --green: #37c69b;
+      --yellow: #f0b741;
+      --purple: #7b6ee7;
+      --shadow: 0 22px 60px rgba(0, 0, 0, .28);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, "Microsoft JhengHei", "Noto Sans TC", sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 18% 4%, rgba(82, 169, 233, .16), transparent 28%),
+        radial-gradient(circle at 85% 18%, rgba(243, 59, 73, .11), transparent 28%),
+        linear-gradient(180deg, #05111a 0%, var(--bg) 42%, #071927 100%);
+      line-height: 1.65;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background-image:
+        linear-gradient(rgba(255, 255, 255, .035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, .035) 1px, transparent 1px);
+      background-size: 44px 44px;
+      mask-image: linear-gradient(to bottom, rgba(0, 0, 0, .8), transparent 70%);
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .site-shell {
+      width: min(1180px, calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .hero {
+      min-height: 82vh;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: 34px;
+      align-items: center;
+      padding: 40px 0 54px;
+    }
+
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(16px);
+      background: rgba(6, 19, 29, .82);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .nav-inner {
+      width: min(1180px, calc(100% - 32px));
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      padding: 12px 0;
+    }
+
+    .brand {
+      font-weight: 900;
+      letter-spacing: 0;
+      white-space: nowrap;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .nav-links a {
+      min-height: 36px;
+      display: inline-flex;
+      align-items: center;
+      border: 1px solid transparent;
+      border-radius: 6px;
+      padding: 6px 10px;
+      color: var(--muted);
+      font-size: 13px;
+      transition: color .2s ease, border-color .2s ease, background .2s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--text);
+      border-color: rgba(255, 255, 255, .16);
+      background: rgba(255, 255, 255, .05);
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(42px, 6.2vw, 88px);
+      line-height: 1.02;
+      letter-spacing: 0;
+    }
+
+    h1 span {
+      color: var(--red);
+    }
+
+    .hero-copy p {
+      max-width: 880px;
+      margin: 22px 0 0;
+      color: var(--muted);
+      font-size: 18px;
+    }
+
+    .quick-answer {
+      display: block;
+      margin-top: 28px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: rgba(13, 36, 56, .82);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      max-width: 980px;
+    }
+
+    .direct-answer-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 15px;
+    }
+
+    .direct-answer-table th {
+      background: var(--red);
+      color: white;
+      padding: 14px 16px;
+      text-align: left;
+      font-size: 13px;
+    }
+
+    .direct-answer-table td {
+      padding: 17px 16px;
+      border-top: 1px solid rgba(255, 255, 255, .09);
+      color: #e8f0f5;
+      vertical-align: top;
+    }
+
+    .direct-answer-table td:first-child {
+      width: 26%;
+      color: white;
+      font-weight: 900;
+    }
+
+    .answer-chip {
+      position: relative;
+      overflow: hidden;
+      min-height: 116px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: linear-gradient(145deg, rgba(19, 47, 69, .92), rgba(9, 29, 44, .92));
+      padding: 16px;
+      box-shadow: var(--shadow);
+    }
+
+    .answer-chip::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      transform: translateX(-120%);
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, .08), transparent);
+      animation: sweep 6s ease-in-out infinite;
+    }
+
+    .answer-chip:nth-child(2)::after {
+      animation-delay: .8s;
+    }
+
+    .answer-chip:nth-child(3)::after {
+      animation-delay: 1.6s;
+    }
+
+    .answer-chip:nth-child(4)::after {
+      animation-delay: 2.4s;
+    }
+
+    .answer-chip strong {
+      display: block;
+      margin-bottom: 8px;
+      color: var(--text);
+      font-size: 15px;
+    }
+
+    .answer-chip p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .workflow-card {
+      display: none;
+      border: 1px solid rgba(255, 255, 255, .12);
+      border-radius: 8px;
+      background: rgba(13, 36, 56, .82);
+      box-shadow: var(--shadow);
+      padding: 24px;
+    }
+
+    .workflow-title {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+
+    .workflow-title h2 {
+      margin: 0;
+      font-size: 22px;
+      line-height: 1.2;
+    }
+
+    .signal {
+      width: 12px;
+      height: 12px;
+      border-radius: 999px;
+      background: var(--green);
+      box-shadow: 0 0 0 7px rgba(55, 198, 155, .13);
+      animation: pulse 2s infinite;
+    }
+
+    .flow-stack {
+      position: relative;
+      display: grid;
+      gap: 12px;
+    }
+
+    .flow-stack::before {
+      content: "";
+      position: absolute;
+      left: 17px;
+      top: 24px;
+      bottom: 24px;
+      width: 2px;
+      background: linear-gradient(var(--blue), var(--green), var(--red), var(--yellow));
+      opacity: .9;
+    }
+
+    .flow-step {
+      position: relative;
+      display: grid;
+      grid-template-columns: 36px 1fr;
+      gap: 12px;
+      align-items: start;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: rgba(6, 19, 29, .62);
+      padding: 14px;
+      transform: translateY(0);
+      transition: transform .2s ease, border-color .2s ease;
+    }
+
+    .flow-step:hover {
+      transform: translateY(-3px);
+      border-color: rgba(255, 255, 255, .24);
+    }
+
+    .flow-index {
+      position: relative;
+      z-index: 2;
+      display: grid;
+      place-items: center;
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      background: var(--red);
+      font-weight: 900;
+    }
+
+    .flow-step:nth-child(2) .flow-index { background: var(--blue); }
+    .flow-step:nth-child(3) .flow-index { background: var(--green); }
+    .flow-step:nth-child(4) .flow-index { background: var(--purple); }
+    .flow-step:nth-child(5) .flow-index { background: var(--yellow); color: #17202b; }
+
+    .flow-step h3 {
+      margin: 0 0 4px;
+      font-size: 15px;
+    }
+
+    .flow-step p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    section {
+      padding: 62px 0;
+      border-top: 1px solid rgba(255, 255, 255, .08);
+    }
+
+    .section-head {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(250px, 360px);
+      gap: 28px;
+      align-items: end;
+      margin-bottom: 24px;
+    }
+
+    .section-head h2 {
+      margin: 0;
+      font-size: clamp(30px, 4vw, 52px);
+      line-height: 1.12;
+    }
+
+    .section-head p {
+      margin: 10px 0 0;
+      color: var(--muted);
+    }
+
+    .summary-box {
+      border-left: 4px solid var(--red);
+      background: rgba(243, 59, 73, .1);
+      border-radius: 0 8px 8px 0;
+      padding: 14px 16px;
+      color: #ffd9dd;
+      font-weight: 700;
+    }
+
+    .content-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(270px, 340px);
+      gap: 24px;
+      align-items: start;
+    }
+
+    .table-card,
+    .side-card,
+    .demand-card {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: rgba(13, 36, 56, .88);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 14px;
+    }
+
+    th {
+      background: var(--red);
+      color: white;
+      text-align: left;
+      padding: 15px 14px;
+      font-size: 13px;
+    }
+
+    td {
+      padding: 17px 14px;
+      border-top: 1px solid rgba(255, 255, 255, .08);
+      color: #e8f0f5;
+      vertical-align: top;
+    }
+
+    tr:nth-child(even) td {
+      background: rgba(255, 255, 255, .035);
+    }
+
+    td strong {
+      color: white;
+    }
+
+    .side-stack {
+      display: grid;
+      gap: 14px;
+    }
+
+    .side-card {
+      padding: 20px;
+    }
+
+    .side-card h3,
+    .demand-card h3 {
+      margin: 0 0 10px;
+      font-size: 18px;
+    }
+
+    .side-card p,
+    .side-card li,
+    .demand-card p,
+    .demand-card li {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    ul {
+      margin: 0;
+      padding-left: 18px;
+    }
+
+    .bubble-map {
+      min-height: 360px;
+      position: relative;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background:
+        linear-gradient(135deg, rgba(82, 169, 233, .08), rgba(55, 198, 155, .05)),
+        rgba(13, 36, 56, .74);
+      overflow: hidden;
+    }
+
+    .bubble {
+      position: absolute;
+      display: grid;
+      place-items: center;
+      width: var(--size);
+      height: var(--size);
+      left: var(--x);
+      top: var(--y);
+      border-radius: 50%;
+      background: var(--color);
+      color: white;
+      text-align: center;
+      box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .18), 0 18px 40px rgba(0, 0, 0, .2);
+      animation: float 5.5s ease-in-out infinite;
+    }
+
+    .bubble small {
+      display: block;
+      margin-top: 5px;
+      color: rgba(255, 255, 255, .72);
+      font-size: 11px;
+      font-weight: 400;
+    }
+
+    .bubble strong {
+      font-size: 15px;
+      line-height: 1.2;
+    }
+
+    .positioning-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(280px, 380px);
+      gap: 24px;
+    }
+
+    .service-ladder {
+      display: grid;
+      gap: 10px;
+      align-content: start;
+    }
+
+    .service-banner {
+      min-height: 112px;
+      display: grid;
+      place-items: center;
+      border-radius: 8px;
+      background:
+        linear-gradient(rgba(6, 19, 29, .16), rgba(6, 19, 29, .46)),
+        linear-gradient(120deg, rgba(82, 169, 233, .2), rgba(243, 59, 73, .34));
+      border: 1px solid rgba(255, 255, 255, .14);
+      font-size: 20px;
+      font-weight: 900;
+      text-align: center;
+    }
+
+    .ladder-step {
+      border-radius: 6px;
+      padding: 13px 14px;
+      color: white;
+      font-weight: 800;
+      text-align: center;
+    }
+
+    .ladder-step:nth-child(2) { background: var(--blue); }
+    .ladder-step:nth-child(3) { background: var(--green); }
+    .ladder-step:nth-child(4) { background: var(--purple); }
+    .ladder-step:nth-child(5) { background: var(--red); }
+    .ladder-step:nth-child(6) { background: var(--yellow); color: #17202b; }
+
+    .demand-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 20px;
+    }
+
+    .demand-card {
+      padding: 18px;
+      transition: transform .2s ease, border-color .2s ease;
+    }
+
+    .demand-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(255, 255, 255, .26);
+    }
+
+    .demand-card b {
+      color: var(--red);
+      font-size: 13px;
+    }
+
+    .final-panel {
+      margin: 58px 0 76px;
+      display: block;
+      border: 1px solid rgba(255, 255, 255, .14);
+      border-radius: 8px;
+      background: linear-gradient(135deg, rgba(243, 59, 73, .18), rgba(82, 169, 233, .12));
+      padding: clamp(22px, 4vw, 42px);
+      box-shadow: var(--shadow);
+    }
+
+    .final-panel h2 {
+      margin: 0;
+      font-size: clamp(28px, 4vw, 48px);
+      line-height: 1.12;
+    }
+
+    .final-panel p {
+      color: var(--muted);
+      margin: 14px 0 0;
+    }
+
+    .score-list {
+      display: grid;
+      gap: 10px;
+      max-width: 760px;
+    }
+
+    .score-list div {
+      display: flex;
+      justify-content: space-between;
+      gap: 14px;
+      border-bottom: 1px solid rgba(255, 255, 255, .12);
+      padding-bottom: 10px;
+      color: var(--muted);
+    }
+
+    .score-list strong {
+      color: white;
+    }
+
+    .reveal {
+      opacity: 1;
+      transform: none;
+      transition: opacity .7s ease, transform .7s ease;
+    }
+
+    .hero .reveal {
+      opacity: 1;
+      transform: none;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @keyframes sweep {
+      0%, 38% { transform: translateX(-120%); }
+      62%, 100% { transform: translateX(120%); }
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(.78); opacity: .62; }
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-12px); }
+    }
+
+    @media (max-width: 920px) {
+      .hero,
+      .section-head,
+      .content-grid,
+      .positioning-grid,
+      .final-panel {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        min-height: auto;
+        padding-top: 54px;
+      }
+
+      .nav-inner {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .nav-links {
+        justify-content: flex-start;
+      }
+
+      .demand-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .site-shell,
+      .nav-inner {
+        width: min(100% - 22px, 1180px);
+      }
+
+      .quick-answer {
+        max-width: 100%;
+      }
+
+      .direct-answer-table td::before {
+        display: none;
+      }
+
+      section {
+        padding: 46px 0;
+      }
+
+      table,
+      thead,
+      tbody,
+      tr,
+      th,
+      td {
+        display: block;
+      }
+
+      thead {
+        display: none;
+      }
+
+      tr {
+        border-top: 1px solid rgba(255, 255, 255, .12);
+      }
+
+      td {
+        border-top: 0;
+        padding: 10px 14px;
+      }
+
+      td::before {
+        content: attr(data-label);
+        display: block;
+        margin-bottom: 4px;
+        color: var(--red);
+        font-size: 12px;
+        font-weight: 900;
+      }
+
+      .bubble-map {
+        min-height: 620px;
+      }
+
+      .bubble {
+        left: var(--mx);
+        top: var(--my);
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+        transition-duration: .01ms !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav class="nav" aria-label="頁面導覽">
+    <div class="nav-inner">
+      <a class="brand" href="#top">AI Workflow Strategy</a>
+      <div class="nav-links">
+        <a href="#customers">客戶</a>
+        <a href="#leadgen">開發</a>
+        <a href="#positioning">定位</a>
+        <a href="#demand">需求</a>
+      </div>
+    </div>
+  </nav>
+
+  <main id="top" class="site-shell">
+    <header class="hero">
+      <div class="hero-copy reveal">
+        <h1>四個問題的一頁總答：先找<span>有流程、有痛點、有驗收</span>的客戶</h1>
+        <p>不要把 AI workflow 當成「聊天機器人」賣，而是賣一套可交付、可稽核、可整合、可衡量 ROI 的流程服務。最佳客戶不是所有產業，而是文件多、重複高、責任清楚、願意用 pilot 驗證價值的組織。</p>
+        <div class="quick-answer">
+          <a class="answer-chip" href="#customers">
+            <strong>1. Target industries / customers</strong>
+            <p>優先公共工程、SI/MSP、政府/公營、製造品保、客服維運；先從你最懂的市場切入再擴張。</p>
+          </a>
+          <a class="answer-chip" href="#leadgen">
+            <strong>2. Lead generation / outreach</strong>
+            <p>用 ABM 名單、標案/事件觸發、30 分鐘流程盤點、paid pilot 和 SI 通路逐步放大。</p>
+          </a>
+          <a class="answer-chip" href="#positioning">
+            <strong>3. Positioning</strong>
+            <p>不要賣 chatbot；賣「可交付、可稽核、可整合」的 Managed AI Workflow Service。</p>
+          </a>
+          <a class="answer-chip" href="#demand">
+            <strong>4. Market demand</strong>
+            <p>最強需求在工程文件、客服/維運、SOP/品保、合約法遵、知識保存等高摩擦流程。</p>
+          </a>
+        </div>
+      </div>
+
+      <aside class="workflow-card reveal" aria-label="AI workflow service layers">
+        <div class="workflow-title">
+          <h2>Managed AI Workflow Service</h2>
+          <span class="signal" aria-hidden="true"></span>
+        </div>
+        <div class="flow-stack">
+          <div class="flow-step">
+            <span class="flow-index">1</span>
+            <div>
+              <h3>知識層：RAG / 文件 / SOP</h3>
+              <p>整理文件、流程、FAQ、歷史案例，讓 AI 有可信來源。</p>
+            </div>
+          </div>
+          <div class="flow-step">
+            <span class="flow-index">2</span>
+            <div>
+              <h3>流程層：任務與審核節點</h3>
+              <p>把人工反覆操作拆成可追蹤步驟，而不是一次全自動。</p>
+            </div>
+          </div>
+          <div class="flow-step">
+            <span class="flow-index">3</span>
+            <div>
+              <h3>整合層：LINE / CRM / ITSM / API</h3>
+              <p>接進客戶現有工作入口，降低導入阻力。</p>
+            </div>
+          </div>
+          <div class="flow-step">
+            <span class="flow-index">4</span>
+            <div>
+              <h3>治理層：權限 / 審核 / 安全</h3>
+              <p>保留 log、責任邊界與人員覆核，讓企業敢用。</p>
+            </div>
+          </div>
+          <div class="flow-step">
+            <span class="flow-index">5</span>
+            <div>
+              <h3>成果層：KPI / ROI / 續約</h3>
+              <p>用節省工時、縮短回覆時間、降低錯誤率來驗收。</p>
+            </div>
+          </div>
+        </div>
+      </aside>
+    </header>
+
+    <section id="customers" class="reveal">
+      <div class="section-head">
+        <div>
+          <h2>Target customers：先從你最懂的市場切入，再擴張</h2>
+          <p>面試時不要說「所有產業都可以」。應該有優先順序，先選有資料、有流程 owner、有預算和驗收標準的客戶。</p>
+        </div>
+        <div class="summary-box">最優先：公共工程 / 交通 / 營建 / 物業，其次是 SI/MSP 與企業 IT。</div>
+      </div>
+
+      <div class="content-grid">
+        <div class="table-card">
+          <table>
+            <thead>
+              <tr>
+                <th>優先</th>
+                <th>客戶類型</th>
+                <th>為什麼先打</th>
+                <th>第一個 AI 場景</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td data-label="優先"><strong>1</strong></td>
+                <td data-label="客戶類型">公共工程 / 交通 / 營建 / 物業</td>
+                <td data-label="為什麼先打">有大量工程文件、SI 共同生態鏈、可信度高。</td>
+                <td data-label="第一個 AI 場景">工程文件、RFI、合約條款、會議紀錄 AI 助理。</td>
+              </tr>
+              <tr>
+                <td data-label="優先"><strong>2</strong></td>
+                <td data-label="客戶類型">SI / MSP / 企業 IT</td>
+                <td data-label="為什麼先打">懂客戶交付責任，也容易共同開發客戶。</td>
+                <td data-label="第一個 AI 場景">SOP、ticket 摘要、SLA 報表、維運知識庫。</td>
+              </tr>
+              <tr>
+                <td data-label="優先"><strong>3</strong></td>
+                <td data-label="客戶類型">政府 / 公營事業</td>
+                <td data-label="為什麼先打">流程長、文件多、重視稽核與權限。</td>
+                <td data-label="第一個 AI 場景">公文/法規/標案文件問答，降低查找時間。</td>
+              </tr>
+              <tr>
+                <td data-label="優先"><strong>4</strong></td>
+                <td data-label="客戶類型">製造 / 品保 / 工程顧問</td>
+                <td data-label="為什麼先打">SOP、檢核、客服與專案知識保存需求強。</td>
+                <td data-label="第一個 AI 場景">SOP/品保/客服/8D 報告助理。</td>
+              </tr>
+              <tr>
+                <td data-label="優先"><strong>5</strong></td>
+                <td data-label="客戶類型">金融保險 / 電商客服 / 通路</td>
+                <td data-label="為什麼先打">對應量大，ROI 容易量化。</td>
+                <td data-label="第一個 AI 場景">LINE/網站客服、FAQ 自動化、案件摘要。</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="side-stack">
+          <div class="side-card">
+            <h3>判斷標準</h3>
+            <p>我會優先找：文件多、流程主、錯誤成本高、有人負責、可以驗收 ROI 的客戶。</p>
+          </div>
+          <div class="side-card">
+            <h3>先不要打</h3>
+            <p>只想免費試用、沒有資料、沒有 owner、沒有預算、沒有導入意願的客戶，容易消耗交付能量。</p>
+          </div>
+          <div class="side-card">
+            <h3>客戶規模打法</h3>
+            <ul>
+              <li>SMB：標準 demo + 快速上線。</li>
+              <li>Mid-market：workshop + paid pilot。</li>
+              <li>Enterprise：SOW、資安文件、多方治理。</li>
+              <li>Government：標案、PoC、年度合約。</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="leadgen" class="reveal">
+      <div class="section-head">
+        <div>
+          <h2>Lead generation：直客做標竿，通路做放大</h2>
+          <p>不能只靠冷訊息。最穩的做法是先用直客建立可展示案例，再透過 SI、顧問、MSP、既有廠商通路複製。</p>
+        </div>
+        <div class="summary-box">開發節奏：名單 ABM → 痛點訊息 → 流程盤點 → paid pilot → 案例放大。</div>
+      </div>
+
+      <div class="content-grid">
+        <div class="table-card">
+          <table>
+            <thead>
+              <tr>
+                <th>模式</th>
+                <th>適合客戶</th>
+                <th>分潤 / 折扣邏輯</th>
+                <th>責任邊界</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td data-label="模式"><strong>Direct Sales</strong></td>
+                <td data-label="適合客戶">大型企業、政府、第一批標竿案。</td>
+                <td data-label="分潤 / 折扣邏輯">公司主收入，累積 ACV 與毛利。</td>
+                <td data-label="責任邊界">公司主導 discovery、SOW、交付、續約。</td>
+              </tr>
+              <tr>
+                <td data-label="模式"><strong>Referral</strong></td>
+                <td data-label="適合客戶">顧問、人脈、非技術夥伴。</td>
+                <td data-label="分潤 / 折扣邏輯">首年 ACV 8-12%，續約 0-3%。</td>
+                <td data-label="責任邊界">夥伴只介紹，不負責交付。</td>
+              </tr>
+              <tr>
+                <td data-label="模式"><strong>Co-sell</strong></td>
+                <td data-label="適合客戶">SI、雲服務商、產業顧問。</td>
+                <td data-label="分潤 / 折扣邏輯">首年 ACV 10-15% 或配套服務費。</td>
+                <td data-label="責任邊界">共同開發，公司主交付。</td>
+              </tr>
+              <tr>
+                <td data-label="模式"><strong>Reseller / SI / MSP</strong></td>
+                <td data-label="適合客戶">既有維運客戶、區域客戶。</td>
+                <td data-label="分潤 / 折扣邏輯">20-30% margin。</td>
+                <td data-label="責任邊界">夥伴負責 L1/訓練，公司負責 L2/L3。</td>
+              </tr>
+              <tr>
+                <td data-label="模式"><strong>White-label</strong></td>
+                <td data-label="適合客戶">大型 SI、通路商、標案分包。</td>
+                <td data-label="分潤 / 折扣邏輯">30-40% margin，綁年度承諾。</td>
+                <td data-label="責任邊界">夥伴主品牌與前線支援，公司後台。</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="side-stack">
+          <div class="side-card">
+            <h3>我的角色</h3>
+            <ul>
+              <li>直客：建立公共工程 / SI 標竿。</li>
+              <li>通路：教 SI 把 AI 包成月費服務。</li>
+              <li>共售：用產業顧問降低導入成本。</li>
+              <li>續約：把 PoC 成果變正式合約。</li>
+            </ul>
+          </div>
+          <div class="side-card">
+            <h3>最小銷售團隊</h3>
+            <ul>
+              <li>BD/AE：開發與成交。</li>
+              <li>SE/SA：demo 與架構。</li>
+              <li>PM/Delivery：SOW 與驗收。</li>
+              <li>CS/Channel：續約與夥伴管理。</li>
+            </ul>
+          </div>
+          <div class="side-card">
+            <h3>外展訊息公式</h3>
+            <p>「我們幫工程/客服/維運團隊，把每天重複查資料、整理文件、回覆問題的時間縮短 30-50%。先做一個 2 週流程盤點，看是否值得做 paid pilot。」</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="reveal" aria-label="客戶規模與決策圈">
+      <div class="section-head">
+        <div>
+          <h2>不同規模，用不同銷售方法</h2>
+          <p>企業 AI 不是單一窗口決策，要同時對齊業務、IT、採購、PM 與高層。</p>
+        </div>
+        <div class="summary-box">主決策者通常是流程 owner，但 IT/資安、採購/財務、PM/交付與高層 sponsor 都會影響成交。</div>
+      </div>
+
+      <div class="content-grid">
+        <div class="table-card">
+          <table>
+            <thead>
+              <tr>
+                <th>規模</th>
+                <th>決策特色</th>
+                <th>主打方式</th>
+                <th>建議方案</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td data-label="規模"><strong>SMB / 部門級</strong></td>
+                <td data-label="決策特色">決策快、預算小、怕太複雜。</td>
+                <td data-label="主打方式">標準 demo + 即看月費 + 快速上線。</td>
+                <td data-label="建議方案">Starter / 單一流程。</td>
+              </tr>
+              <tr>
+                <td data-label="規模"><strong>Mid-market</strong></td>
+                <td data-label="決策特色">有流程痛點，需要有人幫忙盤點。</td>
+                <td data-label="主打方式">Discovery workshop + paid pilot。</td>
+                <td data-label="建議方案">Business / 部門級流程。</td>
+              </tr>
+              <tr>
+                <td data-label="規模"><strong>Enterprise</strong></td>
+                <td data-label="決策特色">重視資安、整合、核准與 SLA。</td>
+                <td data-label="主打方式">SOW + 資安文件 + 多方利益關係人管理。</td>
+                <td data-label="建議方案">Enterprise Secure。</td>
+              </tr>
+              <tr>
+                <td data-label="規模"><strong>Government / Public sector</strong></td>
+                <td data-label="決策特色">標案、年度預算、驗收與法遵導向。</td>
+                <td data-label="主打方式">與 SI 共案，先用 PoC/試用降低風險。</td>
+                <td data-label="建議方案">年度合約 / 標案模式。</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="bubble-map">
+          <div class="bubble" style="--size: 124px; --x: 37%; --y: 34%; --mx: 27%; --my: 230px; --color: var(--red);">
+            <strong>流程<br>Owner<small>主決策者</small></strong>
+          </div>
+          <div class="bubble" style="--size: 96px; --x: 9%; --y: 12%; --mx: 6%; --my: 38px; --color: var(--blue); animation-delay: .3s;">
+            <strong>IT/資安<small>資料串接</small></strong>
+          </div>
+          <div class="bubble" style="--size: 98px; --x: 65%; --y: 12%; --mx: 55%; --my: 74px; --color: var(--yellow); color:#16202b; animation-delay: .8s;">
+            <strong>採購/財務<small>價格合約</small></strong>
+          </div>
+          <div class="bubble" style="--size: 100px; --x: 12%; --y: 68%; --mx: 5%; --my: 412px; --color: var(--green); animation-delay: 1.1s;">
+            <strong>PM/交付<small>SOW驗收</small></strong>
+          </div>
+          <div class="bubble" style="--size: 96px; --x: 66%; --y: 68%; --mx: 56%; --my: 448px; --color: var(--purple); animation-delay: .6s;">
+            <strong>高層Sponsor<small>預算決策</small></strong>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="positioning" class="reveal">
+      <div class="section-head">
+        <div>
+          <h2>Positioning：不要賣 Chatbot，賣可交付的 AI Workflow</h2>
+          <p>企業客戶想知道的是：能省多少時間、降低多少風險、怎麼驗收、誰負責。定位要從工具移到服務與成果。</p>
+        </div>
+        <div class="summary-box">一句話定位：我幫有大量文件與重複流程的組織，把 AI 變成可上線、可稽核、可續約的流程服務。</div>
+      </div>
+
+      <div class="positioning-grid">
+        <div class="table-card">
+          <table>
+            <thead>
+              <tr>
+                <th>不要這樣定位</th>
+                <th>應該這樣定位</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td data-label="不要這樣定位"><strong>AI Agent / Chatbot</strong></td>
+                <td data-label="應該這樣定位">可以查資料、跑流程、留紀錄的數位員工。</td>
+              </tr>
+              <tr>
+                <td data-label="不要這樣定位"><strong>買模型或帳號</strong></td>
+                <td data-label="應該這樣定位">買資料整理、流程設計、整合、權限、替換與支援。</td>
+              </tr>
+              <tr>
+                <td data-label="不要這樣定位"><strong>做一個 demo</strong></td>
+                <td data-label="應該這樣定位">做一個可驗證 ROI 的 paid pilot。</td>
+              </tr>
+              <tr>
+                <td data-label="不要這樣定位"><strong>完全自動化</strong></td>
+                <td data-label="應該這樣定位">先做人機協作：AI 產出、人審核、系統留 log。</td>
+              </tr>
+              <tr>
+                <td data-label="不要這樣定位"><strong>月費越便宜越好</strong></td>
+                <td data-label="應該這樣定位">看總效益：節省時間、降低錯誤、縮短流程、提高服務品質。</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="service-ladder">
+          <div class="service-banner">Managed AI Workflow Service</div>
+          <div class="ladder-step">1. 知識：RAG / 文件 / SOP</div>
+          <div class="ladder-step">2. 流程：任務與審核節點</div>
+          <div class="ladder-step">3. 整合：LINE / CRM / ITSM / API</div>
+          <div class="ladder-step">4. 治理：權限 / 稽核 / 安全</div>
+          <div class="ladder-step">5. 成果：KPI / ROI / 續約</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="demand" class="reveal">
+      <div class="section-head">
+        <div>
+          <h2>Market demand：最強需求在文件多、重複高、可量測的流程</h2>
+          <p>AI 業務要找能算 ROI 的場景，不能只找對 AI 有興趣的客戶。需求強度取決於工作量、文件量、人工成本、錯誤成本與 KPI 可衡量性。</p>
+        </div>
+        <div class="summary-box">需求公式：高需求 = 高頻工作 × 文件量大 × 人工成本高 × 錯誤成本高 × 可驗收 KPI。</div>
+      </div>
+
+      <div class="table-card">
+        <table>
+          <thead>
+            <tr>
+              <th>需求場景</th>
+              <th>為什麼強</th>
+              <th>我會怎麼賣</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td data-label="需求場景"><strong>工程文件 / 標案 / RFI</strong></td>
+              <td data-label="為什麼強">文件多、查找慢、溝通風險高。</td>
+              <td data-label="我會怎麼賣">把文件變成可查、可追、可稽核的 AI 助理。</td>
+            </tr>
+            <tr>
+              <td data-label="需求場景"><strong>SI / IT 維運</strong></td>
+              <td data-label="為什麼強">ticket、SOP、SLA、通報都很耗人力。</td>
+              <td data-label="我會怎麼賣">讓 L1 支援與新人訓練更快上手。</td>
+            </tr>
+            <tr>
+              <td data-label="需求場景"><strong>客服 / 售前諮詢</strong></td>
+              <td data-label="為什麼強">對話量大，可直接節省回覆與轉單時間。</td>
+              <td data-label="我會怎麼賣">用 LINE/網站客服先證明節省工時。</td>
+            </tr>
+            <tr>
+              <td data-label="需求場景"><strong>製造 SOP / 品保</strong></td>
+              <td data-label="為什麼強">知識分散，客訴與稽核需要一致性。</td>
+              <td data-label="我會怎麼賣">SOP 查詢、異常整理、8D 報告草稿。</td>
+            </tr>
+            <tr>
+              <td data-label="需求場景"><strong>法遵 / 採購 / 合約</strong></td>
+              <td data-label="為什麼強">錯誤成本高，需要權限與紀錄。</td>
+              <td data-label="我會怎麼賣">先做輔助查詢與摘要，不碰最終決策。</td>
+            </tr>
+            <tr>
+              <td data-label="需求場景"><strong>知識保存 / 新人訓練</strong></td>
+              <td data-label="為什麼強">資深人員經驗很難交接。</td>
+              <td data-label="我會怎麼賣">用 RAG/OCR/訪談把 know-how 變知識庫。</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="demand-grid">
+        <div class="demand-card">
+          <b>ROI 指標</b>
+          <h3>先量得到，才賣得動</h3>
+          <ul>
+            <li>節省工時。</li>
+            <li>縮短回應時間。</li>
+            <li>降低錯誤率。</li>
+            <li>提高客服解決率。</li>
+            <li>減少新人訓練時間。</li>
+          </ul>
+        </div>
+        <div class="demand-card">
+          <b>最快落地</b>
+          <h3>從輔助決策開始</h3>
+          <p>先做查詢、摘要、草稿、分類、比對、轉單與提醒，不直接替客戶做不可逆的高風險決策。</p>
+        </div>
+        <div class="demand-card">
+          <b>續約關鍵</b>
+          <h3>把成果綁到流程 owner</h3>
+          <p>每月回顧使用量、節省時間、命中率與錯誤案例，讓 AI workflow 從專案變成營運服務。</p>
+        </div>
+      </div>
+    </section>
+
+    <aside class="final-panel reveal">
+      <div>
+        <h2>最後答案：不要先找「想玩 AI」的人，先找「每天被流程卡住」的人。</h2>
+        <p>你的最佳切入點是公共工程、SI/MSP、政府/公營與製造品保這類重流程產業；用 paid pilot 驗證 ROI，用通路共售放大，用 Managed AI Workflow Service 做定位，最後用可量測 KPI 讓客戶續約。</p>
+      </div>
+      <div class="score-list">
+        <div><span>客戶選擇</span><strong>流程痛點優先</strong></div>
+        <div><span>銷售開發</span><strong>直客標竿 + 通路放大</strong></div>
+        <div><span>產品定位</span><strong>可交付 AI workflow</strong></div>
+        <div><span>市場需求</span><strong>文件多、重複高、可驗收</strong></div>
+      </div>
+    </aside>
+  </main>
+
+  <script>
+    const heroTitle = document.querySelector('.hero-copy h1');
+    if (heroTitle) {
+      heroTitle.innerHTML = '先找<span>有流程、有痛點、有驗收</span>的客戶';
+    }
+
+    const quickAnswer = document.querySelector('.quick-answer');
+    if (quickAnswer) {
+      quickAnswer.innerHTML = `
+        <table class="direct-answer-table" aria-label="四個問題直接回答">
+          <thead>
+            <tr>
+              <th>問題</th>
+              <th>我的直接答案</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Target industries / customers</td>
+              <td>先打公共工程、SI/MSP、政府/公營、製造品保、客服維運；共同特徵是文件多、流程清楚、有人負責、可驗收 ROI。</td>
+            </tr>
+            <tr>
+              <td>Lead generation / outreach</td>
+              <td>用 ABM 名單鎖定流程 owner，靠標案/事件觸發外展，以 30 分鐘流程盤點切入，再用 paid pilot 證明價值。</td>
+            </tr>
+            <tr>
+              <td>Positioning</td>
+              <td>不要賣 chatbot，要賣「可交付、可稽核、可整合、可衡量」的 Managed AI Workflow Service。</td>
+            </tr>
+            <tr>
+              <td>Market demand</td>
+              <td>最強需求在工程文件、客服/維運、SOP/品保、合約法遵、知識保存等文件多、重複高、可量測流程。</td>
+            </tr>
+          </tbody>
+        </table>
+      `;
+    }
+
+    document.querySelector('.workflow-card')?.remove();
+
+    const customerHeading = document.querySelector('#customers .section-head h2');
+    if (customerHeading) {
+      customerHeading.textContent = 'Target customers：先從我最懂的市場切入';
+    }
+
+    const finalPanel = document.querySelector('.final-panel');
+    if (finalPanel) {
+      finalPanel.innerHTML = `
+        <div class="score-list" aria-label="最後答案">
+          <div><span>客戶選擇</span><strong>流程痛點優先</strong></div>
+          <div><span>銷售開發</span><strong>直客標竿 + 通路放大</strong></div>
+          <div><span>產品定位</span><strong>可交付 AI workflow</strong></div>
+          <div><span>市場需求</span><strong>文件多、重複高、可驗收</strong></div>
+        </div>
+      `;
+    }
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.14 });
+
+    document.querySelectorAll('.reveal').forEach((item) => observer.observe(item));
+  </script>
+  <script>
+    const bilingualStyle = document.createElement('style');
+    bilingualStyle.textContent = `
+      .lang-switch {
+        display: inline-flex;
+        gap: 4px;
+        padding: 4px;
+        border: 1px solid rgba(255,255,255,.14);
+        border-radius: 8px;
+        background: rgba(255,255,255,.04);
+      }
+
+      .lang-switch button {
+        min-height: 30px;
+        border: 0;
+        border-radius: 6px;
+        padding: 4px 10px;
+        color: var(--muted);
+        background: transparent;
+        font: inherit;
+        font-size: 13px;
+        font-weight: 800;
+        cursor: pointer;
+      }
+
+      .lang-switch button.active {
+        color: white;
+        background: var(--red);
+      }
+
+      .bilingual-note {
+        max-width: 840px;
+      }
+
+      @media (max-width: 640px) {
+        .direct-answer-table th {
+          display: none;
+        }
+
+        .direct-answer-table,
+        .direct-answer-table tbody,
+        .direct-answer-table tr,
+        .direct-answer-table td {
+          display: block;
+        }
+
+        .direct-answer-table td:first-child {
+          width: auto;
+          padding-bottom: 4px;
+          color: var(--red);
+        }
+      }
+    `;
+    document.head.appendChild(bilingualStyle);
+
+    const i18n = {
+      zh: {
+        htmlLang: 'zh-Hant',
+        title: 'AI Workflow Solution 一頁式策略總答',
+        nav: ['客戶', '開發', '定位', '需求'],
+        hero: {
+          title: '先找<span>有流程、有痛點、有驗收</span>的客戶',
+          copy: '不要把 AI workflow 當成「聊天機器人」賣，而是賣一套可交付、可稽核、可整合、可衡量 ROI 的流程服務。最佳客戶不是所有產業，而是文件多、重複高、責任清楚、願意用 paid pilot 驗證價值的組織。'
+        },
+        direct: {
+          headers: ['問題', '我的直接答案'],
+          rows: [
+            ['Target industries / customers', '先打公共工程、SI/MSP、政府/公營、製造品保、客服維運；共同特徵是文件多、流程清楚、有人負責、可驗收 ROI。'],
+            ['Lead generation / outreach', '用 ABM 名單鎖定流程 owner，靠標案/事件觸發外展，以 30 分鐘流程盤點切入，再用 paid pilot 證明價值。'],
+            ['Positioning', '不要賣 chatbot，要賣「可交付、可稽核、可整合、可衡量」的 Managed AI Workflow Service。'],
+            ['Market demand', '最強需求在工程文件、客服/維運、SOP/品保、合約法遵、知識保存等文件多、重複高、可量測流程。']
+          ]
+        },
+        customers: {
+          title: 'Target customers：先從我最懂的市場切入',
+          copy: '面試時不要說「所有產業都可以」。應該有優先順序，先選有資料、有流程 owner、有預算和驗收標準的客戶。',
+          summary: '最優先：公共工程 / 交通 / 營建 / 物業，其次是 SI/MSP 與企業 IT。',
+          tableHeaders: ['優先', '客戶類型', '為什麼先打', '第一個 AI 場景'],
+          rows: [
+            ['1', '公共工程 / 交通 / 營建 / 物業', '有大量工程文件、SI 共同生態鏈、可信度高。', '工程文件、RFI、合約條款、會議紀錄 AI 助理。'],
+            ['2', 'SI / MSP / 企業 IT', '懂客戶交付責任，也容易共同開發客戶。', 'SOP、ticket 摘要、SLA 報表、維運知識庫。'],
+            ['3', '政府 / 公營事業', '流程長、文件多、重視稽核與權限。', '公文/法規/標案文件問答，降低查找時間。'],
+            ['4', '製造 / 品保 / 工程顧問', 'SOP、檢核、客服與專案知識保存需求強。', 'SOP/品保/客服/8D 報告助理。'],
+            ['5', '金融保險 / 電商客服 / 通路', '對應量大，ROI 容易量化。', 'LINE/網站客服、FAQ 自動化、案件摘要。']
+          ],
+          cards: [
+            ['判斷標準', '我會優先找：文件多、流程主、錯誤成本高、有人負責、可以驗收 ROI 的客戶。'],
+            ['先不要打', '只想免費試用、沒有資料、沒有 owner、沒有預算、沒有導入意願的客戶，容易消耗交付能量。'],
+            ['客戶規模打法', ['SMB：標準 demo + 快速上線。', 'Mid-market：workshop + paid pilot。', 'Enterprise：SOW、資安文件、多方治理。', 'Government：標案、PoC、年度合約。']]
+          ]
+        },
+        leadgen: {
+          title: 'Lead generation：直客做標竿，通路做放大',
+          copy: '不能只靠冷訊息。最穩的做法是先用直客建立可展示案例，再透過 SI、顧問、MSP、既有廠商通路複製。',
+          summary: '開發節奏：名單 ABM → 痛點訊息 → 流程盤點 → paid pilot → 案例放大。',
+          tableHeaders: ['模式', '適合客戶', '分潤 / 折扣邏輯', '責任邊界'],
+          rows: [
+            ['Direct Sales', '大型企業、政府、第一批標竿案。', '公司主收入，累積 ACV 與毛利。', '公司主導 discovery、SOW、交付、續約。'],
+            ['Referral', '顧問、人脈、非技術夥伴。', '首年 ACV 8-12%，續約 0-3%。', '夥伴只介紹，不負責交付。'],
+            ['Co-sell', 'SI、雲服務商、產業顧問。', '首年 ACV 10-15% 或配套服務費。', '共同開發，公司主交付。'],
+            ['Reseller / SI / MSP', '既有維運客戶、區域客戶。', '20-30% margin。', '夥伴負責 L1/訓練，公司負責 L2/L3。'],
+            ['White-label', '大型 SI、通路商、標案分包。', '30-40% margin，綁年度承諾。', '夥伴主品牌與前線支援，公司後台。']
+          ],
+          cards: [
+            ['我的角色', ['直客：建立公共工程 / SI 標竿。', '通路：教 SI 把 AI 包成月費服務。', '共售：用產業顧問降低導入成本。', '續約：把 PoC 成果變正式合約。']],
+            ['最小銷售團隊', ['BD/AE：開發與成交。', 'SE/SA：demo 與架構。', 'PM/Delivery：SOW 與驗收。', 'CS/Channel：續約與夥伴管理。']],
+            ['外展訊息公式', '「我們幫工程/客服/維運團隊，把每天重複查資料、整理文件、回覆問題的時間縮短 30-50%。先做一個 2 週流程盤點，看是否值得做 paid pilot。」']
+          ]
+        },
+        scale: {
+          title: '不同規模，用不同銷售方法',
+          copy: '企業 AI 不是單一窗口決策，要同時對齊業務、IT、採購、PM 與高層。',
+          summary: '主決策者通常是流程 owner，但 IT/資安、採購/財務、PM/交付與高層 sponsor 都會影響成交。',
+          tableHeaders: ['規模', '決策特色', '主打方式', '建議方案'],
+          rows: [
+            ['SMB / 部門級', '決策快、預算小、怕太複雜。', '標準 demo + 即看月費 + 快速上線。', 'Starter / 單一流程。'],
+            ['Mid-market', '有流程痛點，需要有人幫忙盤點。', 'Discovery workshop + paid pilot。', 'Business / 部門級流程。'],
+            ['Enterprise', '重視資安、整合、核准與 SLA。', 'SOW + 資安文件 + 多方利益關係人管理。', 'Enterprise Secure。'],
+            ['Government / Public sector', '標案、年度預算、驗收與法遵導向。', '與 SI 共案，先用 PoC/試用降低風險。', '年度合約 / 標案模式。']
+          ],
+          bubbles: [
+            ['流程<br>Owner', '主決策者'], ['IT/資安', '資料串接'], ['採購/財務', '價格合約'], ['PM/交付', 'SOW驗收'], ['高層Sponsor', '預算決策']
+          ]
+        },
+        positioning: {
+          title: 'Positioning：不要賣 Chatbot，賣可交付的 AI Workflow',
+          copy: '企業客戶想知道的是：能省多少時間、降低多少風險、怎麼驗收、誰負責。定位要從工具移到服務與成果。',
+          summary: '一句話定位：我幫有大量文件與重複流程的組織，把 AI 變成可上線、可稽核、可續約的流程服務。',
+          tableHeaders: ['不要這樣定位', '應該這樣定位'],
+          rows: [
+            ['AI Agent / Chatbot', '可以查資料、跑流程、留紀錄的數位員工。'],
+            ['買模型或帳號', '買資料整理、流程設計、整合、權限、替換與支援。'],
+            ['做一個 demo', '做一個可驗證 ROI 的 paid pilot。'],
+            ['完全自動化', '先做人機協作：AI 產出、人審核、系統留 log。'],
+            ['月費越便宜越好', '看總效益：節省時間、降低錯誤、縮短流程、提高服務品質。']
+          ],
+          ladder: ['Managed AI Workflow Service', '1. 知識：RAG / 文件 / SOP', '2. 流程：任務與審核節點', '3. 整合：LINE / CRM / ITSM / API', '4. 治理：權限 / 稽核 / 安全', '5. 成果：KPI / ROI / 續約']
+        },
+        demand: {
+          title: 'Market demand：最強需求在文件多、重複高、可量測的流程',
+          copy: 'AI 業務要找能算 ROI 的場景，不能只找對 AI 有興趣的客戶。需求強度取決於工作量、文件量、人工成本、錯誤成本與 KPI 可衡量性。',
+          summary: '需求公式：高需求 = 高頻工作 × 文件量大 × 人工成本高 × 錯誤成本高 × 可驗收 KPI。',
+          tableHeaders: ['需求場景', '為什麼強', '我會怎麼賣'],
+          rows: [
+            ['工程文件 / 標案 / RFI', '文件多、查找慢、溝通風險高。', '把文件變成可查、可追、可稽核的 AI 助理。'],
+            ['SI / IT 維運', 'ticket、SOP、SLA、通報都很耗人力。', '讓 L1 支援與新人訓練更快上手。'],
+            ['客服 / 售前諮詢', '對話量大，可直接節省回覆與轉單時間。', '用 LINE/網站客服先證明節省工時。'],
+            ['製造 SOP / 品保', '知識分散，客訴與稽核需要一致性。', 'SOP 查詢、異常整理、8D 報告草稿。'],
+            ['法遵 / 採購 / 合約', '錯誤成本高，需要權限與紀錄。', '先做輔助查詢與摘要，不碰最終決策。'],
+            ['知識保存 / 新人訓練', '資深人員經驗很難交接。', '用 RAG/OCR/訪談把 know-how 變知識庫。']
+          ],
+          cards: [
+            ['ROI 指標', '先量得到，才賣得動', ['節省工時。', '縮短回應時間。', '降低錯誤率。', '提高客服解決率。', '減少新人訓練時間。']],
+            ['最快落地', '從輔助決策開始', '先做查詢、摘要、草稿、分類、比對、轉單與提醒，不直接替客戶做不可逆的高風險決策。'],
+            ['續約關鍵', '把成果綁到流程 owner', '每月回顧使用量、節省時間、命中率與錯誤案例，讓 AI workflow 從專案變成營運服務。']
+          ]
+        },
+        final: [
+          ['客戶選擇', '流程痛點優先'],
+          ['銷售開發', '直客標竿 + 通路放大'],
+          ['產品定位', '可交付 AI workflow'],
+          ['市場需求', '文件多、重複高、可驗收']
+        ]
+      },
+      en: {
+        htmlLang: 'en',
+        title: 'AI Workflow Solution One-Page Strategy',
+        nav: ['Customers', 'Outreach', 'Positioning', 'Demand'],
+        hero: {
+          title: 'Find customers with <span>process, pain, and acceptance criteria</span>',
+          copy: 'Do not sell AI workflow as a chatbot. Sell a workflow service that can be delivered, audited, integrated, and measured by ROI. The best customers are not every industry; they are organizations with heavy documents, repeated work, clear ownership, and willingness to validate value through a paid pilot.'
+        },
+        direct: {
+          headers: ['Question', 'Direct answer'],
+          rows: [
+            ['Target industries / customers', 'Start with public works, SI/MSP, government/public sector, manufacturing QA, and support operations. They share heavy documentation, clear workflows, accountable owners, and measurable ROI.'],
+            ['Lead generation / outreach', 'Build ABM lists around process owners, trigger outreach from bids/events, open with a 30-minute workflow review, then prove value through a paid pilot.'],
+            ['Positioning', 'Do not sell a chatbot. Sell a deliverable, auditable, integratable, measurable Managed AI Workflow Service.'],
+            ['Market demand', 'The strongest demand sits in engineering documents, support/IT operations, SOP/QA, contracts/compliance, and knowledge retention: document-heavy, repetitive, measurable processes.']
+          ]
+        },
+        customers: {
+          title: 'Target customers: start with the market I understand best',
+          copy: 'Do not say “every industry can use this.” Prioritize customers with data, a process owner, budget, and concrete acceptance criteria.',
+          summary: 'Top priority: public works / transportation / construction / property, followed by SI/MSP and enterprise IT.',
+          tableHeaders: ['Priority', 'Customer type', 'Why target first', 'First AI use case'],
+          rows: [
+            ['1', 'Public works / transportation / construction / property', 'Large volumes of engineering documents, shared SI ecosystem, and high credibility.', 'Engineering docs, RFI, contract clauses, meeting minutes AI assistant.'],
+            ['2', 'SI / MSP / enterprise IT', 'They understand delivery responsibility and are easier to co-develop customers with.', 'SOP, ticket summaries, SLA reports, IT operations knowledge base.'],
+            ['3', 'Government / public sector', 'Long workflows, many documents, strong audit and permission requirements.', 'Official docs, regulations, bid-document Q&A to reduce search time.'],
+            ['4', 'Manufacturing / QA / engineering consultants', 'Strong needs around SOP, checks, support, and project knowledge retention.', 'SOP/QA/support/8D report assistant.'],
+            ['5', 'Insurance / ecommerce support / channels', 'High request volume and easier ROI quantification.', 'LINE/web support, FAQ automation, case summaries.']
+          ],
+          cards: [
+            ['Selection criteria', 'Prioritize customers with many documents, clear workflow ownership, high error cost, accountable teams, and measurable ROI.'],
+            ['Avoid first', 'Avoid customers who only want free trials, have no data, no owner, no budget, or no willingness to adopt. They drain delivery capacity.'],
+            ['Sales motion by size', ['SMB: standard demo + fast launch.', 'Mid-market: workshop + paid pilot.', 'Enterprise: SOW, security docs, stakeholder governance.', 'Government: bid, PoC, annual contract.']]
+          ]
+        },
+        leadgen: {
+          title: 'Lead generation: build direct flagship wins, then scale through channels',
+          copy: 'Do not rely only on cold messages. Build referenceable direct cases first, then replicate through SI, consultants, MSPs, and existing vendor channels.',
+          summary: 'Outreach rhythm: ABM list → pain message → workflow review → paid pilot → case expansion.',
+          tableHeaders: ['Model', 'Best fit', 'Revenue / discount logic', 'Responsibility boundary'],
+          rows: [
+            ['Direct Sales', 'Large enterprises, government, first flagship cases.', 'Company owns main revenue, ACV, and margin.', 'Company leads discovery, SOW, delivery, renewal.'],
+            ['Referral', 'Consultants, personal networks, non-technical partners.', '8-12% first-year ACV, 0-3% renewal.', 'Partner introduces only; no delivery responsibility.'],
+            ['Co-sell', 'SI, cloud providers, industry consultants.', '10-15% first-year ACV or attached service fees.', 'Joint development; company leads delivery.'],
+            ['Reseller / SI / MSP', 'Existing managed-service and regional customers.', '20-30% margin.', 'Partner handles L1/training; company handles L2/L3.'],
+            ['White-label', 'Large SI, channels, bid subcontracting.', '30-40% margin with annual commitment.', 'Partner owns front brand/support; company runs backend.']
+          ],
+          cards: [
+            ['My role', ['Direct: build public works / SI flagship cases.', 'Channel: teach SI to package AI as monthly managed service.', 'Co-sell: reduce adoption cost via industry consultants.', 'Renewal: turn PoC outcomes into contracts.']],
+            ['Minimum sales team', ['BD/AE: pipeline and closing.', 'SE/SA: demo and architecture.', 'PM/Delivery: SOW and acceptance.', 'CS/Channel: renewal and partner management.']],
+            ['Outreach message formula', '“We help engineering/support/IT teams cut the time spent repeatedly searching documents, preparing summaries, and replying to questions by 30-50%. Let’s run a 2-week workflow review to see whether a paid pilot is worth it.”']
+          ]
+        },
+        scale: {
+          title: 'Different customer sizes need different sales motions',
+          copy: 'Enterprise AI is not a single-window decision. You need to align business, IT, procurement, PM, and executives.',
+          summary: 'The main decision maker is usually the process owner, while IT/security, procurement/finance, PM/delivery, and executive sponsors all affect the deal.',
+          tableHeaders: ['Size', 'Decision traits', 'Primary motion', 'Suggested package'],
+          rows: [
+            ['SMB / department', 'Fast decision, smaller budget, afraid of complexity.', 'Standard demo + visible monthly fee + fast launch.', 'Starter / single workflow.'],
+            ['Mid-market', 'Has process pain and needs help mapping it.', 'Discovery workshop + paid pilot.', 'Business / department workflow.'],
+            ['Enterprise', 'Cares about security, integration, approval, and SLA.', 'SOW + security docs + stakeholder management.', 'Enterprise Secure.'],
+            ['Government / public sector', 'Bid, annual budget, acceptance, and compliance oriented.', 'Co-bid with SI; reduce risk through PoC/trial.', 'Annual contract / bid model.']
+          ],
+          bubbles: [
+            ['Process<br>Owner', 'main decision maker'], ['IT/Security', 'data integration'], ['Procurement/Finance', 'price and contract'], ['PM/Delivery', 'SOW acceptance'], ['Executive Sponsor', 'budget decision']
+          ]
+        },
+        positioning: {
+          title: 'Positioning: do not sell Chatbot; sell deliverable AI Workflow',
+          copy: 'Enterprise customers care about time saved, risks reduced, acceptance criteria, and accountability. Move positioning from tool to service and outcome.',
+          summary: 'One-sentence positioning: I help document-heavy, repetitive-process organizations turn AI into a launchable, auditable, renewable workflow service.',
+          tableHeaders: ['Weak positioning', 'Better positioning'],
+          rows: [
+            ['AI Agent / Chatbot', 'A digital worker that can search data, run workflows, and keep records.'],
+            ['Buying a model or account', 'Buying data preparation, workflow design, integration, permissions, replacement, and support.'],
+            ['Building a demo', 'Building a paid pilot with verifiable ROI.'],
+            ['Full automation', 'Start with human-in-the-loop: AI drafts, humans review, system logs.'],
+            ['Cheapest monthly fee wins', 'Sell total impact: saved time, fewer errors, shorter cycles, and better service quality.']
+          ],
+          ladder: ['Managed AI Workflow Service', '1. Knowledge: RAG / documents / SOP', '2. Workflow: tasks and review checkpoints', '3. Integration: LINE / CRM / ITSM / API', '4. Governance: permissions / audit / security', '5. Outcome: KPI / ROI / renewal']
+        },
+        demand: {
+          title: 'Market demand: strongest where documents are heavy, repetition is high, and results are measurable',
+          copy: 'AI sales should seek ROI-calculable scenarios, not just customers interested in AI. Demand strength depends on work volume, document volume, labor cost, error cost, and measurable KPIs.',
+          summary: 'Demand formula: strong demand = high-frequency work × large document volume × high labor cost × high error cost × measurable KPI.',
+          tableHeaders: ['Demand scenario', 'Why it is strong', 'How I would sell it'],
+          rows: [
+            ['Engineering docs / bids / RFI', 'Many documents, slow search, high communication risk.', 'Turn documents into searchable, trackable, auditable AI assistance.'],
+            ['SI / IT operations', 'Tickets, SOPs, SLA reports, and notifications consume people.', 'Help L1 support and new hires get productive faster.'],
+            ['Support / presales inquiries', 'High conversation volume directly saves response and routing time.', 'Prove saved hours through LINE/web support first.'],
+            ['Manufacturing SOP / QA', 'Knowledge is scattered; complaints and audits need consistency.', 'SOP search, exception summaries, 8D report drafts.'],
+            ['Compliance / procurement / contracts', 'High error cost and strong need for permissions and records.', 'Start with assisted search and summaries, not final decisions.'],
+            ['Knowledge retention / onboarding', 'Senior know-how is hard to transfer.', 'Use RAG/OCR/interviews to turn know-how into a knowledge base.']
+          ],
+          cards: [
+            ['ROI metrics', 'Measure first, then sell', ['Hours saved.', 'Shorter response time.', 'Lower error rate.', 'Higher support resolution rate.', 'Less onboarding time.']],
+            ['Fastest landing', 'Start from decision support', 'Begin with search, summaries, drafts, classification, comparison, routing, and reminders. Do not make irreversible high-risk decisions for the customer.'],
+            ['Renewal key', 'Tie outcomes to the process owner', 'Review usage, time saved, hit rate, and error cases monthly so AI workflow becomes an operating service rather than a one-off project.']
+          ]
+        },
+        final: [
+          ['Customer choice', 'Prioritize workflow pain'],
+          ['Sales development', 'Direct flagship + channel scale'],
+          ['Product positioning', 'Deliverable AI workflow'],
+          ['Market demand', 'Document-heavy, repetitive, measurable']
+        ]
+      }
+    };
+
+    const renderList = (items) => Array.isArray(items)
+      ? `<ul>${items.map((item) => `<li>${item}</li>`).join('')}</ul>`
+      : `<p>${items}</p>`;
+
+    const renderTable = (headers, rows) => `
+      <div class="table-card">
+        <table>
+          <thead><tr>${headers.map((header) => `<th>${header}</th>`).join('')}</tr></thead>
+          <tbody>
+            ${rows.map((row) => `
+              <tr>${row.map((cell, index) => `<td data-label="${headers[index]}">${index === 0 ? `<strong>${cell}</strong>` : cell}</td>`).join('')}</tr>
+            `).join('')}
+          </tbody>
+        </table>
+      </div>
+    `;
+
+    const renderSideCards = (cards) => `
+      <div class="side-stack">
+        ${cards.map(([title, body]) => `
+          <div class="side-card">
+            <h3>${title}</h3>
+            ${renderList(body)}
+          </div>
+        `).join('')}
+      </div>
+    `;
+
+    const renderSection = (section, data) => {
+      section.innerHTML = `
+        <div class="section-head">
+          <div>
+            <h2>${data.title}</h2>
+            <p>${data.copy}</p>
+          </div>
+          <div class="summary-box">${data.summary}</div>
+        </div>
+        <div class="content-grid">
+          ${renderTable(data.tableHeaders, data.rows)}
+          ${renderSideCards(data.cards)}
+        </div>
+      `;
+    };
+
+    const renderScale = (section, data) => {
+      const bubbleStyles = [
+        '--size: 124px; --x: 37%; --y: 34%; --mx: 27%; --my: 230px; --color: var(--red);',
+        '--size: 96px; --x: 9%; --y: 12%; --mx: 6%; --my: 38px; --color: var(--blue); animation-delay: .3s;',
+        '--size: 98px; --x: 65%; --y: 12%; --mx: 55%; --my: 74px; --color: var(--yellow); color:#16202b; animation-delay: .8s;',
+        '--size: 100px; --x: 12%; --y: 68%; --mx: 5%; --my: 412px; --color: var(--green); animation-delay: 1.1s;',
+        '--size: 96px; --x: 66%; --y: 68%; --mx: 56%; --my: 448px; --color: var(--purple); animation-delay: .6s;'
+      ];
+      section.innerHTML = `
+        <div class="section-head">
+          <div>
+            <h2>${data.title}</h2>
+            <p>${data.copy}</p>
+          </div>
+          <div class="summary-box">${data.summary}</div>
+        </div>
+        <div class="content-grid">
+          ${renderTable(data.tableHeaders, data.rows)}
+          <div class="bubble-map">
+            ${data.bubbles.map(([title, subtitle], index) => `
+              <div class="bubble" style="${bubbleStyles[index]}">
+                <strong>${title}<small>${subtitle}</small></strong>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+      `;
+    };
+
+    const renderPositioning = (section, data) => {
+      section.innerHTML = `
+        <div class="section-head">
+          <div>
+            <h2>${data.title}</h2>
+            <p>${data.copy}</p>
+          </div>
+          <div class="summary-box">${data.summary}</div>
+        </div>
+        <div class="positioning-grid">
+          ${renderTable(data.tableHeaders, data.rows)}
+          <div class="service-ladder">
+            <div class="service-banner">${data.ladder[0]}</div>
+            ${data.ladder.slice(1).map((step) => `<div class="ladder-step">${step}</div>`).join('')}
+          </div>
+        </div>
+      `;
+    };
+
+    const renderDemand = (section, data) => {
+      section.innerHTML = `
+        <div class="section-head">
+          <div>
+            <h2>${data.title}</h2>
+            <p>${data.copy}</p>
+          </div>
+          <div class="summary-box">${data.summary}</div>
+        </div>
+        ${renderTable(data.tableHeaders, data.rows)}
+        <div class="demand-grid">
+          ${data.cards.map(([label, title, body]) => `
+            <div class="demand-card">
+              <b>${label}</b>
+              <h3>${title}</h3>
+              ${renderList(body)}
+            </div>
+          `).join('')}
+        </div>
+      `;
+    };
+
+    const renderLanguage = (lang) => {
+      const data = i18n[lang];
+      document.documentElement.lang = data.htmlLang;
+      document.title = data.title;
+      document.querySelector('.hero-copy h1').innerHTML = data.hero.title;
+      document.querySelector('.hero-copy p').textContent = data.hero.copy;
+
+      document.querySelectorAll('.nav-links a').forEach((link, index) => {
+        link.textContent = data.nav[index];
+      });
+
+      document.querySelector('.quick-answer').innerHTML = `
+        <table class="direct-answer-table" aria-label="${data.direct.headers.join(' / ')}">
+          <thead><tr>${data.direct.headers.map((header) => `<th>${header}</th>`).join('')}</tr></thead>
+          <tbody>
+            ${data.direct.rows.map((row) => `<tr><td>${row[0]}</td><td>${row[1]}</td></tr>`).join('')}
+          </tbody>
+        </table>
+      `;
+
+      const sections = [...document.querySelectorAll('main > section')];
+      renderSection(document.querySelector('#customers'), data.customers);
+      renderSection(document.querySelector('#leadgen'), data.leadgen);
+      renderScale(sections[2], data.scale);
+      renderPositioning(document.querySelector('#positioning'), data.positioning);
+      renderDemand(document.querySelector('#demand'), data.demand);
+
+      document.querySelector('.final-panel').innerHTML = `
+        <div class="score-list" aria-label="${lang === 'zh' ? '最後答案' : 'Final answer'}">
+          ${data.final.map(([label, value]) => `<div><span>${label}</span><strong>${value}</strong></div>`).join('')}
+        </div>
+      `;
+
+      document.querySelectorAll('[data-lang]').forEach((button) => {
+        button.classList.toggle('active', button.dataset.lang === lang);
+      });
+      localStorage.setItem('aiWorkflowLang', lang);
+    };
+
+    const navInner = document.querySelector('.nav-inner');
+    if (!document.querySelector('.lang-switch')) {
+      const langSwitch = document.createElement('div');
+      langSwitch.className = 'lang-switch';
+      langSwitch.setAttribute('aria-label', 'Language switcher');
+      langSwitch.innerHTML = `
+        <button type="button" data-lang="zh">中文</button>
+        <button type="button" data-lang="en">EN</button>
+      `;
+      navInner.appendChild(langSwitch);
+    }
+
+    document.querySelectorAll('[data-lang]').forEach((button) => {
+      button.addEventListener('click', () => renderLanguage(button.dataset.lang));
+    });
+
+    document.querySelector('.workflow-card')?.remove();
+    const initialLang = new URLSearchParams(window.location.search).get('lang') || localStorage.getItem('aiWorkflowLang') || 'zh';
+    renderLanguage(i18n[initialLang] ? initialLang : 'zh');
+  </script>
+</body>
+</html>
